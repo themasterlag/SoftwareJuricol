@@ -98,46 +98,52 @@ export class RegistrarDemandaComponent implements OnInit {
   }
 
   guardarDemanda(){
-    this.controladorDemanda.SetIdDemanda(this.id);
-    this.controladorDemanda.SetCategoria(this.categoria)
-    this.controladorDemanda.SetNumeroRadicado(this.numRadicado);
-    this.controladorDemanda.SetTipoDemanda(this.tipoDemanda);
-    this.controladorDemanda.SetCliente(this.cliente);
-    this.controladorDemanda.SetTitular(this.titular);
-    this.controladorDemanda.SetSuplente(this.suplente);
-    this.controladorDemanda.SetJuzgado(this.juzgado);
-    this.controladorDemanda.SetContraparte(this.contraparte);
-    this.controladorDemanda.SetTipoProceso(this.tipoProceso);
-    this.controladorDemanda.SetEstadoProceso(this.estadoProceso);
-    this.controladorDemanda.SetDescripcion(this.descripcion);
-
-    this.controladorDemanda.GuardarDemanda().subscribe(
-      response =>{
-        if(response["codigo"]==200){
-          alert("Demanda registrada correctamente");
-          this.controladorDemanda.SetIdDemanda(response["mensaje"]);
-          this.controladorDemanda.SetDescripcionTermino(this.descripcion);
-          this.controladorDemanda.SetTermino(this.termino);
-          this.controladorDemanda.SetFechaInicioEstado(this.fechaInicioEstado);
-          this.controladorDemanda.SetFechaVencimiento(this.fechaVencimiento);
-
-          this.controladorDemanda.CrearMovimiento().subscribe(
-            response =>{
-              if(response["codigo"]==200){
-                this.router.navigateByUrl("/"+this.usuario+"/demandas");
+    if (this.estadoProceso == null){
+      this.error = "Seleccione un estado del proceso";
+    }
+    else{
+      this.controladorDemanda.SetIdDemanda(this.id);
+      this.controladorDemanda.SetCategoria(this.categoria)
+      this.controladorDemanda.SetNumeroRadicado(this.numRadicado);
+      this.controladorDemanda.SetTipoDemanda(this.tipoDemanda);
+      this.controladorDemanda.SetCliente(this.cliente);
+      this.controladorDemanda.SetTitular(this.titular);
+      this.controladorDemanda.SetSuplente(this.suplente);
+      this.controladorDemanda.SetJuzgado(this.juzgado);
+      this.controladorDemanda.SetContraparte(this.contraparte);
+      this.controladorDemanda.SetTipoProceso(this.tipoProceso);
+      this.controladorDemanda.SetEstadoProceso(this.estadoProceso);
+      this.controladorDemanda.SetDescripcion(this.descripcion);
+  
+      this.controladorDemanda.GuardarDemanda().subscribe(
+        response =>{
+          if(response["codigo"]==200){
+            alert("Demanda registrada correctamente");
+            this.controladorDemanda.SetIdDemanda(response["mensaje"]);
+            this.controladorDemanda.SetDescripcionTermino(this.descripcion);
+            this.controladorDemanda.SetTermino(this.termino);
+            this.controladorDemanda.SetFechaInicioEstado(this.fechaInicioEstado);
+            this.controladorDemanda.SetFechaVencimiento(this.fechaVencimiento);
+  
+            this.controladorDemanda.CrearMovimiento().subscribe(
+              response =>{
+                if(response["codigo"]==200){
+                  this.router.navigateByUrl("/"+this.usuario+"/demandas");
+                }
+                else{
+                  this.error = response["mensaje"];
+                }
               }
-              else{
-                this.error = response["mensaje"];
-              }
-            }
-          );
-          
+            );
+            
+          }
+          else{
+            this.error = response["mensaje"];
+          }
         }
-        else{
-          this.error = response["mensaje"];
-        }
-      }
-    );
+      );
+    }
+    
   }
 
   cancelar(){

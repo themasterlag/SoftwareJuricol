@@ -12,7 +12,7 @@ export class AutenticadorService {
   idUsuario:number = null;
   usuario:number = null;
   token:any = null;
-
+  tipoUsuario: string;
 
   constructor(private router:Router) {     
     this.token = this.GetToken();
@@ -38,6 +38,10 @@ export class AutenticadorService {
     return this.usuario;
   }
 
+  public GetRol(){
+    return this.tipoUsuario;
+  }
+
   public ProcesarToken(){
     if(this.token != null){
       var base64Url = this.token.split('.')[1];
@@ -46,6 +50,9 @@ export class AutenticadorService {
       // console.log(base64)
       this.idUsuario = base64.data.IdUsuario;
       this.usuario = base64.data.usuario;
+      this.tipoUsuario = base64.data.TipoUsuario;
+
+      console.log(base64.data);
 
       // localStorage.setItem("usuario",JSON.stringify(this.usuario));
 

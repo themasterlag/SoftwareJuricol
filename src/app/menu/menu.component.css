@@ -147,14 +147,18 @@ hr{
 /******************************************/
 /* Acordeon */
 
-#accordion{
-  padding: 0%;
+#accordionMenu{
+  padding: 0;
   margin: 0;
   text-align: center;
 }
 
-#accordion .card{
-  padding: 0%;
+#accordionMenu .card{
+  padding: 0;
   margin: 0;
   text-align: left;
+}
+
+#accordionMenu .card-header{
+  padding: 0;
 }
