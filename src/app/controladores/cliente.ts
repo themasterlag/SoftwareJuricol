@@ -189,10 +189,10 @@ private TipoDucumentoAdicional:number
         
         return this.http.get('http://localhost/GitHub/juricol/recursos/validar.php?accion=consultarClientes&IdCliente='+IdCliente )
         }
-        BuscarClientes(){ // Recurso que consulta a la BD los datos la informacion de los clientes
-        
-        return this.http.get('http://localhost/GitHub/juricol/recursos/validar.php?accion=consultarClientes' );
-        
+        BuscarClientes(Activo){ // Recurso que consulta a la BD los datos la informacion de los clientes
+
+            return this.http.get('http://localhost/GitHub/juricol/recursos/validar.php?accion=consultarClientes&Activo='+Activo);
+    
         }
         insertarCliente(){ // Recurso que permite inserta la insersion de un cliente a la BD
         

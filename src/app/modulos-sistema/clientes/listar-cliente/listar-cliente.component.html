@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 
+=======
+<head>
+    
+</head>
+>>>>>>> d8050b9e20b4517840d751dbd070d65da3c88e36
 <body>
   <div class="jumbotron2"> 
     <div class="container">
-      <div class="botonNuevo">
-        <button class="btn btn-primary" (click)="Crear()">Nuevo Cliente</button>
+      <div class="botonNuevo" *ngIf="rol == 'Administrador'|| rol == 'Recepcionista'">
+        <button class="btn btn-primary" (click)="Crear()"  >Nuevo Cliente</button>
       </div>
-      <h3 align='center'>Listado de Clientes</h3>
+      <h3 align='center'>Modulo de  Clientes</h3>
       <br>
   
          
@@ -41,7 +47,7 @@
           </div>
         </div>
       </div>
-
+      
       <!-- tabla de o lista de Cliente -->
       <table class="table table-striped">
         <!-- titulo de las columnas -->
@@ -58,8 +64,16 @@
             <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Correo" ></th>
             <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Direccion" ></th>
             <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Edad"></th>
+            <th scope="col"><input class="form-control" [(ngModel)]="searchObject.CiudadResidencia"></th>
             <th>&nbsp;</th>
-          
+            <th scope="col">
+              <select class="form-control" [(ngModel)]="searchObject.Estado"  *ngIf="rol == 'Administrador'|| rol == 'Recepcionista'" >
+                <option value="">Todos</option>
+                <option value="1">Activos</option>
+                <option value="0">Inactivos</option>
+              </select>
+            </th>
+      
           
         </tr>
         <tr>
@@ -74,7 +88,9 @@
           <th scope="col">Correo Electronico</th>
           <th scope="col">Direccion</th>
           <th scope="col">Edad</th>
-          <th>Acciones</th>
+          <th scope="col">Ciudad</th>
+          <th>Accion</th>
+          <th *ngIf="rol == 'Administrador'|| rol == 'Recepcionista'">Accion</th>
         
           
         </tr>
@@ -90,26 +106,27 @@
             Celular:  searchObject.Celular,
             Correo:   searchObject.Correo,
             Direccion:searchObject.Direccion,
-            Edad:     searchObject.Edad 
+            Edad:     searchObject.Edad,
+            Estado:   searchObject.Estado,
+            CiudadResidencia:   searchObject.CiudadResidencia
           }"
         >
          
-          <td><div [ngClass]="{'rojo':Cliente.color === 1,'amarillo': Cliente.color === 0,'verde': Cliente.color === 2,'gris': Cliente.color === 3}"></div></td>
-          <th scope="col">{{Cliente.IdCliente}}</th>
-          <td>{{Cliente.Documento}}</td>
-          <td>{{Cliente.Nombres}}</td>
-          <td>{{Cliente.Apellidos}}</td>
-          <td>{{Cliente.Telefono}}</td>
-          <td>{{Cliente.Celular}}</td>
-          <td>{{Cliente.Correo}}</td>
-          <td>{{Cliente.Direccion}}</td>
-          <td>{{Cliente.Edad}}</td>
-
-          <td>          
-              <button (click)="EditarCliente(Cliente.IdCliente)"  type="button" class="btn btn-success" >Ver/Editar</button>
-          </td>
-          <td>
-               <button type="button" class="btn btn-danger" (click)="EliminarCliente(Cliente.IdCliente)"> Eliminar</button>
+          <td scope="col"><div [ngClass]="{'rojo':Cliente.color === 1,'amarillo': Cliente.color === 0,'verde': Cliente.color === 2,'gris': Cliente.color === 3}"></div></td>
+          <td scope="col">{{Cliente.IdCliente}}</td>
+          <td scope="col">{{Cliente.Documento}}</td>
+          <td scope="col">{{Cliente.Nombres}}</td>
+          <td scope="col"> {{Cliente.Apellidos}}</td>
+          <td scope="col">{{Cliente.Telefono}}</td>
+          <td scope="col">{{Cliente.Celular}}</td>
+          <td scope="col">{{Cliente.Correo}}</td>
+          <td scope="col">{{Cliente.Direccion}}</td>
+          <td scope="col">{{Cliente.Edad}}</td>
+          <td>{{Cliente.CiudadResidencia}}</td>
+          <td scope="col"> <button type="button" class="btn btn-primary" (click)="EditarCliente(Cliente.IdCliente)">Ver</button>  </td>
+          <td *ngIf="rol == 'Administrador'|| rol == 'Recepcionista'"> 
+              <button type="button" class="btn btn-success" (click)="EliminarCliente(Cliente.IdCliente)" *ngIf="Cliente.Estado == '0'"   >Habilitar</button>
+              <button type="button" class="btn btn-danger" (click)="EliminarCliente(Cliente.IdCliente)" *ngIf="Cliente.Estado == '1'"  >Inhabilitar</button>
           </td>
         </tr>
       </tbody>
