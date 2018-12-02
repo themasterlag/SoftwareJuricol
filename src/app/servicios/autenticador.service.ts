@@ -52,7 +52,6 @@ export class AutenticadorService {
       this.usuario = base64.data.usuario;
       this.tipoUsuario = base64.data.TipoUsuario;
 
-      console.log(base64.data);
 
       // localStorage.setItem("usuario",JSON.stringify(this.usuario));
 
