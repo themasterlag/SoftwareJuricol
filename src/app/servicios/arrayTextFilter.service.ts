@@ -37,8 +37,7 @@ export class ArrayTextFilter implements PipeTransform {
 
       for(var nombreAtr in filtros){
         it[nombreAtr] = it[nombreAtr]+"";
-        
-        
+
         if(filtroEvaluable){
           if(filtros[nombreAtr] != ""){
             if(it[nombreAtr].toLocaleLowerCase().includes(filtros[nombreAtr])){

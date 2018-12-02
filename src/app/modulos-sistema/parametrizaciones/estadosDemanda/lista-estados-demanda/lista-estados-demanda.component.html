@@ -3,44 +3,42 @@
 
 <body>
 
-    <div id="id01" class="modal">
-      <div class="modal-content animate">
-        <div class="imgcontainer">
-          <span class="close" title="Close Modal" (click)="cerrarModal()">&times;</span>
+  <div id="id01" class="modal">
+    <div class="modal-content animate">
+      <div class="imgcontainer">
+        <span class="close" title="Close Modal" (click)="cerrarModal()">&times;</span>
+      </div>
+      <!-- contenedor del formulario -->
+      <div class="container">
+        <label>
+          <h4 *ngIf="tipoAccion==false"><strong>Registrar estados para la demanda</strong></h4>
+          <h4 *ngIf="tipoAccion==true"><strong>Editar estado</strong></h4>
+        </label>
+        <div *ngIf="error!=null" class="alert alert-danger" role="alert">
+          {{error}}
         </div>
-        <!-- contenedor del formulario -->
-        <div class="container">
-          <label>
-            <h4 *ngIf="tipoAccion==false"><strong>Registrar estados para la demanda</strong></h4>
-            <h4 *ngIf="tipoAccion==true"><strong>Editar estado</strong></h4>
-          </label>
-          <div *ngIf="error!=null" class="alert alert-danger" role="alert">
-            {{error}}
-          </div>
-          <br>
-          <br>
-          <label><b>Nombre</b></label>
-          <input type="text" class="form-control" [(ngModel)]="nombre" placeholder="Ingrese el nombre del estado" (keydown.enter)="guardarEstado()" required> 
-          <br>
-          <label>Tipo del estado</label>
-          <select class="form-control" [(ngModel)]="tipo">
-            <option value="null" disabled>Seleccione un tipo</option>
-            <option value="EstadoElectronico">Estado Electronico</option>
-            <option value="Fase">Fase</option>
-          </select>
-          <br>
-          <label>Dias limite</label>
-          <input type="number" class="form-control" [(ngModel)]="diasLimite" placeholder="Ingrese la cantidad de dias limites" (keydown.enter)="guardarEstado()">
-        </div>
-        <!-- contenedor de acciones o botones -->
-        <div class="container" style="background-color:#e2e2e2ee">
-          <button (click)="guardarEstado()">Registrar</button>
-          <button class="cancelbtn" (click)="cerrarModal()">Cancelar</button>
-        </div>
+        <br>
+        <br>
+        <label><b>Nombre</b></label>
+        <input type="text" class="form-control" [(ngModel)]="nombre" placeholder="Ingrese el nombre del estado" (keydown.enter)="guardarEstado()" required> 
+        <br>
+        <label>Tipo del estado</label>
+        <select class="form-control" [(ngModel)]="tipo">
+          <option value="null" disabled>Seleccione un tipo</option>
+          <option value="EstadoElectronico">Estado Electronico</option>
+          <option value="Fase">Fase</option>
+        </select>
+        <br>
+        <label>Dias limite</label>
+        <input type="number" class="form-control" [(ngModel)]="diasLimite" placeholder="Ingrese la cantidad de dias limites" (keydown.enter)="guardarEstado()">
+      </div>
+      <!-- contenedor de acciones o botones -->
+      <div class="container" style="background-color:#e2e2e2ee">
+        <button (click)="guardarEstado()">Registrar</button>
+        <button class="cancelbtn" (click)="cerrarModal()">Cancelar</button>
       </div>
     </div>
-    
-
+  </div>
 
 
   <!-- tabla de o lista de empleados -->
