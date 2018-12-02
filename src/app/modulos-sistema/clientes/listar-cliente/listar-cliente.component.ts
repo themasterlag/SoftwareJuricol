@@ -20,7 +20,8 @@ export class ListarClienteComponent implements OnInit {
   ClientesJSON: Array<Object> = [] ;
   Cedulas: Array<Object> = [];
   filtro: string;
-  source: Array<Object> = [];
+  rol: string;
+
   
   searchObject={
     Documento:"",
@@ -37,6 +38,7 @@ export class ListarClienteComponent implements OnInit {
     if(autenticadorService.ProcesarToken() == false) {
       this.router.navigate(["/login"]);
     }
+    this.rol = autenticadorService.GetRol()
     this.Cliente = new Cliente(http)
     this.Recargar();
   }
@@ -106,7 +108,8 @@ export class ListarClienteComponent implements OnInit {
     let range : any;
     let color : number ;
     let dato : any ;
-    this.Cliente.BuscarClientes().subscribe(
+    let Activo = '';
+    this.Cliente.BuscarClientes(Activo).subscribe(
   
       respuesta =>{
      
@@ -171,6 +174,12 @@ export class ListarClienteComponent implements OnInit {
           this.ClientesJSON[i]["dato"] = dato;
           this.ClientesJSON[i]["color"] = color;
           this.ClientesJSON[i]["Edad"] = Edad;
+          if(this.ClientesJSON[i]["Estado"]== "Inactivo"){
+            this.ClientesJSON[i]["Estado"] = 0;
+          }
+          else{
+            this.ClientesJSON[i]["Estado"] = 1;
+          }
 
           this.ClientesJSON[i]["Nombres"] = this.ClientesJSON[i]["PrimerNombre"]+" "+this.ClientesJSON[i]["SegundoNombre"];
           this.ClientesJSON[i]["Apellidos"] = this.ClientesJSON[i]["PrimerApellido"]+" "+this.ClientesJSON[i]["SegundoApellido"];
