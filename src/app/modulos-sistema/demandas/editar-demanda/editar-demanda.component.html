@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div class="container">
+        <h2 align="center">Editar demanda</h2>
+        <br>
+        <br>
+        <div *ngIf="error!=null" class="alert alert-danger" role="alert">
+            {{error}}
+        </div>
+        <div *ngIf="pantalla==0">
+            <div class="row">
+                <div  class="col-md-2"></div>
+                <div class="form-group row" class="col-md-8">
+                    <label>Tipo de cliente</label>
+                    <select class="form-control select" [(ngModel)]="categoria">
+                        <option value="null" disabled>Seleccione el tipo de cliente</option>
+                        <option value="1">Demandante</option>
+                        <option value="0">Demandado</option>
+                    </select>
+                </div>
+                <div  class="col-md-2"></div>
+            </div>
+            <br>
+            <br>
+            <div align="center">
+                <button type="button" class="btn btn-danger" (click)="cancelar()">Cancelar</button>
+                <button type="button" class="btn btn-success" (click)="cambioPantalla()">siguiente</button>
+
+            </div>
+        </div>
+
+
+        <div *ngIf="pantalla==1">
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label> Numero de radicado   (Opcional)</label> 
+                        <input type="number" class="form-control" [(ngModel)]="numRadicado" placeholder="Ingrese el numero de radicado">
+                    </div>
+        
+                    <div class="col-md-6">
+                        <label>Tipo demanda</label>
+                        <div>
+                            <select class="form-control select" [(ngModel)]="tipoDemanda">
+                                <option value="0" disabled>Seleccione un tipo de demanda</option>
+                                <option *ngFor="let tipo of listaTiposDemandas" value="{{tipo.Id}}">{{tipo.Descripcion}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label>Cliente</label>
+                        <div>
+                            <select class="form-control select" [(ngModel)]="cliente">
+                                <option value="0" disabled>Seleccione un cliente</option>
+                                <option *ngFor="let cliente of listaClientes" value="{{cliente.IdCliente}}">{{cliente.PrimerNombre}} {{cliente.SegundoApellido}} {{cliente.PrimerApellido}} {{cliente.SegundoApellido}}</option>
+                            </select>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-6">
+                        <label> Abogado titular </label>
+                        <select class="form-control select" [(ngModel)]="titular">
+                            <option value="0" disabled>Seleccione un empleado</option>
+                            <option *ngFor="let empleado of listaEmpleados" value="{{empleado.IdEmpleado}}">{{empleado.PrimerNombre}} {{empleado.SegundoNombre}} {{empleado.PrimerApellido}} {{empleado.SegundoApellido}}</option>
+                        </select>
+                    </div>
+                </div>
+            
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label> Abogado suplente </label>
+                        <select class="form-control select" [(ngModel)]="suplente">
+                            <option value="0" disabled>Seleccione un empleado suplente</option>
+                            <option *ngFor="let empleado of listaEmpleados" value="{{empleado.IdEmpleado}}">{{empleado.PrimerNombre}} {{empleado.SegundoNombre}} {{empleado.PrimerApellido}} {{empleado.SegundoApellido}}</option>
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <label> Juzgado </label>
+                        <select class="form-control select" [(ngModel)]="juzgado">
+                            <option value="0" disabled>Seleccione un juzgado</option>
+                            <option *ngFor="let juzgado of listaJuzgados" value="{{juzgado.Id}}">{{juzgado.Descripcion}}</option>
+                        </select>
+                    </div>
+                </div>
+        
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label> Contraparte (Demandante / Demandado) </label>
+                        <input type="text" class="form-control" placeholder="Ingrese el nombre de la contraparte" [(ngModel)]="contraparte">
+                    </div>
+        
+                    <div class="col-md-6">
+                        <label> Tipo de proceso </label>
+                        <select class="form-control select" [(ngModel)]="tipoProceso">
+                            <option value="0" disabled>Seleccione un tipo de proceso</option>
+                            <option *ngFor="let tipo of listaTiposProcesos" value="{{tipo.Id}}">{{tipo.Descripcion}}</option>
+                        </select>
+                    </div>
+                </div>
+        
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label> Estado del proceso </label>
+                        <select class="form-control select" [(ngModel)]="estadoProceso">
+                            <option value="0" disabled>Seleccione un estado</option>
+                            <option *ngFor="let proceso of listaEstadosProcesos" value="{{proceso.Id}}">{{proceso.Descripcion}}</option>
+                        </select>
+                    </div>
+                </div>
+        
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <label> Descripcion de la demanda </label>
+                        <textarea type="text" class="form-control" [(ngModel)]="descripcion" placeholder="Ingrese la decripcion de la demanda"></textarea>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-1">
+                        <button  type="button" class="btn btn-warning" (click)="cambioPantalla()">Atras</button>
+                    </div>
+                    <div class="col-md-8"></div>
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-danger" (click)="cancelar()">Cancelar</button>
+                        <button type="button" class="btn btn-success" (click)="guardarDemanda()">Guardar</button>
+                    </div>
+                </div>
+                <br>
+        </div>
+
+    </div>
+</body>
+
+</html>

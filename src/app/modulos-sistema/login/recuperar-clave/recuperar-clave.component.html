@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+  <!-- modal contenedor -->
+  <div id="id01" class="modal">
+    <div class="modal-content animate">
+      <div class="imgcontainer">
+        <!-- <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span> -->
+        <img src="../../assets/imagenes/logo.jpg" alt="Avatar" class="avatar">
+      </div>
+      <!-- contenedor del formulario -->
+      <div class="container">
+        <label>
+          <h5><strong>Recuperar contraseña</strong></h5>
+        </label>
+        <br>
+        <br>
+        <label><b>Usuario</b></label>
+        <input type="text" class="form-control" [(ngModel)]="usuario" placeholder="Ingrese el nombre de usuario" (keydown.enter)="verificacionUsuario()" required>
+      </div>
+      <!-- contenedor de acciones o botones -->
+      <div class="container" style="background-color:#e2e2e2ee">
+        <button (click)="verificacionUsuario()">Verificar</button>
+        <button class="cancelbtn" routerLink="/login">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

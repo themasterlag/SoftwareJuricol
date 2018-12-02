@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+    <div id="id01" class="modal">
+      <div class="modal-content animate">
+        <div class="imgcontainer">
+          <span class="close" title="Close Modal" (click)="cerrarModal()">&times;</span>
+        </div>
+        <!-- contenedor del formulario -->
+        <div class="container">
+          <label>
+            <h4 *ngIf="tipoAccion==false"><strong>Registrar especialidad</strong></h4>
+            <h4 *ngIf="tipoAccion==true"><strong>Editar especialidad</strong></h4>
+          </label>
+          <div *ngIf="error!=null" class="alert alert-danger" role="alert">
+            {{error}}
+          </div>
+          <br>
+          <br>
+          <label><b>Nombre</b></label>
+          <input type="text" class="form-control" [(ngModel)]="nombre" placeholder="Ingrese el nombre de la especialidad" (keydown.enter)="guardarEspecialidad()" required> 
+        </div>
+        <!-- contenedor de acciones o botones -->
+        <div class="container" style="background-color:#e2e2e2ee">
+          <button (click)="guardarEspecialidad()">Registrar</button>
+          <button class="cancelbtn" (click)="cerrarModal()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+    
+
+
+
+  <!-- tabla de o lista de empleados -->
+  <div>
+    <h1 align='center'><strong>Especialidades</strong></h1>
+    <br>
+    <div class="botonNuevo">
+      <button class="btn btn-primary" (click)="activarModal('crear')">Nuevo especialidad</button>
+    </div>
+    <br>
+
+    <table class="table table-striped">
+      <!-- titulo de las columnas -->
+      <thead>
+        <tr class="colums">
+          <th scope="col">#</th> 
+          <th scope="col">Nombre de la especialidad</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+
+      <!-- informacion de la tabla o listado de empleados -->
+      <tbody>
+        <tr *ngFor="let especialidad of listaEspecialidades">
+          <th scope="row">{{especialidad.Id}}</th>
+          <td>{{especialidad.Descripcion}}</td>
+          <td><button class="btn btn-primary" (click)="editar(especialidad.Id,especialidad.Descripcion)">Editar</button></td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+</body>
+
+</html> 

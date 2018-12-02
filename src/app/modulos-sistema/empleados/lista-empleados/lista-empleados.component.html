@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+  <!-- tabla de o lista de empleados -->
+  <div>
+    <h1 align='center'><strong>Empleados</strong></h1>
+    <div class="botonNuevo">
+      <button class="btn btn-primary" (click)="nuevoEmpleado()">Nuevo empleado</button>
+    </div>
+    <br>
+
+    <table class="table table-striped">
+      <!-- titulo de las columnas -->
+      <thead>
+        <tr class="colums">
+          <th scope="col">#</th>
+          <th scope="col">Numero de cedula</th>
+          <th scope="col">Nombres</th>
+          <th scope="col">Apellidos</th>
+          <th scope="col">Cargo</th>
+          <th scope="col">Especialidad</th>
+          <th scope="col">Titular</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Celular</th>
+          <th scope="col">Correo Electronico</th>
+          <th scope="col">Direccion</th>
+          <th scope="col">Estado del empleado</th>
+          <th scope="col">usuario</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+
+      <!-- informacion de la tabla o listado de empleados -->
+      <tbody>
+        <tr *ngFor="let Empleado of listaEmpleados">
+          <th scope="row">{{Empleado.IdEmpleado}}</th>
+          <td>{{Empleado.Documento}}</td>
+          <td>{{Empleado.PrimerNombre}} {{Empleado.SegundoNombre}}</td>
+          <td>{{Empleado.PrimerApellido}} {{Empleado.SegundoApellido}}</td>
+          <td>{{Empleado.NombreCargo}}</td>
+          <td>{{Empleado.Especialidad}}</td>
+          <td>{{Empleado.Titular}}</td>
+          <td>{{Empleado.Telefono}}</td>
+          <td>{{Empleado.Celular}}</td>
+          <td>{{Empleado.CorreoElectronico}}</td>
+          <td>{{Empleado.Direccion}}</td>
+          <td>{{Empleado.Estado}}</td>
+          <td>{{Empleado.Usuario}}</td>
+          <td *ngIf="Empleado['Usuario']=='No'" (click)="crearUsuario(Empleado.IdEmpleado)"><button class="btn btn-danger">Crear usuario</button></td>
+          <td *ngIf="Empleado['Usuario']=='Si'"><button class="btn btn-success" disabled>Usuario ya creado</button></td>
+          <td><button class="btn btn-primary" (click)="verEmpleado(Empleado.IdEmpleado)">editar</button></td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+</body>
+
+</html>

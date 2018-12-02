@@ -1,0 +1,35 @@
+import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+
+
+import { Verificacion } from '../../../controladores/verificacion';
+
+
+
+@Component({
+  selector: 'app-codigo-verificacion',
+  templateUrl: './codigo-verificacion.component.html',
+  styleUrls: ['./codigo-verificacion.component.css']
+})
+export class CodigoVerificacionComponent implements OnInit {
+
+
+  codigoIngresado: number;
+  controlador: Verificacion;
+
+  constructor(private router:Router, private http:HttpClient) {
+    this.controlador= new Verificacion(this.http);
+  }
+
+  ngOnInit() {
+  }
+
+  verificacionCodigo(){
+
+    this.controlador.setCodigoIngresado(this.codigoIngresado);
+    
+    this.controlador.ValidarCodigo();
+  }
+
+}

@@ -1,0 +1,15 @@
+.my-drop-zone { height: 300px; }
+.nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+.another-file-over-class { border: dotted 3px green; }
+.btn-success{
+    margin-left: 45%;
+}
+
+.fecha{
+    width: 150px;
+    padding: 5px 10px;
+    margin: 8px 0;  
+}
+.form-control ,select{
+    width: 200px;
+}

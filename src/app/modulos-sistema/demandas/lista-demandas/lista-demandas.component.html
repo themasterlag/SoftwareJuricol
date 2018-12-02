@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+  <div>
+    <h1 align='center'><strong>Demandas</strong></h1>
+    <br>
+    <div align='center'>
+
+      <div class="colores">
+        <div align='center'>
+          <div class="gris"></div>
+          <p>Falta mas de un mes</p>
+        </div>
+      </div>
+
+      <div class="colores">
+        <div align='center'>
+          <div class="negro"></div>
+          <p>Se paso la fecha</p>
+        </div>
+      </div>
+
+      <div class="colores">
+        <div align='center'>
+          <div class="rojo"></div>
+          <p>Es el ultimo dia</p>
+        </div>
+      </div>
+
+      <div class="colores">
+        <div align='center'>
+          <div class="amarillo"></div>
+          <p>Se encuentra en la semana</p>
+        </div>
+      </div>
+
+      <div class="colores">
+        <div align='center'>
+          <div class="verde"></div>
+          <p>Se encuentra en el mes</p>
+        </div>
+      </div>
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+      
+    <div class="botonNuevo">
+      <button class="btn btn-primary" (click)="nuevaDemanda()">Nueva demanda</button>
+    </div>
+
+    <br>
+    <!-- tabla de listado de demandas -->
+    <table class="table table-striped">
+      <!-- titulos de columnas -->
+      <thead>
+        <tr>
+          <td><img src="../../../../assets/iconos/semaforo/2x/twotone_traffic_black_18dp.png" class="imgSemaforo"></td>
+          <th scope="col">#</th>
+          <th scope="col">Numero de radicado</th>
+          <th scope="col" id="tipoDemanda">Tipo de demanda</th>
+          <th scope="col">Fecha inicio de demanda</th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Abogado principal</th>
+          <th scope="col">Ultimo estado</th>
+          <th scope="col">Fecha inicio estado</th>
+          <th scope="col">Fecha limite estado</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+
+      <!-- informacion de la tabla o lista de edemandas -->
+      <tbody>
+        <tr *ngFor="let Demanda of listaDemandas">
+          <td> <div [ngClass]="{'negro':Demanda.DiasRestantes<0, 'gris':Demanda.DiasRestantes>31, 'rojo':Demanda.DiasRestantes==0, 'amarillo':Demanda.DiasRestantes>0 && Demanda.DiasRestantes<8, 'verde':Demanda.DiasRestantes>8 && Demanda.DiasRestantes<32}" >  </div> </td>
+          <!-- <td>{{Demanda.DiasRestantes}}</td> -->
+          <th scope="row">{{Demanda.IdDemanda}}</th> 
+          <td>{{Demanda.NumDemanda}}</td>
+          <td>{{Demanda.NombreTipoDemanda}}</td>
+          <td>{{Demanda.FechaCreacion}}</td>
+          <td>{{Demanda.NombreCliente}}</td>
+          <td>{{Demanda.NombreTitular}}</td>
+          <td>{{Demanda.UltimoMovimiento}}</td>
+          <td>{{Demanda.FechaMovimiento}}</td>
+          <td>{{Demanda.FechaLimite}}</td>
+
+          <td><button class="btn btn-primary" (click)="verDemanda(Demanda.IdDemanda,Demanda.FechaInicioEstado,Demanda.FechaVencimiento)">Ver</button></td>
+          <td><button class="btn btn-primary" (click)="Editar(Demanda.IdDemanda)">Editar</button></td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+</body>
+
+</html>

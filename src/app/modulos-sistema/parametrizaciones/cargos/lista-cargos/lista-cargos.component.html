@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+    <div id="id01" class="modal">
+      <div class="modal-content animate">
+        <div class="imgcontainer">
+          <span class="close" title="Close Modal" (click)="cerrarModal()">&times;</span>
+        </div>
+        <!-- contenedor del formulario -->
+        <div class="container">
+          <label>
+            <h4 *ngIf="tipoAccion==false"><strong>Registrar cargo</strong></h4>
+            <h4 *ngIf="tipoAccion==true"><strong>Editar cargo</strong></h4>
+          </label>
+          <div *ngIf="error!=null" class="alert alert-danger" role="alert">
+            {{error}}
+          </div>
+          <br>
+          <br>
+          <label><b>Nombre</b></label>
+          <input type="text" class="form-control" [(ngModel)]="nombre" placeholder="Ingrese el nombre del cargo" (keydown.enter)="guardarCargo()" required> 
+        </div>
+        <!-- contenedor de acciones o botones -->
+        <div class="container" style="background-color:#e2e2e2ee">
+          <button (click)="guardarCargo()">Registrar</button>
+          <button class="cancelbtn" (click)="cerrarModal()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+    
+
+
+
+  <!-- tabla de o lista de empleados -->
+  <div>
+    <h1 align='center'><strong>Cargos</strong></h1>
+    <br>
+    <div class="botonNuevo">
+      <button class="btn btn-primary" (click)="activarModal('crear')">Nuevo cargo</button>
+    </div>
+    <br>
+
+    <table class="table table-striped">
+      <!-- titulo de las columnas -->
+      <thead>
+        <tr class="colums">
+          <th scope="col">#</th> 
+          <th scope="col">Nombre del cargo</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+
+      <!-- informacion de la tabla o listado de empleados -->
+      <tbody>
+        <tr *ngFor="let cargo of listaCargos">
+          <th scope="row">{{cargo.Id}}</th>
+          <td>{{cargo.Descripcion}}</td>
+          <td><button class="btn btn-primary" (click)="editar(cargo.Id,cargo.Descripcion)">Editar</button></td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+</body>
+
+</html> 

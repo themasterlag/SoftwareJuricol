@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+    <div id="id01" class="modal">
+        <div class="modal-content animate">
+          <div class="imgcontainer">
+            <span class="close" title="Close Modal" (click)="cerrarModal()">&times;</span>
+          </div>
+          <!-- contenedor del formulario -->
+          <div class="container">
+            <label>
+              <h4 ><strong>Nuevo estado</strong></h4>
+            </label>
+            <div *ngIf="error!=null" class="alert alert-danger" role="alert">
+              {{error}}
+            </div>
+            <br>
+            <br>
+            <label><b>Estado de la demanda</b></label>
+            <select class="form-control select" [(ngModel)]="termino">
+                <option value="0" disabled>Seleccione un estado</option>
+                <option *ngFor="let Termino of listaTerminos" value="{{Termino.Id}}">{{Termino.Descripcion}}</option>
+            </select>
+            <label><b>Descripcion</b></label>
+            <textarea type="text" class="form-control" [(ngModel)]="descripcionMovimiento" placeholder="Ingrese la descripcion del movimiento" (keydown.enter)="guardarMovimiento()" required></textarea>
+            <br>
+            <label><b>Fecha de inicio del estado</b></label>
+            <input type="date" class="form-control" [(ngModel)]="fechaInicioEstado">
+            <label><b>Fecha de limite del estado</b></label>
+            <input type="date" class="form-control" [(ngModel)]="fechaVencimiento">
+          </div>
+          <!-- contenedor de acciones o botones -->
+          <div class="container" style="background-color:#e2e2e2ee">
+            <button (click)="guardarMovimiento()">Registrar</button>
+            <button class="cancelbtn" (click)="cerrarModal()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+
+
+  <div class="container">
+
+    <h1 align="center"><strong>Demanda</strong></h1>
+    <br>
+
+    <div class="form-group">
+      <label><h5>Numero de radicado: </h5> <input type="text" class="form-control" disabled [(ngModel)]="numRadicado"></label>
+      <br>
+      <label><h5>Tipo de demanda: </h5><input type="text" class="form-control" disabled [(ngModel)]="nombreTipoDemanda"> </label>
+      <br>
+      <label><h5>Cliente: </h5><input type="text" class="form-control" disabled [(ngModel)]="nombrecliente"></label>
+      <br>
+      <label><h5>Abogado titular: </h5><input type="text" class="form-control" disabled [(ngModel)]="nombreAbogadoTitular"></label>
+      <br>
+      <label><h5>Abogado suplente: </h5><input type="text" class="form-control" disabled [(ngModel)]="nombreAbogadoSuplente"></label>
+      <br>
+      <label><h5>Juzgado: </h5><input type="text" class="form-control" disabled [(ngModel)]="nombreJuzgado"> </label>
+      <br>
+      <label><h5>Contraparte (Demandante / Demandado): </h5> <input type="text" class="form-control" disabled [(ngModel)]="nombreContraparte"></label>
+      <br>
+      <label><h5>Tipo de proceso</h5><input type="text" class="form-control" disabled [(ngModel)]="nombreTipoProceso"> </label>
+      <br>
+      <label><h5>Estado de proceso</h5><input type="text" class="form-control" disabled [(ngModel)]="nombreEstadoProceso"></label>
+      <br>
+      <label><h5>Descripcion de la demanda</h5><input type="text" class="form-control" disabled [(ngModel)]="descripcion"> </label>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+      
+    <div class="botonNuevo">
+      <button class="btn btn-primary" (click)="activarModal()">Cambiar estado</button>
+    </div>
+
+    <br>
+    <!-- tabla de listado de demandas -->
+    <table class="table table-striped">
+      <!-- titulos de columnas -->
+      <thead>
+        <tr>
+          <th scope="col">Estado</th>
+          <th scope="col" id="tipoDemanda">Fecha de inicio</th>
+          <th scope="col">Fecha inicio de demanda</th>
+          <th scope="col">Descripcion</th>
+        </tr>
+      </thead>
+
+      <!-- informacion de la tabla o lista de edemandas -->
+      <tbody>
+        <tr *ngFor="let movimiento of listaMovimientos">
+          <td>{{movimiento.NombreEstado}}</td>
+          <td>{{movimiento.FechaMovimiento}}</td>
+          <td>{{movimiento.FechaLimite}}</td>
+          <td>{{movimiento.Descripcion}}</td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+</body>
+
+</html>

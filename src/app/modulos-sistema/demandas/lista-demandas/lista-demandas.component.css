@@ -1,0 +1,59 @@
+.verde{
+  background-color: green;
+  border-radius: 7px;
+  height: 30px;
+  width: 30px;
+  margin: 0px;
+}
+
+.amarillo{
+  background-color: yellow;
+  border-radius: 7px;
+  height: 30px;
+  width: 30px;
+  margin: 0px;
+}
+
+.rojo{
+  background-color: red;
+  border-radius: 7px;
+  height: 30px;
+  width: 30px;
+  margin: 0px;
+}
+
+.gris{
+  background-color: gray;
+  border-radius: 7px;
+  height: 30px;
+  width: 30px;
+  margin: 0px;
+}
+
+.negro{
+  background-color: black;
+  border-radius: 7px;
+  height: 30px;
+  width: 30px;
+  margin: 0px;
+}
+
+.colores{
+  margin-left: 5%;
+  float: left;
+}
+
+.imgSemaforo{
+  padding-top: 70%;
+  width: 100%;
+}
+
+.botonNuevo{
+  margin-left: 0%;
+}
+
+@media(max-width:1190px) {
+  .botonNuevo{
+    margin-left: 70%;
+  }
+}

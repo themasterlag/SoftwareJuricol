@@ -1,0 +1,14 @@
+.menu{
+    float: left;
+    padding-left: 0px;
+    height: 100%;
+}
+
+.contenido{
+    float: left;
+
+}
+
+body{
+    margin: 0%;
+}

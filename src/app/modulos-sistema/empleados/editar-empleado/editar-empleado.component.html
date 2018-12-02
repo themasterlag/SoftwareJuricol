@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Editar empleado</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+  <div class="container">
+    <h2>Editar De Empleado</h2>
+    <div class="form-group row ">
+      <div class="col-md-4">
+        <label>Primer Nombre:</label>
+        <input type="text" class="form-control"  [(ngModel)]="primerNombre" name="primerNombre">
+      </div>
+      <div  class="col-md-4">
+        <label> Segundo Nombre:</label>
+        <input type="text"   class="form-control"  [(ngModel)]="segundoNombre" name="segundoNombre" >
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-4">
+        <label>Primer Apellido:</label>
+        <input type="text"   class="form-control" id="last_name"  [(ngModel)]="primerApellido" name="primerApellido">
+      </div>
+      <div class="col-md-4">
+        <label>Segundo Apellido:</label>
+        <input type="text"   class="form-control"    [(ngModel)]="segundoApellido" name="segundoApellido">
+      </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-4">
+            <label >Documento :</label>
+            <input type="number"   class="form-control"  [(ngModel)]="cedula" name="cedula">
+          </div>
+        <div class="col-md-4">
+            <label >Tipo Documento:</label><br/>
+            <select class="form-control" [(ngModel)]="tipoDecumento">
+              <option value="0" disabled >--Seleccione Tipo Doc--</option>
+              <option value="{{TipoDocs.Id}}" *ngFor="let TipoDocs of tiposDocumentos">{{TipoDocs.Descripcion}}</option>
+            </select>
+          </div>     
+    </div>
+    
+    <div class="form-group row">
+      <div  class="col-md-4"> 
+        <label >Celular :</label>
+        <input type="number"   class="form-control"   [(ngModel)]="celular" name="celular">
+      </div>
+      <div class="col-md-4">
+        <label >Telefono :</label>
+        <input type="number"   class="form-control" [(ngModel)]="telefono" name="telefono">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-4">
+        <label >Correo :</label>
+        <input type="email" name="email" ngModel [email]="true" class="form-control" [(ngModel)]="correoElectronico" placeholder="Ejemplo@hotmail.com">
+      </div>
+      <div class="col-md-4">
+        <label >Fecha Nacimiento :</label>
+        <input type="date" class="form-control " [(ngModel)]="fechaNacimiento">
+      </div>
+    </div>
+    <div class="form-group row">
+        
+      <div class="col-md-4">
+          <label >Tarjeta Profesional:</label>
+          <input type="number" class="form-control"  [(ngModel)]="tarjeta">
+        </div>
+        <div class="col-md-4">
+          <label >Direccion Residencia:</label>
+          <input type="text"   class="form-control"  [(ngModel)]="direccion" name="direccion">
+        </div>      
+    </div >
+      <div class="form-group row"  >
+        <div class="col-md-3">
+          <label >Especialidad :</label><br/>
+          <select class="form-control" [(ngModel)]="especialidad">
+            <option value="0" disabled >--Selecione Especialidad--</option>
+            <option value="{{especialidad1.Id}}" *ngFor="let especialidad1 of especialidades">{{especialidad1.Descripcion}}</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label >Cargo :</label><br/>
+          <select class="form-control"  [(ngModel)]="cargo">
+            <option value="0" disabled >--Selecione cargo--</option>
+            <option value="{{cargo1.Id}}" *ngFor = "let cargo1 of cargos">{{cargo1.Descripcion}} </option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label >Titular :</label><br/>
+          <select class="form-control" [(ngModel)]="titular">
+            <option value="-1" disabled >--Selecione si es titular--</option>
+            <option value="0"> NO</option>
+            <option value="1"> SI</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"  class="row">
+        <div class="col-md-3">
+          <label >Pais :</label><br/>
+          <select class="form-control" [(ngModel)]="pais" (change)="CargarDepartamentos()">
+            <option value="0" disabled >--Seleccione Pais--</option>
+            <option value="{{pais1.Id}}" *ngFor="let pais1 of paises ">{{pais1.Descripcion}}</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label >Departamento :</label><br/>
+          <select class="form-control"  [(ngModel)]="departamento" (change)="CargarCuidades()" >
+            <option value="0" disabled >--Seleccione Dto--</option>
+            <option value="{{departamento1.Id}}" *ngFor = "let departamento1 of departamentos " >{{departamento1.Descripcion}} </option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label >Cuidad :</label><br/>
+          <select class="form-control"  [(ngModel)]="cuidad">
+            <option value="0" disabled>--Seleccione Cuidad--</option>
+            <option value="{{ciudad1.Id}}" *ngFor = "let ciudad1 of ciudades ">{{ciudad1.Descripcion}} </option>
+          </select>
+        </div>
+        </div>
+      
+      <br/> 
+      <div>
+        <button type="button" class="btn btn-success" (click)="GuardarAsociado()">Guardar</button>
+        <button type="button" class="btn btn-danger" (click)="Cancelar()">Cancelar</button>
+      </div>
+  
+  </div>
+  
+</body>
+</html> 

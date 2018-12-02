@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="jumbotron2"> 
+    <div class="container">
+      <div class="botonNuevo">
+        <button class="btn btn-primary" (click)="Crear()">Nuevo Cliente</button>
+      </div>
+      <h3 align='center'>Listado de Clientes</h3>
+      <br>
+  
+         
+     
+
+      <div align='center'>
+     
+        <div class="colores">
+          <div align='center'>
+            <div class="gris"></div>
+            <p>Falta mas de un mes</p>
+          </div>
+        </div>
+        <div class="colores">
+          <div align='center'>
+            <div class="verde"></div>
+            <p>Menos de un mes para cumplir años</p>
+          </div>
+            
+        </div>
+        <div class="colores">
+          <div align='center'>
+            <div class="amarillo"></div>
+            <p>Menos de una semana para cumplir años</p>
+          </div>
+        </div>
+        <div class="colores">
+          <div align='center'>
+            <div class="rojo"></div>
+            <p>Esta cumpliendo años</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- tabla de o lista de Cliente -->
+      <table class="table table-striped">
+        <!-- titulo de las columnas -->
+        <thead> 
+        <tr>
+          
+            <th>&nbsp;</th>
+            <th scope="col">&nbsp;</th>
+            <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Documento" ></th>
+            <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Nombres" ></th>
+            <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Apellidos" ></th>
+            <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Telefono" ></th>
+            <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Celular" ></th>
+            <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Correo" ></th>
+            <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Direccion" ></th>
+            <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Edad"></th>
+            <th>&nbsp;</th>
+          
+          
+        </tr>
+        <tr>
+     
+          <th></th>
+          <th scope="col">#</th>
+          <th scope="col">Numero de cedula</th>
+          <th scope="col">Nombres</th>
+          <th scope="col">Apellidos</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Celular</th>
+          <th scope="col">Correo Electronico</th>
+          <th scope="col">Direccion</th>
+          <th scope="col">Edad</th>
+          <th>Acciones</th>
+        
+          
+        </tr>
+      </thead>
+      <tbody>
+        <!-- informacion de la tabla o listado de empleados  -->
+        <tr *ngFor="let Cliente of ObtenerDato() | arrayFilter : 
+          { 
+            Documento:   searchObject.Documento,  
+            Nombres:  searchObject.Nombres,
+            Apellidos:searchObject.Apellidos,
+            Telefono: searchObject.Telefono,
+            Celular:  searchObject.Celular,
+            Correo:   searchObject.Correo,
+            Direccion:searchObject.Direccion,
+            Edad:     searchObject.Edad 
+          }"
+        >
+         
+          <td><div [ngClass]="{'rojo':Cliente.color === 1,'amarillo': Cliente.color === 0,'verde': Cliente.color === 2,'gris': Cliente.color === 3}"></div></td>
+          <th scope="col">{{Cliente.IdCliente}}</th>
+          <td>{{Cliente.Documento}}</td>
+          <td>{{Cliente.Nombres}}</td>
+          <td>{{Cliente.Apellidos}}</td>
+          <td>{{Cliente.Telefono}}</td>
+          <td>{{Cliente.Celular}}</td>
+          <td>{{Cliente.Correo}}</td>
+          <td>{{Cliente.Direccion}}</td>
+          <td>{{Cliente.Edad}}</td>
+
+          <td>          
+              <button (click)="EditarCliente(Cliente.IdCliente)"  type="button" class="btn btn-success" >Ver/Editar</button>
+          </td>
+          <td>
+               <button type="button" class="btn btn-danger" (click)="EliminarCliente(Cliente.IdCliente)"> Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+  </div>
+  
+</body>
+</html>

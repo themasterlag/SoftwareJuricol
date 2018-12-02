@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+</head>
+
+<body>
+  <!-- modal contenedor -->
+  <div id="id01" class="modal">
+    <div class="modal-content animate">
+      <!-- contenedor de imagen -->
+      <div class="imgcontainer">
+        <!-- <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span> -->
+        <img src="../../assets/imagenes/logo.jpg" alt="Avatar" class="avatar">
+      </div>
+      <!-- contenedor de formulario para ingreso del codigo-->
+      <div class="container">
+        <label>
+          <h4><strong>Codigo de seguridad</strong></h4>
+        </label>
+        <br>
+        <br>
+        <label><b>Codigo</b></label>
+        <input type="text" class="form-control" [(ngModel)]="codigoIngresado" placeholder="Ingrese el codigo recibido"
+          required>
+      </div>
+      <!-- contenedor para acciones o botones -->
+      <div class="container" style="background-color:#e2e2e2ee">
+        <button (click)="verificacionCodigo()">Validar codigo</button>
+        <button class="cancelbtn" routerLink="/login">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

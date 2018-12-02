@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+    <div id="id01" class="modal">
+      <div class="modal-content animate">
+        <div class="imgcontainer">
+          <span class="close" title="Close Modal" (click)="cerrarModal()">&times;</span>
+        </div>
+        <!-- contenedor del formulario -->
+        <div class="container">
+          <label>
+            <h4 *ngIf="tipoAccion==false"><strong>Registrar departamento</strong></h4>
+            <h4 *ngIf="tipoAccion==true"><strong>Editar departamento</strong></h4>
+          </label>
+          <div *ngIf="error!=null" class="alert alert-danger" role="alert">
+            {{error}}
+          </div>
+          <br>
+          <br>
+          <label><b>Nombre</b></label>
+          <input type="text" class="form-control" [(ngModel)]="nombre" placeholder="Ingrese el nombre del departamento" (keydown.enter)="guardarDepartamento()" required>
+          <br>
+          <label><b>Pais del departamento</b></label>
+          <select class="form-control select" [(ngModel)]="pais">
+            <option value="0" disabled>Seleccione un pais</option>
+            <option *ngFor="let pais of listaPaises" value="{{pais.Id}}">{{pais.Descripcion}}</option>
+          </select>
+        </div>
+        <!-- contenedor de acciones o botones -->
+        <div class="container" style="background-color:#e2e2e2ee">
+          <button (click)="guardarDepartamento()">Registrar</button>
+          <button class="cancelbtn" (click)="cerrarModal()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+    
+
+
+
+  <!-- tabla de o lista de empleados -->
+  <div>
+    <h1 align='center'><strong>Departamentos</strong></h1>
+    <br>
+    <div class="botonNuevo">
+      <button class="btn btn-primary" (click)="activarModal('crear')">Nuevo departamento</button>
+    </div>
+    <br>
+
+    <table class="table table-striped">
+      <!-- titulo de las columnas -->
+      <thead>
+        <tr class="colums">
+          <th scope="col">#</th> 
+          <th scope="col">Nombre del departamento</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+
+      <!-- informacion de la tabla o listado de empleados -->
+      <tbody>
+        <tr *ngFor="let departamento of listaTipos">
+          <th scope="row">{{departamento.Id}}</th>
+          <td>{{departamento.Descripcion}}</td>
+          <td><button class="btn btn-primary" (click)="editar(departamento.Id,departamento.Descripcion,departamento.Paises_id)">Editar</button></td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+</body>
+
+</html> 

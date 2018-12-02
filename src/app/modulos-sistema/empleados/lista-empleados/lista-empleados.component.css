@@ -1,0 +1,36 @@
+/* .jumbotron2{
+  margin-top: 2%;
+  margin-left: -30px;
+  margin-right: 26%; //
+  background-color: #ffffff; 
+}
+
+.botonNuevo{
+  float: right;
+}
+
+
+.colums{
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+
+table {
+  border: none;
+  width: 100%;
+  border-collapse: collapse;
+  
+}
+
+td { 
+  padding: 5px 10px;
+  text-align: center;
+  border: 1px solid rgb(0, 0, 0);
+  
+}
+
+tr:nth-child(1) {
+  background: #dedede;
+  
+} */

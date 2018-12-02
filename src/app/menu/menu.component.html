@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <div class="wrapper">
+
+    <!-- menu -->
+    <div [ngClass]="{'sidebar-wrapper':tipoMenu==0 , 'sidebar-wrapper2':tipoMenu==1}">
+      <nav>
+        <div class="botonMenu">
+          <img *ngIf="tipoMenu==0" src="../../assets/iconos/menu/b/2x/twotone_menu_white_48dp.png" (click)='cambio()'>
+          <img *ngIf="tipoMenu==1" src="../../assets/iconos/x/b/2x/baseline_clear_white_18dp.png" (click)='cambio()'>
+        </div>
+        <ul class="sidebar-nav">
+          <!-- titulo de menu -->
+          <li class="sidebar-brand">
+            <h4><span>Juricol</span></h4>
+          </li>
+          <!-- opciones del menu -->
+          <li *ngFor='let Menu of menu'>
+            <a routerLink={{Menu.url}}>
+              <span>{{Menu.opcion}}</span>
+            </a>
+            <hr>
+          </li>
+          <div *ngIf="tipoMenu==0">
+            <br><br><br><br><br><br>
+          </div>
+          <div *ngIf="tipoMenu==1">
+            <br><br><br>
+          </div>
+          <li class="botonCerrarSesion">
+            <a (click)="cerrarSesion()">Cerrar sesion</a>
+          </li>
+          <br>
+        </ul>
+      </nav>
+
+      <div id="accordion">        
+          <div class="card"  *ngFor="let grupo of gruposMenu">
+              <div class="card-header" id="heading_{{grupo.orden}}">
+                  <h5 class="mb-0">
+                      <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#collapse'+grupo.orden"  aria-expanded="false" [attr.aria-controls]="'collapse_'+grupo.orden">
+                          {{grupo.nombre}}
+                        </button>
+                  </h5>              
+              </div>
+
+              <div id="collapse_grupo.orden" class="collapse show" [attr.aria-labelledby]="'heading_'+grupo.orden" aria-labelledby="heading_grupo.orden" data-parent="#accordion">
+                <div class="card-body">
+                  Opcion {{grupo.orden}}
+                </div>
+              </div>             
+          </div>
+      </div>
+      
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

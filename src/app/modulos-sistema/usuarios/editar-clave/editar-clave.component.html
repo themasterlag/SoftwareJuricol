@@ -1,0 +1,28 @@
+<div class="container" align='center'>
+  <h2 align='center'>Cambio de  Conraseña</h2>
+  <form align='center'>
+    <div class="form-group" align='center'>
+      <div>
+        <label align='center'>Usuario</label>
+        <input type="text" class="form-control" disabled [(ngModel)]="usuario" name="user">
+      </div>
+      <div >
+        <label align='center'> Contraseña Actual:</label>
+        <input type="password" class="form-control" [(ngModel)]="clave" name="Password">
+      </div>
+      <div >
+        <label align='center'> Contraseña Nueva:</label>
+        <input type="password" class="form-control" [(ngModel)]="claveNueva" name="Password">
+      </div>
+      <div >
+        <label align='center'> Comfirme Contraseña:</label>
+        <input type="password" class="form-control" [(ngModel)]="claveConfirmar" name="Password">
+      </div>
+      <div>
+        <button type="button" class="btn btn-success" (click)="GuardarContra()">Guardar</button>
+        <button type="button" class="btn btn-danger">Cancelar</button>
+      </div>
+  
+    </div>
+  </form>
+</div>
