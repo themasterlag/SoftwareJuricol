@@ -23,7 +23,7 @@ export class ListarClienteComponent implements OnInit {
   rol: string;
 
   
-  searchObject={
+  searchObject:Object={
     Documento:"",
     Nombres:"",
     Apellidos:"",
@@ -31,7 +31,10 @@ export class ListarClienteComponent implements OnInit {
     Celular:"",
     Correo:"",
     Direccion:"",
-    Edad:""
+    Edad:"",
+    Estado:"",
+    CiudadResidencia:""
+    
   }
   
   constructor(private http : HttpClient ,private autenticadorService: AutenticadorService,private router: Router) {
