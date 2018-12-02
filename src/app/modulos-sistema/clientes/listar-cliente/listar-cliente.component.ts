@@ -38,9 +38,10 @@ export class ListarClienteComponent implements OnInit {
     if(autenticadorService.ProcesarToken() == false) {
       this.router.navigate(["/login"]);
     }
-    this.rol = autenticadorService.GetRol()
+    
     this.Cliente = new Cliente(http)
     this.Recargar();
+    this.rol = autenticadorService.GetRol()
   }
 
   ngOnInit() {
@@ -67,8 +68,8 @@ export class ListarClienteComponent implements OnInit {
       text: "Este registro no podra ser consultado despues",
       type: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
+      confirmButtonColor: '#3085d6',
       confirmButtonText: 'Si, Elimino!'
     }).then((result) => {
       if (result.value) {
@@ -83,9 +84,8 @@ export class ListarClienteComponent implements OnInit {
                   timer: 5000
                   
                 });
+                this.Recargar();
             }
-             
-            this.Recargar();
       
           },err => {
             if(err.error["codigo"] == 400){
@@ -99,6 +99,7 @@ export class ListarClienteComponent implements OnInit {
         );
       }
     })
+    
   }
   
   Recargar(){
@@ -114,33 +115,32 @@ export class ListarClienteComponent implements OnInit {
       respuesta =>{
      
         this.ClientesJSON = respuesta["mensaje"];
-     
-        Hoy = moment();
-        let i:any ;
-        
-        for(i = 0; i < this.ClientesJSON.length; i++) {
-        
+          Hoy = moment();
+          let i:any ;
+         
+          for(i = 0; i < this.ClientesJSON.length; i++) {
+         
           fechaNaci = momento(this.ClientesJSON[i]["FechaNacimiento"]);
           Edad = Hoy.diff(fechaNaci,"years");
-
-
-          let FechaN : Date ;
-          let FechaA : Date ;
-
-          FechaN = new Date(fechaNaci);
-          FechaA = new Date();
-
-
-          if(FechaA.getMonth() === FechaN.getMonth() && FechaA.getDate() > FechaN.getDate()){
-
-            FechaN.setFullYear((FechaA.getFullYear()+1));
-
-            range = moment.range(FechaA,FechaN );
-            dato = (range.diff('days')+1);
-              
-          }
+  
+      
+         let FechaN : Date ;
+         let FechaA : Date ;
+         
+         FechaN = new Date(fechaNaci);
+         FechaA = new Date();
+  
+       
+         if(FechaA.getMonth() === FechaN.getMonth() && FechaA.getDate() > FechaN.getDate()){
+         
+             FechaN.setFullYear((FechaA.getFullYear()+1));
+      
+             range = moment.range(FechaA,FechaN );
+             dato = (range.diff('days')+1);
+             
+         }
           else if(FechaA.getMonth() > FechaN.getMonth()){
-
+         
             FechaN.setFullYear((FechaA.getFullYear()+1));
             range = moment.range(FechaA,FechaN );
             dato = (range.diff('days')+1);
@@ -150,42 +150,46 @@ export class ListarClienteComponent implements OnInit {
             FechaN.setFullYear(FechaA.getFullYear());
             range = moment.range(FechaA,FechaN );
             dato = range.diff('days');
-
-            }
-            else{
+      
+           }
+           else{
             FechaN.setFullYear(FechaA.getFullYear());
             range = moment.range(FechaA,FechaN );
             dato = (range.diff('days')+1);
-            }
-
-          if(dato > 31  ){
-            color = 3
-          }
-          else if(dato < 31 && dato > 7){
-            color = 2
-          }
-          else if(dato <= 7 && dato > 0){
-            color = 0
-          }
-          else if(dato === 0 ){
-            color = 1
-          }
-
-          this.ClientesJSON[i]["dato"] = dato;
-          this.ClientesJSON[i]["color"] = color;
-          this.ClientesJSON[i]["Edad"] = Edad;
-          if(this.ClientesJSON[i]["Estado"]== "Inactivo"){
-            this.ClientesJSON[i]["Estado"] = 0;
-          }
-          else{
-            this.ClientesJSON[i]["Estado"] = 1;
-          }
-
-          this.ClientesJSON[i]["Nombres"] = this.ClientesJSON[i]["PrimerNombre"]+" "+this.ClientesJSON[i]["SegundoNombre"];
-          this.ClientesJSON[i]["Apellidos"] = this.ClientesJSON[i]["PrimerApellido"]+" "+this.ClientesJSON[i]["SegundoApellido"];
-        }
+           }
+       
+      if(dato > 31  ){
+        
+        color = 3
       }
-    );
+      else if(dato < 31 && dato > 7){
+        color = 2
+      }
+      else if(dato <= 7 && dato > 0){
+        color = 0
+      }
+      else if(dato === 0 ){
+        color = 1
+      }
+        
+      this.ClientesJSON[i]["dato"] = dato;
+      this.ClientesJSON[i]["color"] = color;
+      this.ClientesJSON[i]["Edad"] = Edad;
+      if(this.ClientesJSON[i]["Estado"]== "Inactivo"){
+        this.ClientesJSON[i]["Estado"] = 0;
+      }
+      else{
+        this.ClientesJSON[i]["Estado"] = 1;
+      }
+      
+
+      this.ClientesJSON[i]["Nombres"] = this.ClientesJSON[i]["PrimerNombre"]+" "+this.ClientesJSON[i]["SegundoNombre"];
+      this.ClientesJSON[i]["Apellidos"] = this.ClientesJSON[i]["PrimerApellido"]+" "+this.ClientesJSON[i]["SegundoApellido"];
+      
+        }  
+      
+     }
+   );
   }
 
 }

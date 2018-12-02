@@ -1,47 +1,47 @@
 .jumbotron2{
-    margin-top: 2%;
-    margin-left: -30px;
-    /* margin-right: 26%; */
-    background-color: #ffffff; 
-  }
-  
-  .botonNuevo{
-    float: right;
-  }
-  
-  .rojo {
-    background-color: red;
+  margin-top: 2%;
+  margin-left: -30px;
+  /* margin-right: 26%; */
+  background-color: #ffffff; 
+}
+
+.botonNuevo{
+  float: right;
+}
+
+.rojo {
+  background-color: red;
+border-radius: 7px;
+height: 30px;
+width: 30px;
+margin: 0px;
+    
+}
+
+.amarillo{
+  background-color: yellow;
   border-radius: 7px;
   height: 30px;
   width: 30px;
   margin: 0px;
-      
-  }
-  
-  .amarillo{
-    background-color: yellow;
-    border-radius: 7px;
-    height: 30px;
-    width: 30px;
-    margin: 0px;
-  }
-  .verde{
-   
-    background-color: green;
+}
+.verde{
+ 
+  background-color: green;
+border-radius: 7px;
+height: 30px;
+width: 30px;
+margin: 0px;
+}
+.gris{
+  background-color: gray;
   border-radius: 7px;
   height: 30px;
   width: 30px;
   margin: 0px;
-  }
-  .gris{
-    background-color: gray;
-    border-radius: 7px;
-    height: 30px;
-    width: 30px;
-    margin: 0px;
-  }
-  
-  .colores{
-    margin-left: 5%;
-    float: left;
-  }
+}
+
+.colores{
+  margin-left: 5%;
+  float: left;
+}
