@@ -35,37 +35,38 @@
         </ul>
       </nav>
 
-      <nav id="accordionMenu">        
-          <div class="card"  *ngFor="let grupo of gruposMenu">
-              <div class="card-header" id="heading_{{grupo.orden}}">
-                  <h5 class="mb-0">
-                      <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#collapse_'+grupo.orden"  [attr.aria-expanded]="grupo.orden==1"  [attr.aria-controls]="'collapse_'+grupo.orden">
-                          {{grupo.nombre}}
-                        </button>
-                  </h5>              
-              </div>
-
-              <div id="collapse_{{grupo.orden}}" [attr.class]="(grupo.orden==1)?'collapse show':'collapse'"  [attr.aria-labelledby]="'heading_'+grupo.orden" data-parent="#accordionMenu">
-                <div class="card-body">
-
-                  <li *ngFor='let unMenu of menu | arrayFilter:  { orden: grupo.orden }'>
-                    <a routerLink={{unMenu.url}}>
-                      <span>{{unMenu.opcion}}</span>
-                    </a>
-                    <hr>
-                  </li>
-
+      <div id="contenedorMenu">
+        <nav id="accordionMenu">        
+            <div class="card"  *ngFor="let grupo of gruposMenu">
+                <div class="card-header" id="heading_{{grupo.orden}}">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" [attr.data-target]="'#collapse_'+grupo.orden"  [attr.aria-expanded]="grupo.orden==1"  [attr.aria-controls]="'collapse_'+grupo.orden">
+                            {{grupo.nombre}}
+                          </button>
+                    </h5>              
                 </div>
-              </div>             
-          </div>
+
+                <div id="collapse_{{grupo.orden}}" [attr.class]="(grupo.orden==1)?'collapse show':'collapse'"  [attr.aria-labelledby]="'heading_'+grupo.orden" data-parent="#accordionMenu">
+                  <div class="card-body">
+
+                    <li *ngFor='let unMenu of menu | arrayFilter:  { orden: grupo.orden }'>
+                      <a routerLink={{unMenu.url}}>
+                        <span>{{unMenu.opcion}}</span>
+                      </a>
+                      <hr>
+                    </li>
+
+                  </div>
+                </div>             
+            </div>
+          </nav>
           <div>
             <li class="botonCerrarSesion">
               <a (click)="cerrarSesion()">Cerrar sesion</a>
             </li>
-          </div>
-        </nav>
-      
-
+          </div>    
+        </div>
+        <br><br><br><br><br><br>
     </div>
   </div>
 
