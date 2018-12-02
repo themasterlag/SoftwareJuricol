@@ -12,7 +12,7 @@ export class AutenticadorService {
   idUsuario:number = null;
   usuario:number = null;
   token:any = null;
-
+  tipoUsuario: string;
 
   constructor(private router:Router) {     
     this.token = this.GetToken();
@@ -24,9 +24,7 @@ export class AutenticadorService {
     // this.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI2OTA2MzcsImV4cCI6MTU0MjcyNjYzNywiZGF0YSI6eyJ1c3VhcmlvIjoiMTIzNDU2Nzg5In19.R-D0bL_4UJdY03220EsfXHzY-nmaQvQuLPAB_6W58UE";
     // this.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI3NDYxMTYsImV4cCI6MTU0Mjc4MjExNiwiZGF0YSI6eyJ1c3VhcmlvIjoiMTIzNDU2Nzg5In19.eHjX1nNxucTAzaydxdInNW3lngdgyzk2XRbbpWHwBuI";
   }
-  GetRol(){
-    return "Recepcionista"
-  }
+  
   public GetToken(): string {
     var token = sessionStorage.getItem("token")
     return token
@@ -40,6 +38,10 @@ export class AutenticadorService {
     return this.usuario;
   }
 
+  public GetRol(){
+    return this.tipoUsuario;
+  }
+
   public ProcesarToken(){
     if(this.token != null){
       var base64Url = this.token.split('.')[1];
@@ -48,6 +50,8 @@ export class AutenticadorService {
       // console.log(base64)
       this.idUsuario = base64.data.IdUsuario;
       this.usuario = base64.data.usuario;
+      this.tipoUsuario = base64.data.TipoUsuario;
+
 
       // localStorage.setItem("usuario",JSON.stringify(this.usuario));
 

@@ -35,18 +35,17 @@ export class MenuComponent implements OnInit {
     this.usuario = servicioSesion.GetUsuario();
 
     this.menu = [
-      { opcion: 'Ver empleados'     , url: '/'+this.usuario+'/empleados'      ,        agrupamiento: "Otro1"               , orden: 1  },
+      { opcion: 'Ver demandas'        , url: '/'+this.usuario+'/demandas'         ,   agrupamiento: "Procesos"         , orden: 1  },
+      { opcion: 'Procesador PDF'      , url: '/'+this.usuario+'/convertidorPdf'   ,   agrupamiento: "Procesos"         , orden: 1  },
+      { opcion: 'Clientes'            , url: '/'+this.usuario+'/clientes'         ,   agrupamiento: "Administración"   , orden: 2  },
+      { opcion: 'Empleados y Usarios' , url: '/'+this.usuario+'/empleados'        ,   agrupamiento: "Administración"   , orden: 2  },
       // { opcion: 'Registrar empleado', url: '/'+this.usuario+'/registrarEmpleado' },
-      { opcion: 'Ver demandas'      , url: '/'+this.usuario+'/demandas'       ,        agrupamiento: "Otro1"               , orden: 1  },
       // { opcion: 'Registrar demanda', url: '/'+this.usuario+'/registrarDemanda' },
-      { opcion: 'Tipos Documentos'  , url: '/'+this.usuario+'/tiposDocumentos',        agrupamiento: "Otro2"               , orden: 2  },
-      { opcion: 'Clientes'          , url: '/'+this.usuario+'/clientes'       ,        agrupamiento: "Otro2"               , orden: 2  },
-      { opcion: 'Cambiar Contraseña', url: '/'+this.usuario+'/editarClave'    ,        agrupamiento: "Otro2"               , orden: 2  },
-      { opcion: 'Procesador PDF'    , url: '/'+this.usuario+'/convertidorPdf' ,        agrupamiento: "Otro3"               , orden: 3  },
-      { opcion: 'Paises'            , url: '/'+this.usuario+'/paises'         ,        agrupamiento: "Parametrización4"    , orden: 4  },
-      { opcion: 'Departamentos'     , url: '/'+this.usuario+'/departamentos'  ,        agrupamiento: "Parametrización4"    , orden: 4  },
-      { opcion: 'Ciudades'          , url: '/'+this.usuario+'/ciudades'       ,        agrupamiento: "Parametrización4"    , orden: 4  }
-
+      { opcion: 'Tipos Documentos'    , url: '/'+this.usuario+'/tiposDocumentos'  ,   agrupamiento: "Parametrización"  , orden: 3  },
+      { opcion: 'Paises'              , url: '/'+this.usuario+'/paises'           ,   agrupamiento: "Parametrización"  , orden: 3  },
+      { opcion: 'Departamentos'       , url: '/'+this.usuario+'/departamentos'    ,   agrupamiento: "Parametrización"  , orden: 3  },
+      { opcion: 'Ciudades'            , url: '/'+this.usuario+'/ciudades'         ,   agrupamiento: "Parametrización"  , orden: 3  },
+      { opcion: 'Cambiar Contraseña'  , url: '/'+this.usuario+'/editarClave'      ,   agrupamiento: "Usuarios"         , orden: 4  }
     ];
     
     var menuActual="";

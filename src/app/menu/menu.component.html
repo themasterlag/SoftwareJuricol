@@ -35,7 +35,7 @@
         </ul>
       </nav>
 
-      <nav id="accordion">        
+      <nav id="accordionMenu">        
           <div class="card"  *ngFor="let grupo of gruposMenu">
               <div class="card-header" id="heading_{{grupo.orden}}">
                   <h5 class="mb-0">
@@ -45,7 +45,7 @@
                   </h5>              
               </div>
 
-              <div id="collapse_{{grupo.orden}}" [attr.class]="(grupo.orden==1)?'collapse show':'collapse'"  [attr.aria-labelledby]="'heading_'+grupo.orden" data-parent="#accordion">
+              <div id="collapse_{{grupo.orden}}" [attr.class]="(grupo.orden==1)?'collapse show':'collapse'"  [attr.aria-labelledby]="'heading_'+grupo.orden" data-parent="#accordionMenu">
                 <div class="card-body">
 
                   <li *ngFor='let unMenu of menu | arrayFilter:  { orden: grupo.orden }'>
@@ -57,6 +57,11 @@
 
                 </div>
               </div>             
+          </div>
+          <div>
+            <li class="botonCerrarSesion">
+              <a (click)="cerrarSesion()">Cerrar sesion</a>
+            </li>
           </div>
         </nav>
       

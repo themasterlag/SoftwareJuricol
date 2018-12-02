@@ -39,16 +39,16 @@ export class Semaforo {
     }
 
     public GetDiasRestantes(){
-        console.log(this.diasRestantes);
+        // console.log(this.diasRestantes);
         return this.diasRestantes;
     }
 
 
     CalcularDiasFaltantes(){
         let fecha1 = new Date(this.fechaActual);
-        console.log(fecha1)
+        // console.log(fecha1)
         let fecha2 = new Date(this.fechaVencimiento);
-        console.log(fecha2)
+        // console.log(fecha2)
         let range = moment.range(fecha1, fecha2);
         // console.log("v "+(fecha2.getDate()+1))
         if((fecha1.getMonth()+fecha1.getDate()) == (fecha2.getMonth()+(fecha2.getDate()+1) )){
