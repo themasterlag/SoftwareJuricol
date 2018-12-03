@@ -62,7 +62,7 @@
             <th scope="col"><input class="form-control" [(ngModel)]="searchObject.CiudadResidencia"></th>
             <th>&nbsp;</th>
             <th scope="col">
-              <select class="form-control" [(ngModel)]="searchObject.Estado"  *ngIf="rol == 'Administrador'|| rol == 'Recepcionista'" >
+              <select class="form-control" [(ngModel)]="searchObject.Estado"  *ngIf="rol == 'Administrador'" >
                 <option value="">Todos</option>
                 <option value="1">Activos</option>
                 <option value="0">Inactivos</option>
@@ -85,7 +85,7 @@
           <th scope="col">Edad</th>
           <th scope="col">Ciudad</th>
           <th>Accion</th>
-          <th *ngIf="rol == 'Administrador'|| rol == 'Recepcionista'">Accion</th>
+          <th *ngIf="rol == 'Administrador'">Accion</th>
         
           
         </tr>
@@ -119,7 +119,7 @@
           <td scope="col">{{Cliente.Edad}}</td>
           <td>{{Cliente.CiudadResidencia}}</td>
           <td scope="col"> <button type="button" class="btn btn-primary" (click)="EditarCliente(Cliente.IdCliente)">Ver</button>  </td>
-          <td *ngIf="rol == 'Administrador'|| rol == 'Recepcionista'"> 
+          <td *ngIf="rol == 'Administrador'"> 
               <button type="button" class="btn btn-success" (click)="EliminarCliente(Cliente.IdCliente)" *ngIf="Cliente.Estado == '0'"   >Habilitar</button>
               <button type="button" class="btn btn-danger" (click)="EliminarCliente(Cliente.IdCliente)" *ngIf="Cliente.Estado == '1'"  >Inhabilitar</button>
           </td>

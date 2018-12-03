@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Empleado } from '../../../controladores/empleado';
 import { Usuario } from '../../../controladores/usuario';
 import { AutenticadorService } from '../../../servicios/autenticador.service';
+import swal from 'sweetalert2';
 
 
 @Component({
@@ -22,8 +23,10 @@ export class ListaEmpleadosComponent implements OnInit {
   controladorUsuario:Usuario;
 
 // ---------------------------Lista empleados------------------------------
-
+  Rol: number;
+  Roles:Array<Object>=[];
   listaEmpleados:Object;
+  RolPropio:string;
 
   controladorEmpleado: Empleado;
 
@@ -40,13 +43,18 @@ export class ListaEmpleadosComponent implements OnInit {
 
   //--------------Empleados---------------------------------
   ngOnInit() {
+    this.RolPropio = this.autenticadorService.GetRol();
     //consulta de Empleados
     this.controladorEmpleado.BuscarEmpleados().add(
       response=>{
         this.listaEmpleados = this.controladorEmpleado.GetListaEmpleados();
       }
     );
-   
+   this.controladorUsuario.BuscarRoles().add(
+     response=>{
+        this.Roles = response['mensaje']
+     }
+   )
   }
 
 
@@ -62,14 +70,42 @@ export class ListaEmpleadosComponent implements OnInit {
   //----------------Usuarios--------------------------------
 
   crearUsuario(IdEmpleado){
-    this.empleadoId = IdEmpleado;
-    this.controladorUsuario.setEmpleado(this.empleadoId);
+    if(this.Rol == 0 || this.Rol == null ){
+      swal({
+        type: 'error',
+        title:"Seleccione un Rol",
+        timer: 5000
+      });
 
-    this.controladorUsuario.CrearUsuario().subscribe(
-      response =>{
-        this.ngOnInit();
-      }
-    );
+    }
+    else{
+      this.empleadoId = IdEmpleado;
+
+      this.controladorUsuario.setEmpleado(this.empleadoId);
+  
+      this.controladorUsuario.CrearUsuario().subscribe(
+        response =>{
+          if(response['codigo']==200){
+            swal({
+              type: 'success',
+              title:"Usuario Creado",
+              timer: 5000
+            });
+          }
+          
+          this.ngOnInit();
+        },err=>{
+          if(err.error['codigo'] != 200){
+            swal({
+              type: 'error',
+              title:'Fallo la Creacion de Usuario',
+              timer: 5000
+            });
+          }
+        }
+      );
+    }
+    
   }
 
   nuevoEmpleado(){

@@ -6,7 +6,7 @@
   <div>
     <h1 align='center'><strong>Empleados</strong></h1>
     <div class="botonNuevo">
-      <button class="btn btn-primary" (click)="nuevoEmpleado()">Nuevo empleado</button>
+      <button class="btn btn-primary" (click)="nuevoEmpleado()" *ngIf="RolPropio == 'Administrador'">Nuevo empleado</button>
     </div>
     <br>
 
@@ -26,8 +26,7 @@
           <th scope="col">Correo Electronico</th>
           <th scope="col">Direccion</th>
           <th scope="col">Estado del empleado</th>
-          <th scope="col">usuario</th>
-          <th scope="col"></th>
+          <th scope="col" *ngIf="RolPropio == 'Administrador'"></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -47,9 +46,14 @@
           <td>{{Empleado.CorreoElectronico}}</td>
           <td>{{Empleado.Direccion}}</td>
           <td>{{Empleado.Estado}}</td>
-          <td>{{Empleado.Usuario}}</td>
-          <td *ngIf="Empleado['Usuario']=='No'" (click)="crearUsuario(Empleado.IdEmpleado)"><button class="btn btn-danger">Crear usuario</button></td>
-          <td *ngIf="Empleado['Usuario']=='Si'"><button class="btn btn-success" disabled>Usuario ya creado</button></td>
+          <td *ngIf="Empleado['Usuario']=='No' && RolPropio == 'Administrador'" >
+              <select class="form-control" [(ngModel)]="Rol">
+                  <option value="0" disabled >--Seleccione Rol--</option>
+                  <option value="{{TipoRol.Id}}" *ngFor="let TipoRol of tiposRoles">{{TipoRol.Descripcion}}</option>
+              </select>
+            <button class="btn btn-danger" (click)="crearUsuario(Empleado.IdEmpleado)">Crear usuario</button>
+          </td>
+          <td *ngIf="Empleado['Usuario']=='Si' && RolPropio == 'Administrador'"><button class="btn btn-success" disabled>Usuario ya creado</button></td>
           <td><button class="btn btn-primary" (click)="verEmpleado(Empleado.IdEmpleado)">editar</button></td>
         </tr>
       </tbody>

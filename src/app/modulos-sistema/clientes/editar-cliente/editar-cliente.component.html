@@ -12,31 +12,31 @@
     <div class="form-group row ">
       <div class="col-md-4">
         <label>Primer Nombre:</label>
-        <input type="text" class="form-control"  [(ngModel)]="primerNombre" name="primerNombre" [disabled]="Lectura">
+        <input type="text" class="form-control"  [(ngModel)]="primerNombre" name="primerNombre"  >
       </div>
       <div  class="col-md-4">
         <label> Segundo Nombre:</label>
-        <input type="text"   class="form-control"  [(ngModel)]="segundoNombre" name="segundoNombre"[disabled]="Lectura" >
+        <input type="text"   class="form-control"  [(ngModel)]="segundoNombre" name="segundoNombre"  >
       </div>
     </div>
     <div class="form-group row">
       <div class="col-md-4">
         <label>Primer Apellido:</label>
-        <input type="text"   class="form-control" id="last_name"  [(ngModel)]="primerApellido" name="primerApellido" [disabled]="Lectura">
+        <input type="text"   class="form-control" id="last_name"  [(ngModel)]="primerApellido" name="primerApellido"  >
       </div>
       <div class="col-md-4">
         <label>Segundo Apellido:</label>
-        <input type="text"   class="form-control"    [(ngModel)]="segundoApellido" name="segundoApellido" [disabled]="Lectura">
+        <input type="text"   class="form-control"    [(ngModel)]="segundoApellido" name="segundoApellido"  >
       </div>
     </div>
     <div class="form-group row">
         <div class="col-md-4">
             <label >Documento :</label>
-            <input type="number"   class="form-control"  [(ngModel)]="cedula" name="cedula" [disabled]="Lectura"> 
+            <input type="number"   class="form-control"  [(ngModel)]="cedula" name="cedula"  > 
           </div>
         <div class="col-md-4">
             <label >Tipo Documento:</label><br/>
-            <select class="form-control" [(ngModel)]="TipoDocumento" [disabled]="Lectura">
+            <select class="form-control" [(ngModel)]="TipoDocumento"  >
               <option value="0"  >--Seleccione Tipo Doc--</option>
               <option value="{{TipoDocs.Id}}" *ngFor="let TipoDocs of TiposDocumentos">{{TipoDocs.Descripcion}}</option>
             </select>
@@ -45,41 +45,41 @@
     <div class="form-group row">
       <div  class="col-md-4"> 
         <label >Celular :</label>
-        <input type="number"   class="form-control"   [(ngModel)]="celular" name="celular" [disabled]="Lectura">
+        <input type="number"   class="form-control"   [(ngModel)]="celular" name="celular"  >
       </div>
       <div class="col-md-4">
         <label >Telefono :</label>
-        <input type="number"   class="form-control" [(ngModel)]="telefono" name="telefono" [disabled]="Lectura">
+        <input type="number"   class="form-control" [(ngModel)]="telefono" name="telefono"  >
       </div>
     </div>
     <div class="form-group row">
       <div class="col-md-4">
         <label >Correo :</label>
-        <input type="email" name="email" ngModel [email]="true" class="form-control" [(ngModel)]="correoElectronico" placeholder="Ejemplo@hotmail.com" [disabled]="Lectura">
+        <input type="email" name="email" ngModel [email]="true" class="form-control" [(ngModel)]="correoElectronico" placeholder="Ejemplo@hotmail.com"  >
       </div>
       <div class="col-md-4">
         <label >Fecha Nacimiento :</label>
-        <input type="date" class="form-control " [(ngModel)]="fechaNacimiento" [disabled]="Lectura">
+        <input type="date" class="form-control " [(ngModel)]="fechaNacimiento"  >
       </div>
     </div>
     <div class="form-group"  class="row">
       <div class="col-md-3">
         <label >Pais :</label><br/>
-        <select class="form-control" [(ngModel)]="Pais" (change)="CargarDepartamentos()" [disabled]="Lectura">
+        <select class="form-control" [(ngModel)]="Pais" (change)="CargarDepartamentos()"  >
           <option value="0" disabled >--Seleccione Pais--</option>
           <option value="{{pais1.Id}}" *ngFor="let pais1 of paises ">{{pais1.Descripcion}}</option>
         </select>
       </div>
       <div class="col-md-3">
         <label >Departamento :</label><br/>
-        <select class="form-control"  [(ngModel)]="Departamento" (change)="CargarCuidades()"[disabled]="Lectura" >
+        <select class="form-control"  [(ngModel)]="Departamento" (change)="CargarCuidades()"  >
           <option value="0" disabled>--Seleccione Dto--</option>
           <option value="{{departamento1.Id}}" *ngFor = "let departamento1 of departamentos " >{{departamento1.Descripcion}} </option>
         </select>
       </div>
       <div class="col-md-2">
         <label >Cuidad :</label><br/>
-        <select class="form-control"  [(ngModel)]="Cuidad" [disabled]="Lectura">
+        <select class="form-control"  [(ngModel)]="Cuidad"  >
           <option value="0" disabled>--Seleccione Cuidad--</option>
           <option value="{{ciudad1.Id}}" *ngFor = "let ciudad1 of Ciudades ">{{ciudad1.Descripcion}} </option>
         </select>
@@ -89,14 +89,14 @@
     <div class="form-group row">
       <div class="col-md-4">
           <label >Entidades Laborales :</label><br/>
-          <select class="form-control" [(ngModel)]="Entidad" [disabled]="Lectura">
+          <select class="form-control" [(ngModel)]="Entidad"  >
             <option value="0"  >--Seleccione Entidad--</option>
             <option value="{{entidad1.Id}}" *ngFor="let entidad1 of Entidades">{{entidad1.Descripcion}}</option>
           </select>
       </div>
       <div class="col-md-4">
           <label >Direccion Residencia:</label>
-          <input type="text"   class="form-control"  [(ngModel)]="direccion" name="direccion" [disabled]="Lectura">
+          <input type="text"   class="form-control"  [(ngModel)]="direccion" name="direccion"  >
         </div>
     </div>
   </div>
@@ -105,34 +105,34 @@
     <div class="form-group row ">
       <div class="col-md-4">
         <label>Nombre Completo:</label>
-        <input type="text" class="form-control"  [(ngModel)]="NombreAdicional" name="Nombre" [disabled]="Lectura">
+        <input type="text" class="form-control"  [(ngModel)]="NombreAdicional" name="Nombre"  >
       </div>
       <div class="col-md-4">
           <label >Documento :</label>
-          <input type="number"   class="form-control"  [(ngModel)]="DocumentoAdicional" name="cedula" [disabled]="Lectura">
+          <input type="number"   class="form-control"  [(ngModel)]="DocumentoAdicional" name="cedula"  >
         </div>
     </div>
     <div class="form-group row">
       <div  class="col-md-4"> 
         <label >Celular :</label>
-        <input type="number"   class="form-control"   [(ngModel)]="CelularAdicional" name="celular" [disabled]="Lectura">
+        <input type="number"   class="form-control"   [(ngModel)]="CelularAdicional" name="celular"  >
       </div>
       <div class="col-md-4">
           <label >Correo :</label>
-          <input type="email" name="email" ngModel [email]="true" class="form-control" [(ngModel)]="CorreoElectronicoAdicional" placeholder="Ejemplo@hotmail.com" [disabled]="Lectura">
+          <input type="email" name="email" ngModel [email]="true" class="form-control" [(ngModel)]="CorreoElectronicoAdicional" placeholder="Ejemplo@hotmail.com"  >
       </div>
     </div>
     <div class="form-group row">
       <div  class="col-md-4"> 
         <label >Parentesco :</label>
-        <select class="form-control" [(ngModel)]="Parentesco" [disabled]="Lectura">
+        <select class="form-control" [(ngModel)]="Parentesco"  >
           <option value="0"  >--Seleccione Parentesco--</option>
           <option value="{{Parentesco1.Id}}" *ngFor="let Parentesco1 of Parentescos">{{Parentesco1.Descripcion}}</option>
         </select>
       </div>
       <div class="col-md-4">
           <label >Tipo Documento:</label><br/>
-          <select class="form-control" [(ngModel)]="TipoDocumentoAdicional" [disabled]="Lectura">
+          <select class="form-control" [(ngModel)]="TipoDocumentoAdicional"  >
             <option value="0"  >--Seleccione Tipo Doc--</option>
             <option value="{{TipoDocsA.Id}}" *ngFor="let TipoDocsA of TiposDocumentos">{{TipoDocsA.Descripcion}}</option>
           </select>
@@ -142,7 +142,7 @@
   <br/><br/>   
   <div>
     <button type="button" class="btn btn-danger" (click)="Cancelar()" >Atras</button>
-    <button type="button" class="btn btn-success" (click)="GuardarCambios()" *ngIf="rol == 'Administrador'|| rol == 'Recepcionista'" >Guardar</button>
+    <button type="button" class="btn btn-success" (click)="GuardarCambios()"  >Guardar</button>
     
   </div>
 </div>

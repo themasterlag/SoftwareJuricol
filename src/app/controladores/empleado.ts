@@ -21,6 +21,7 @@ export class Empleado {
     private ciudad:number ; // atributo donde se guarda temporalmete la Cuidad del cliente
     private tipoDocumento: number;
     private tarjeta : number ;
+    
 
     // atributos
     
@@ -29,11 +30,11 @@ export class Empleado {
     // metodos
     constructor( private http:HttpClient ){}
 
-
+    
     public GetListaEmpleados(){
         return this.listaEmpleados;
     }
-
+    
     public BuscarEmpleados(){
         return this.http.get('https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarEmpleados').subscribe(
             response => {
