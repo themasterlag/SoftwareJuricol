@@ -21,9 +21,14 @@ export class ListaInstitucionesLaboralesComponent implements OnInit {
 
   id:number = null;
   nombre:string = null;
-  tipo:string = null;
-  diasLimite:number = null;
+  ciudad:number = null;
   tipoAccion:boolean = false; //falso para crear nuevo tipo, verdadero para editar tipo
+  pais:number;
+  listaPaises:Object;
+  departamento:number;
+  listaDepartamentos:Object;
+  ciudades:number;
+  listaCiudades:Object;
   listaInstituciones:Object = null;
 
   error:any = null;
@@ -36,6 +41,12 @@ export class ListaInstitucionesLaboralesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.controladorParametrizacion.SetTipo("paises");
+    this.controladorParametrizacion.buscarDatosLista().add(
+      response =>{
+        this.listaPaises = this.controladorParametrizacion.GetListaDatos();
+      }
+    );
     this.controladorParametrizacion.SetTipo("institucionesLaborales");
     this.controladorParametrizacion.buscarDatosLista().add(
       response =>{
@@ -57,6 +68,7 @@ export class ListaInstitucionesLaboralesComponent implements OnInit {
   }
 
   guardarEstado(){
+    this.controladorParametrizacion.SetTipo("institucionesLaborales");
     if(this.nombre == null){
       this.error = "Ingrese un nombre valido";
     }
@@ -84,6 +96,16 @@ export class ListaInstitucionesLaboralesComponent implements OnInit {
     }
   }
 
+  mostrasDepartamentos(){
+    this.controladorParametrizacion.SetTipo("Departamentos");
+    this.controladorParametrizacion.SetIdRelacion(this.pais);
+    this.controladorParametrizacion.buscarDatosLista().add(
+      response => {
+        this.listaDepartamentos = this.controladorParametrizacion.GetListaDatos();
+      }
+    );
+
+  }
 
   // desactiva el modal de registrar o  editar tipo de la interfaz
   cerrarModal(){

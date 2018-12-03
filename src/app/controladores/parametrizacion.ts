@@ -69,20 +69,39 @@ export class Parametrizacion {
 
         if(this.tipo == "departamentos"){
             // console.log("aqui list departamentos");
-            return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarDepartamentos").subscribe(
-                response =>{
-                    this.listaDatos = response['mensaje'];
-                }
-            );
+            if(this.idRelacion == null){
+                return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarDepartamentos").subscribe(
+                    response =>{
+                        this.listaDatos = response['mensaje'];
+                    }
+                );
+            }
+            else{
+                return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarDepartamentos&IdPais="+this.idRelacion).subscribe(
+                    response =>{
+                        this.listaDatos = response['mensaje'];
+                    }
+                );
+            }
         }
 
         if(this.tipo == "ciudades"){
             // console.log("aqui list ciudades");
-            return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarCiudades").subscribe(
-                response =>{
-                    this.listaDatos = response['mensaje'];
-                }
-            );
+            if(this.idRelacion == null){
+                return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarCiudades").subscribe(
+                    response =>{
+                        this.listaDatos = response['mensaje'];
+                    }
+                );
+            }
+            else{
+                return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarCiudades&IdDepartamento="+this.idRelacion).subscribe(
+                    response =>{
+                        this.listaDatos = response['mensaje'];
+                    }
+                );
+            }
+            
         }
 
         if(this.tipo == "cargos"){
