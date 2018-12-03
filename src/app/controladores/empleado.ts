@@ -37,8 +37,13 @@ export class Empleado {
     public BuscarEmpleados(){
         return this.http.get('https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarEmpleados').subscribe(
             response => {
+                console.log(response);
               //llenado de variable lista de demandas con resultados de la consulta
               this.listaEmpleados = response['mensaje'];
+            },err=>{
+
+               console.log(err.error['mensaje']);
+                
             }
         );
     }
