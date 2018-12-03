@@ -6,7 +6,10 @@ export class PDF  {
      constructor(private http: HttpClient) {
 
       }
-     
+ObtenerEstados(){// Recurso que permite consultar todas los Cargos posibles para los empleados
+   return this.http.get('http://localhost/GitHub/juricol/recursos/validar.php?accion=consultarEstadosDemandas')
+
+}
 Movimiento:Array<Object>=[];
 SetMovimiento(Movimeinto){
 this.Movimiento = Movimeinto;

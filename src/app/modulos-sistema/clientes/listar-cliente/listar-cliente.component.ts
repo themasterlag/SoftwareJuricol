@@ -66,16 +66,6 @@ export class ListarClienteComponent implements OnInit {
   }
   
   EliminarCliente(id){
-    swal({
-      title: 'Seguro que desea Eliminar !!?',
-      text: "Este registro no podra ser consultado despues",
-      type: 'warning',
-      showCancelButton: true,
-      cancelButtonColor: '#d33',
-      confirmButtonColor: '#3085d6',
-      confirmButtonText: 'Si, Elimino!'
-    }).then((result) => {
-      if (result.value) {
         this.Cliente.EliminarCliente(id).subscribe(
           response=>{
            
@@ -83,7 +73,7 @@ export class ListarClienteComponent implements OnInit {
              
                 swal({
                   type: 'success',
-                  title: 'Se elimino correctamente',
+                  title: 'Se realizo el cambio correctamente',
                   timer: 5000
                   
                 });
@@ -100,10 +90,10 @@ export class ListarClienteComponent implements OnInit {
             }
           }
         );
-      }
-    })
+    }
     
-  }
+    
+  
   
   Recargar(){
     let Hoy : any ;

@@ -4,7 +4,9 @@
 .btn-success{
     margin-left: 45%;
 }
-
+.btn-danger{
+    margin-left: 10px;
+}
 .fecha{
     width: 150px;
     padding: 5px 10px;
