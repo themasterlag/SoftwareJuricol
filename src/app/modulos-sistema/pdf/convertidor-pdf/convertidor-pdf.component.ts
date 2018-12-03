@@ -6,6 +6,7 @@ import {PDF}from '../../../controladores/pdf'
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { AutenticadorService } from '../../../servicios/autenticador.service';
 import { isArray } from 'util';
+import { Parametrizacion } from '../../../controladores/parametrizacion';
 
 
 @Component({
@@ -20,13 +21,18 @@ export class ConvertidorPdfComponent implements OnInit {
   ObtenerDatos:Array<Object>=[];   
   DatosEvnio:Array<Object>=[];
   Estados:Array<Object>=[];
-
+  controladorParametrizacion:Parametrizacion; nombre:string = null;
+  tipo:string = null;
+  diasLimite:number = null;
+  tipoAccion:boolean = false; //falso para crear nuevo tipo, verdadero para editar tipo
+  error:any = null;
   PDF : PDF ;
   private token = this.autenticadorService.GetToken();
   constructor(private route : Router,private autenticadorService: AutenticadorService, private http: HttpClient) {
     if(autenticadorService.ProcesarToken() == false) {
       this.route.navigate(["/login"]);
     }
+    this.controladorParametrizacion = new Parametrizacion(this.http);
     this.PDF = new PDF(http);
     this.uploader = new FileUploader({
       url:  'http://localhost/GitHub/juricol/recursos/validar.php?accion=pdf',
@@ -49,6 +55,7 @@ export class ConvertidorPdfComponent implements OnInit {
   
  
   ngOnInit() {
+    this.controladorParametrizacion.SetTipo("estadosDemanda");
     this.uploader.onBeforeUploadItem = (item: FileItem) => {
       item.withCredentials = false;
       item.alias = 'MiArchivo';
@@ -188,4 +195,60 @@ let i
     this.ObtenerDatos = null;
       this.DatosEvnio = [];
   }
+  // activa el modal de registrar o editar tipo en la interfaz
+  activarModal(TipoAccion){
+    if(TipoAccion == "crear"){
+      this.tipoAccion = false;
+    }
+    else{
+      this.tipoAccion = true;
+    }
+    document.getElementById('id01').style.display='block';
+  }
+
+  guardarEstado(){
+    if(this.nombre == null){
+      this.error = "Ingrese un nombre valido";
+    }
+    else{
+      if(this.tipoAccion == false){
+        this.controladorParametrizacion.SetNombre(this.nombre);
+        this.controladorParametrizacion.SetTipoDato(this.tipo);
+        this.controladorParametrizacion.SetDiasLimites(this.diasLimite);
+        this.controladorParametrizacion.GuardarParametrizacion().subscribe(
+          response =>{
+            if(response['codigo'] == 200){
+
+              swal({
+                type: 'success',
+                title: 'Se guardo correctamente el estado',
+                timer: 5000
+              
+              });
+            }
+            this.ConsultarEstados();
+            this.cerrarModal();
+     
+          },err=>{
+            swal({
+              type: 'error',
+              title: err.error['mensaje'],
+              timer: 5000
+            });
+          }
+        );
+      }
+    }
+  }
+
+
+  // desactiva el modal de registrar o  editar tipo de la interfaz
+  cerrarModal(){
+    this.nombre = null;
+    this.tipo = null;
+    this.diasLimite = null;
+    this.error = null;
+    document.getElementById('id01').style.display='none';
+  }
+
 }
