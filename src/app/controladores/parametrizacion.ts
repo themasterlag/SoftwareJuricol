@@ -11,6 +11,7 @@ export class Parametrizacion {
     private listaDatos:Object = null;
     private idRelacion:number = null;
 
+    private error:any = null
 
     // metodos
     constructor(private http:HttpClient){}
@@ -48,7 +49,12 @@ export class Parametrizacion {
         return this.listaDatos;
     }
 
+    public GetError(){
+        return this.error;
+    }
+
     public buscarDatosLista(){
+        this.listaDatos = null;
         if(this.tipo == "tiposDocumentos"){
             // console.log("aqui list tipos");
             return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarTiposDocumentos").subscribe(
@@ -73,6 +79,10 @@ export class Parametrizacion {
                 return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarDepartamentos").subscribe(
                     response =>{
                         this.listaDatos = response['mensaje'];
+                    },error =>{
+                        console.log(error.error["mensaje"])
+                        this.error = "Error al consultar departamentos";
+                        return this.error;                    
                     }
                 );
             }
@@ -80,6 +90,9 @@ export class Parametrizacion {
                 return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarDepartamentos&IdPais="+this.idRelacion).subscribe(
                     response =>{
                         this.listaDatos = response['mensaje'];
+                    },error =>{
+                        this.error = "Error al consusltar departamentos de un pais";
+                        return this.error;
                     }
                 );
             }

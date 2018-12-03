@@ -23,12 +23,12 @@ export class ListaInstitucionesLaboralesComponent implements OnInit {
   nombre:string = null;
   ciudad:number = null;
   tipoAccion:boolean = false; //falso para crear nuevo tipo, verdadero para editar tipo
-  pais:number;
-  listaPaises:Object;
-  departamento:number;
-  listaDepartamentos:Object;
-  ciudades:number;
-  listaCiudades:Object;
+  pais:number = null;
+  listaPaises:Object = null;
+  departamento:number = null;
+  listaDepartamentos:Object = null;
+  ciudades:number = null;
+  listaCiudades:Object = null;
   listaInstituciones:Object = null;
 
   error:any = null;
@@ -97,11 +97,14 @@ export class ListaInstitucionesLaboralesComponent implements OnInit {
   }
 
   mostrasDepartamentos(){
-    this.controladorParametrizacion.SetTipo("Departamentos");
+    this.controladorParametrizacion.SetTipo("departamentos");
     this.controladorParametrizacion.SetIdRelacion(this.pais);
     this.controladorParametrizacion.buscarDatosLista().add(
       response => {
         this.listaDepartamentos = this.controladorParametrizacion.GetListaDatos();
+        if(this.listaDepartamentos == null){
+          this.error = this.controladorParametrizacion.GetError();
+        }
       }
     );
 

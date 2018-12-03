@@ -21,6 +21,11 @@
         <br>
         <label><b>Nombre</b></label>
         <input type="text" class="form-control" [(ngModel)]="nombre" placeholder="Ingrese el nombre del estado" (keydown.enter)="guardarEstado()" required> 
+        <label>Pais</label>
+        <select class="form-control" [(ngModel)]="pais" (change)="mostrasDepartamentos()">
+          <option value="null" disabled>Seleccione un pais</option>
+          <option *ngFor="let pais of listaPaises" value="{{pais.Id}}">{{pais.Descripcion}}</option>
+        </select>
       </div>
       <!-- contenedor de acciones o botones -->
       <div class="container" style="background-color:#e2e2e2ee">
