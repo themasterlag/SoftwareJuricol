@@ -10,12 +10,12 @@
           <img *ngIf="tipoMenu==0" src="../../assets/iconos/menu/b/2x/twotone_menu_white_48dp.png" (click)='cambio()'>
           <img *ngIf="tipoMenu==1" src="../../assets/iconos/x/b/2x/baseline_clear_white_18dp.png" (click)='cambio()'>
         </div>
-        <ul class="sidebar-nav">
-          <!-- titulo de menu -->
+        <!-- <ul class="sidebar-nav">
+          titulo de menu
           <li class="sidebar-brand">
             <h4><span>Juricol</span></h4>
           </li>
-          <!-- opciones del menu -->
+          opciones del menu
           <li *ngFor='let Menu of menu'>
             <a routerLink={{Menu.url}}>
               <span>{{Menu.opcion}}</span>
@@ -32,7 +32,7 @@
             <a (click)="cerrarSesion()">Cerrar sesion</a>
           </li>
           <br>
-        </ul>
+        </ul> -->
       </nav>
 
       <div id="contenedorMenu">
