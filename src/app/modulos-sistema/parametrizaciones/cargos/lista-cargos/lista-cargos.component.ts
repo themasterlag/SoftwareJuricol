@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
+import swal from 'sweetalert2';
 import { AutenticadorService } from '../../../../servicios/autenticador.service';
 import { Parametrizacion } from '../../../../controladores/parametrizacion';
 
@@ -35,7 +35,7 @@ export class ListaCargosComponent implements OnInit {
     this.controladorParametrizacion.buscarDatosLista().add(
       response =>{
         this.listaCargos = this.controladorParametrizacion.GetListaDatos();
-        // console.log(this.listaCiudades);
+        
       }
     );
   }

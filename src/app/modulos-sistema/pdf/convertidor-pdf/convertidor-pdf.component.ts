@@ -50,6 +50,8 @@ export class ConvertidorPdfComponent implements OnInit {
       responde=>{
       
         this.Estados = responde['mensaje']
+      },err=>{
+        
       }
     )
   }

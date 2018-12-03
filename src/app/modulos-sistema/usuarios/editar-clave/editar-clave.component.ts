@@ -82,7 +82,7 @@ export class EditarClaveComponent implements OnInit {
         }
       
       },err=>{
-        console.log(err.error['codigo'])
+    
         if(err.error['codigo'] == 404){
           swal({
             type: 'error',

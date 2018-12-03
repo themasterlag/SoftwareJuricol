@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Router} from '@angular/router';
+import swal from 'sweetalert2';
 
 // import decode from 'jwt-decode';
 
@@ -21,7 +22,6 @@ export class AutenticadorService {
 
   public SetToken(Token){
     this.token = Token;
-    // this.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI2OTA2MzcsImV4cCI6MTU0MjcyNjYzNywiZGF0YSI6eyJ1c3VhcmlvIjoiMTIzNDU2Nzg5In19.R-D0bL_4UJdY03220EsfXHzY-nmaQvQuLPAB_6W58UE";
     // this.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI3NDYxMTYsImV4cCI6MTU0Mjc4MjExNiwiZGF0YSI6eyJ1c3VhcmlvIjoiMTIzNDU2Nzg5In19.eHjX1nNxucTAzaydxdInNW3lngdgyzk2XRbbpWHwBuI";
   }
   
@@ -47,18 +47,11 @@ export class AutenticadorService {
       var base64Url = this.token.split('.')[1];
       var base64 = base64Url.replace('-', '+').replace('_', '/');
       base64 = JSON.parse(atob(base64))
-      // console.log(base64)
+
       this.idUsuario = base64.data.IdUsuario;
+      
       this.usuario = base64.data.usuario;
       this.tipoUsuario = base64.data.TipoUsuario;
-
-
-      // localStorage.setItem("usuario",JSON.stringify(this.usuario));
-
-
-      // console.log(this.usuario);
-      // console.log(prueba);
-
       this.GuardarToken();
       return this.autenticarToken(base64);
     }
@@ -78,8 +71,12 @@ export class AutenticadorService {
     this.GetToken();
 
     if(this.token == null){
-      alert("Por favor inicie sesion");
-      console.log("No token");
+        swal({
+          type: 'error',
+          title: "Por favor inicie sesion",
+          timer: 5000
+        
+        })
       this.CerrarSesion();
       return false;
     }
@@ -88,8 +85,12 @@ export class AutenticadorService {
       var fecha2 = new Date(base64.exp*1000);
       
       if (fecha1 > fecha2){
-        alert("La sesion ha caducado");
-        console.log("aqui vencio token");
+        swal({
+          type: 'error',
+          title: "La sesion ha caducado",
+          timer: 5000
+        
+        })
         this.CerrarSesion();
         return false;
       }
