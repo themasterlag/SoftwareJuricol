@@ -1,12 +1,7 @@
 .my-drop-zone { height: 300px; }
 .nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
 .another-file-over-class { border: dotted 3px green; }
-.btn-success{
-    margin-left: 45%;
-}
-.btn-danger{
-    margin-left: 10px;
-}
+
 textarea{
     width: 200px;
 }
@@ -15,9 +10,21 @@ textarea{
     padding: 5px 10px;
     margin: 8px 0;  
 }
-.selects ,select{
-    width: 200px;
+.selects select{
+    width: 2000px;
+   
 }
+.table thead tr td{
+    width: 200px
+}
+.btonS{
+        margin-left: 45%;
+    }
+    
+
+.btonD{
+        margin-left: 10px;
+    }
 /* --------------------------------------- */
 
 body {font-family: Arial, Helvetica, sans-serif;}

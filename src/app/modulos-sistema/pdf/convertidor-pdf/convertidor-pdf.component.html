@@ -136,12 +136,12 @@
    <!-- informacion de la tabla o listado de empleados  -->
    <tr *ngFor="let Demanda of ObtenerDatos;let indice=index" >
    
-     <th >{{Demanda.IdDemanda}}</th>
+     <td >{{Demanda.IdDemanda}}</td>
      <td>{{Demanda.NumDemanda}}</td>
      <td>{{Demanda.Demandante}}</td>
      <td>{{Demanda.Demandado}}</td>
-    <td> {{Demanda.Titular}}</td>
-     <td>{{Demanda.FechaCambio}} </td>
+     <td>{{Demanda.Titular}}</td>
+     <td class="FechCambio">{{Demanda.FechaCambio}} </td>
      <td>
 
          <Input type="date" value="{{Demanda.FechaLimite}}" class="form-control fecha" [(ngModel)]="ObtenerDatos[indice].FechaLimite" ngDefaultControl> 
@@ -173,8 +173,8 @@
 </div>
  <div>
 
-     <button type="button" class="btn btn-success" (click)="ProcesarDatos()"  >Guardar</button>
-     <button type="button" class="btn btn-danger" (click)="Cancelar()" >Cancelar</button>
+     <button type="button" class="btn btn-success btonS" (click)="ProcesarDatos()"  >Guardar</button>
+     <button type="button" class="btn btn-danger btonD" (click)="Cancelar()" >Cancelar</button>
    </div>
 
 <br>
