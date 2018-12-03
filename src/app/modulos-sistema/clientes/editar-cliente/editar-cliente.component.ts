@@ -41,11 +41,20 @@ export class EditarClienteComponent implements OnInit {
   TiposDocumentos:[''];
   TipoDocumento:number;
   TipoDocumentoAdicional:number;
+  rol;
+  Lectura;
   
   private DatosJSON: any;
   constructor( private http : HttpClient ,private autenticadorService: AutenticadorService,private router: Router, private route:ActivatedRoute) { 
     if(autenticadorService.ProcesarToken() == false) {
       this.router.navigate(["/login"]);
+    }
+    this.rol = autenticadorService.GetRol();
+    if(this.rol == 'Administrador'|| this.rol == 'Recepcionista'){
+      this.Lectura = false;
+    }
+    else{
+      this.Lectura = true;
     }
 
     this.Cliente = new Cliente(this.http) ;

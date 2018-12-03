@@ -42,9 +42,9 @@ export class ListarClienteComponent implements OnInit {
       this.router.navigate(["/login"]);
     }
     
-    this.Cliente = new Cliente(http)
+    this.Cliente = new Cliente(http);
     this.Recargar();
-    this.rol = autenticadorService.GetRol()
+    this.rol = autenticadorService.GetRol();
   }
 
   ngOnInit() {
