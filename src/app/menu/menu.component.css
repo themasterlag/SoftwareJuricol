@@ -151,35 +151,39 @@ hr{
   padding: 0;
   margin: 0;
   text-align: center;
+  width: 98%;
 
+}
+
+#accordionMenu button{ 
+  width: 100%;
 }
 
 #accordionMenu .card{
   padding: 0;
   margin: 0;
   text-align: left;
-  /* background: rgb(0, 0, 0);
-  border: 1px solid rgba(255, 255, 255, 0.658); */
+  background: rgb(0, 0, 0);
+  
 }
 
 #accordionMenu .card-header{
   padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.658);  
 }
 
-
-
-#contenedorMenu li {
-  line-height: 40px;
+#accordionMenu .card-body{
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.658);  
 }
 
-/* 
-.sidebar-nav li a {
+.accordionMenu  a {
   color: #999999;
   display: block;
   text-decoration: none;
-  
 }
 
+/*
 .sidebar-nav li h4 {
     margin-top: 15px;
     color: #ffffff;
