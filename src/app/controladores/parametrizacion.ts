@@ -180,6 +180,13 @@ export class Parametrizacion {
                     Tipo: this.tipoDato,
                 });
             }
+
+            if(this.tipo == "estadosProceso"){
+                return this.http.post("https:/localhost/GitHub/juricol/recursos/validar.php",{
+                    accion:"crearEstadoProceso",
+                    estadoProcesoNuevo: this.nombre,
+                });
+            }
         }
 
         
@@ -247,6 +254,14 @@ export class Parametrizacion {
                     estadoDemandaNuevo: this.nombre,
                     DiasLimite: this.diasLimite,
                     Tipo: this.tipoDato
+                });
+            }
+
+            if(this.tipo == "estadosProceso"){
+                return this.http.put("https:/localhost/GitHub/juricol/recursos/validar.php",{
+                    accion:"modificarEstadoProceso",
+                    IdEstadoProceso: this.id,
+                    estadoProcesoNuevo: this.nombre,
                 });
             }
         }

@@ -63,8 +63,6 @@ export class ListaEstadosProcesosComponent implements OnInit {
     else{
       if(this.tipoAccion == false){
         this.controladorParametrizacion.SetNombre(this.nombre);
-        this.controladorParametrizacion.SetTipoDato(this.tipo);
-        this.controladorParametrizacion.SetDiasLimites(this.diasLimite);
         this.controladorParametrizacion.GuardarParametrizacion().subscribe(
           response =>{
             console.log(response)
@@ -76,8 +74,6 @@ export class ListaEstadosProcesosComponent implements OnInit {
       else{
         this.controladorParametrizacion.SetId(this.id);
         this.controladorParametrizacion.SetNombre(this.nombre);
-        this.controladorParametrizacion.SetTipoDato(this.tipo);
-        this.controladorParametrizacion.SetDiasLimites(this.diasLimite);
         this.controladorParametrizacion.GuardarParametrizacion().subscribe(
           response =>{
             this.cerrarModal();
@@ -92,17 +88,14 @@ export class ListaEstadosProcesosComponent implements OnInit {
   // desactiva el modal de registrar o  editar tipo de la interfaz
   cerrarModal(){
     this.nombre = null;
-    this.tipo = null;
-    this.diasLimite = null;
     this.error = null;
     document.getElementById('id01').style.display='none';
   }
 
-  editar(Id,Nombre,Tipo,DiasLimite){
+
+  editar(Id,Nombre){
     this.id = Id;
     this.nombre = Nombre;
-    this.tipo = Tipo;
-    this.diasLimite = DiasLimite;
     this.activarModal("editar");
   }
 

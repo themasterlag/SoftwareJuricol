@@ -36,6 +36,9 @@
       </nav>
 
       <div id="contenedorMenu">
+        <div class="sidebar-brand">
+          <h4><span>Juricol</span></h4>
+        </div>
         <nav id="accordionMenu">        
             <div class="card"  *ngFor="let grupo of gruposMenu">
                 <div class="card-header" id="heading_{{grupo.orden}}">
@@ -51,18 +54,30 @@
 
                     <div *ngFor='let unMenu of menu | arrayFilter:  { orden: grupo.orden }'>
                       <a routerLink={{unMenu.url}}>
-                        <span>{{unMenu.opcion}}</span>
+                        
+                        <span class="text"><span class="fa {{unMenu.icon}}"></span>&nbsp;{{unMenu.opcion}}</span>
                       </a>
                     </div>
 
                   </div>
                 </div>             
             </div>
+            <div class="card">            
+              <div class="card-header">
+                  <h5 class="mb-0">
+                      <button class="btn" data-toggle="collapse" (click)="cerrarSesion()">
+                          Cerrar sesion
+                      </button>
+                  </h5>              
+              </div>
+            </div>               
           </nav>
+          
           <div>
-            <li class="botonCerrarSesion">
-              <a (click)="cerrarSesion()">Cerrar sesion</a>
-            </li>
+
+         
+
+
           </div>    
         </div>
         <br><br><br><br><br><br>

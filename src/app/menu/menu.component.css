@@ -152,43 +152,70 @@ hr{
   margin: 0;
   text-align: center;
   width: 98%;
-
+  background: rgba(0, 0, 0);
 }
 
-#accordionMenu button{ 
-  width: 100%;
+#contenedorMenu .sidebar-brand {
+  height: 65px;
+  line-height: 60px;
+  font-size: 18px;
+}
+
+#contenedorMenu .sidebar-brand h4 {
+  margin-top: 15px;
+  color: #ffffff;
 }
 
 #accordionMenu .card{
-  padding: 0;
+  padding: 3%;
   margin: 0;
   text-align: left;
-  background: rgb(0, 0, 0);
-  
+  border-radius: .60em;
+  background: rgba(0, 0, 0);
+  border: 1px solid rgba(255, 255, 255, 0.658);
 }
 
 #accordionMenu .card-header{
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.658);  
+  border-bottom: 1px solid rgba(255, 255, 255, 0.658);
+  background: rgba(97, 85, 85, 0.507); 
 }
 
 #accordionMenu .card-body{
-  padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.658);  
+  padding: 2%;
+
 }
 
-.accordionMenu  a {
+#accordionMenu a{
   color: #999999;
   display: block;
+  text-decoration: none;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+#accordionMenu a span .text{
+  display: block;
+}
+
+#accordionMenu button{
+  width: 100%;
+  background: rgba(255, 255, 255, 0); 
+  color: #999999;
+}
+
+#accordionMenu  button:hover,
+                button:active,
+                button:focus,
+                a .text:hover,
+                a .text:active,
+                a .text:focus {
+  color: #fff;
+  background: rgba(255,255,255,0.2);
   text-decoration: none;
 }
 
 /*
-.sidebar-nav li h4 {
-    margin-top: 15px;
-    color: #ffffff;
-  }
-
 .sidebar-nav li a:hover,
 .sidebar-nav li.active {
   color: #fff;

@@ -35,23 +35,23 @@ export class MenuComponent implements OnInit {
     this.usuario = servicioSesion.GetUsuario();
 
     this.menu = [
-      { opcion: 'Ver demandas'        , url: '/'+this.usuario+'/demandas'         ,   agrupamiento: "Procesos"         , orden: 1  },
-      { opcion: 'Procesador PDF'      , url: '/'+this.usuario+'/convertidorPdf'   ,   agrupamiento: "Procesos"         , orden: 1  },
-      { opcion: 'Clientes'            , url: '/'+this.usuario+'/clientes'         ,   agrupamiento: "Administración"   , orden: 2  },
-      { opcion: 'Empleados y Usarios' , url: '/'+this.usuario+'/empleados'        ,   agrupamiento: "Administración"   , orden: 2  },
+      { opcion: 'Ver demandas'        , url: '/'+this.usuario+'/demandas'         , icon: "fa-balance-scale"  , agrupamiento: "Procesos"         , orden: 1  },
+      { opcion: 'Procesador PDF'      , url: '/'+this.usuario+'/convertidorPdf'   , icon: "fa-file-pdf-o"  , agrupamiento: "Procesos"         , orden: 1  },
+      { opcion: 'Clientes'            , url: '/'+this.usuario+'/clientes'         , icon: "fa-address-book-o"  , agrupamiento: "Administración"   , orden: 2  },
+      { opcion: 'Empleados y Usarios' , url: '/'+this.usuario+'/empleados'        , icon: "fa-user-o"  , agrupamiento: "Administración"   , orden: 2  },
       // { opcion: 'Registrar empleado', url: '/'+this.usuario+'/registrarEmpleado' },
       // { opcion: 'Registrar demanda', url: '/'+this.usuario+'/registrarDemanda' },
-      { opcion: 'Tipos Documentos'    , url: '/'+this.usuario+'/tiposDocumentos'  ,   agrupamiento: "Parametrización"  , orden: 3  },
-      { opcion: 'Paises'              , url: '/'+this.usuario+'/paises'           ,   agrupamiento: "Parametrización"  , orden: 3  },
-      { opcion: 'Departamentos'       , url: '/'+this.usuario+'/departamentos'    ,   agrupamiento: "Parametrización"  , orden: 3  },
-      { opcion: 'Ciudades'            , url: '/'+this.usuario+'/ciudades'         ,   agrupamiento: "Parametrización"  , orden: 3  },
-      { opcion: 'Cambiar Contraseña'  , url: '/'+this.usuario+'/editarClave'      ,   agrupamiento: "Usuarios"         , orden: 4  }
+      { opcion: 'Tipos Documentos'    , url: '/'+this.usuario+'/tiposDocumentos'  , icon: "fa-camera-retro"  , agrupamiento: "Parametrización"  , orden: 3  },
+      { opcion: 'Paises'              , url: '/'+this.usuario+'/paises'           , icon: "fa-camera-retro"  , agrupamiento: "Parametrización"  , orden: 3  },
+      { opcion: 'Departamentos'       , url: '/'+this.usuario+'/departamentos'    , icon: "fa-camera-retro"  , agrupamiento: "Parametrización"  , orden: 3  },
+      { opcion: 'Ciudades'            , url: '/'+this.usuario+'/ciudades'         , icon: "fa-camera-retro"  , agrupamiento: "Parametrización"  , orden: 3  },
+      { opcion: 'Cambiar Contraseña'  , url: '/'+this.usuario+'/editarClave'      , icon: "fa-camera-retro"  , agrupamiento: "Usuarios"         , orden: 4  }
     ];
     
     var menuActual="";
     for (var unmenu of this.menu) {
       if(menuActual != unmenu.agrupamiento){
-        this.gruposMenu.push({nombre: unmenu.agrupamiento, orden: unmenu.orden});
+        this.gruposMenu.push({nombre: unmenu.agrupamiento, orden: unmenu.orden, icon: unmenu.icon });
         menuActual = unmenu.agrupamiento;
       }
     }
