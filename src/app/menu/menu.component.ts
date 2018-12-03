@@ -56,7 +56,7 @@ export class MenuComponent implements OnInit {
       }
     }
 
-  console.log(this.gruposMenu);
+  // console.log(this.gruposMenu);
 
   }
 

@@ -1,3 +1,69 @@
-<p>
-  lista-instituciones-laborales works!
-</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+  <div id="id01" class="modal">
+    <div class="modal-content animate">
+      <div class="imgcontainer">
+        <span class="close" title="Close Modal" (click)="cerrarModal()">&times;</span>
+      </div>
+      <!-- contenedor del formulario -->
+      <div class="container">
+        <label>
+          <h4 *ngIf="tipoAccion==false"><strong>Registrar estado</strong></h4>
+          <h4 *ngIf="tipoAccion==true"><strong>Editar estado</strong></h4>
+        </label>
+        <div *ngIf="error!=null" class="alert alert-danger" role="alert">
+          {{error}}
+        </div>
+        <br>
+        <br>
+        <label><b>Nombre</b></label>
+        <input type="text" class="form-control" [(ngModel)]="nombre" placeholder="Ingrese el nombre del estado" (keydown.enter)="guardarEstado()" required> 
+      </div>
+      <!-- contenedor de acciones o botones -->
+      <div class="container" style="background-color:#e2e2e2ee">
+        <button (click)="guardarEstado()">Registrar</button>
+        <button class="cancelbtn" (click)="cerrarModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- tabla de o lista de empleados -->
+  <div>
+    <h1 align='center'><strong>Instituciones laborales</strong></h1>
+    <br>
+    <div class="botonNuevo">
+      <button class="btn btn-primary" (click)="activarModal('crear')">Nueva institucion</button>
+    </div>
+    <br>
+
+    <table class="table table-striped">
+      <!-- titulo de las columnas -->
+      <thead>
+        <tr class="colums">
+          <th scope="col">#</th> 
+          <th scope="col">Nombre de la institucion</th>
+          <th scope="col">Ciudades</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+
+      <!-- informacion de la tabla o listado de empleados -->
+      <tbody>
+        <tr *ngFor="let institucion of listaInstituciones">
+          <th scope="row">{{institucion.Id}}</th>
+          <td>{{institucion.Descripcion}}</td>
+          <td>{{institucion.Ciudad_id}}</td>
+          <td><button class="btn btn-primary" (click)="editar(institucion.Id,institucion.Descripcion)">Editar</button></td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+</body>
+
+</html> 

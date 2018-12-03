@@ -117,6 +117,15 @@ export class Parametrizacion {
                 }
             );
         }
+
+        if(this.tipo == "institucionesLaborales"){
+            return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarInstitucionesLaborales").subscribe(
+                response =>{
+                    this.listaDatos = response['mensaje'];
+                    console.log(this.listaDatos);
+                }
+            );
+        }
     }
 
     public GuardarParametrizacion(){
@@ -185,6 +194,14 @@ export class Parametrizacion {
                 return this.http.post("https:/localhost/GitHub/juricol/recursos/validar.php",{
                     accion:"crearEstadoProceso",
                     estadoProcesoNuevo: this.nombre,
+                });
+            }
+
+            if(this.tipo == "institucionesLaborales"){
+                return this.http.post("https:/localhost/GitHub/juricol/recursos/validar.php",{
+                    accion:"crearInstitucionLaboral",
+                    institucionNueva: this.nombre,
+                    IdCiudad: this.idRelacion,
                 });
             }
         }
@@ -262,6 +279,15 @@ export class Parametrizacion {
                     accion:"modificarEstadoProceso",
                     IdEstadoProceso: this.id,
                     estadoProcesoNuevo: this.nombre,
+                });
+            }
+
+            if(this.tipo == "modificarInstitucionLaboral"){
+                return this.http.put("https:/localhost/GitHub/juricol/recursos/validar.php",{
+                    accion:"modificarEstadoProceso",
+                    IdInstitucion: this.id,
+                    institucionNueva: this.nombre,
+                    IdCiudad: this.idRelacion,
                 });
             }
         }

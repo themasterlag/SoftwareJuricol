@@ -55,7 +55,7 @@
         <tr *ngFor="let estado of listaEstados">
           <th scope="row">{{estado.Id}}</th>
           <td>{{estado.Descripcion}}</td>
-          <td><button class="btn btn-primary" (click)="editar(estado.Id,estado.Descripcion,estado.Tipo,estado.DiasLimite)">Editar</button></td>
+          <td><button class="btn btn-primary" (click)="editar(estado.Id,estado.Descripcion)">Editar</button></td>
         </tr>
       </tbody>
 
