@@ -55,43 +55,26 @@
                     <div *ngFor='let unMenu of menu | arrayFilter:  { orden: grupo.orden }'>
                       <a routerLink={{unMenu.url}}>
                         
-                        <span class="text"><span class="fa {{unMenu.icon}}"></span>&nbsp;{{unMenu.opcion}}</span>
+                        <span class="text"><span class="fa {{unMenu.icon}}"></span>&nbsp;&nbsp;{{unMenu.opcion}}</span>
                       </a>
                     </div>
-
                   </div>
-                </div>             
+                </div>
             </div>
-            <div class="card">            
+            <br><br><br><br><br>
+            <div class="card">
               <div class="card-header">
                   <h5 class="mb-0">
                       <button class="btn" data-toggle="collapse" (click)="cerrarSesion()">
-                          Cerrar sesion
+                        <span class="fa fa-sign-out ">&nbsp;&nbsp;Cerrar sesion</span>
                       </button>
-                  </h5>              
+                  </h5>
               </div>
-            </div>               
+            </div>
           </nav>
-          
-          <div>
-
-         
-
-
-          </div>    
         </div>
         <br><br><br><br><br><br>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>

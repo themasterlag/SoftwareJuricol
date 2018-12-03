@@ -35,17 +35,17 @@ export class MenuComponent implements OnInit {
     this.usuario = servicioSesion.GetUsuario();
 
     this.menu = [
-      { opcion: 'Ver demandas'        , url: '/'+this.usuario+'/demandas'         , icon: "fa-balance-scale"  , agrupamiento: "Procesos"         , orden: 1  },
-      { opcion: 'Procesador PDF'      , url: '/'+this.usuario+'/convertidorPdf'   , icon: "fa-file-pdf-o", agrupamiento: "Procesos"         , orden: 1  },
-      { opcion: 'Clientes'            , url: '/'+this.usuario+'/clientes'         , icon: "fa-id-card-o"  , agrupamiento: "Administración"   , orden: 2  },
-      { opcion: 'Empleados y Usarios' , url: '/'+this.usuario+'/empleados'        , icon: "fa-user-o"  , agrupamiento: "Administración"   , orden: 2  },
-      // { opcion: 'Registrar empleado', url: '/'+this.usuario+'/registrarEmpleado' },
-      // { opcion: 'Registrar demanda', url: '/'+this.usuario+'/registrarDemanda' },
-      { opcion: 'Tipos Documentos'    , url: '/'+this.usuario+'/tiposDocumentos'  , icon: "fa-file-text-o"  , agrupamiento: "Parametrización"  , orden: 3  },
-      { opcion: 'Paises'              , url: '/'+this.usuario+'/paises'           , icon: "fa-plane"  , agrupamiento: "Parametrización"  , orden: 3  },
-      { opcion: 'Departamentos'       , url: '/'+this.usuario+'/departamentos'    , icon: "fa-bus"  , agrupamiento: "Parametrización"  , orden: 3  },
-      { opcion: 'Ciudades'            , url: '/'+this.usuario+'/ciudades'         , icon: "fa-car"  , agrupamiento: "Parametrización"  , orden: 3  },
-      { opcion: 'Cambiar Contraseña'  , url: '/'+this.usuario+'/editarClave'      , icon: "fa-key"  , agrupamiento: "Usuarios"         , orden: 4  }
+      { opcion: 'Ver demandas'        , url: '/'+this.usuario+'/demandas'         , icon: "fa-balance-scale"        , agrupamiento: "Procesos"         , orden: 1  },
+      { opcion: 'Procesador PDF'      , url: '/'+this.usuario+'/convertidorPdf'   , icon: "fa-file-pdf-o"           , agrupamiento: "Procesos"         , orden: 1  },
+      { opcion: 'Clientes'            , url: '/'+this.usuario+'/clientes'         , icon: "fa-id-card-o"            , agrupamiento: "Administración"   , orden: 2  },
+      { opcion: 'Empleados y Usarios' , url: '/'+this.usuario+'/empleados'        , icon: "fa-user-o"               , agrupamiento: "Administración"   , orden: 2  },
+      { opcion: 'Tipos Documentos'    , url: '/'+this.usuario+'/tiposDocumentos'  , icon: "fa-file-text-o"          , agrupamiento: "Parametrización"  , orden: 3  },
+      { opcion: 'Paises'              , url: '/'+this.usuario+'/paises'           , icon: "fa-plane"                , agrupamiento: "Parametrización"  , orden: 3  },
+      { opcion: 'Departamentos'       , url: '/'+this.usuario+'/departamentos'    , icon: "fa-bus"                  , agrupamiento: "Parametrización"  , orden: 3  },
+      { opcion: 'Ciudades'            , url: '/'+this.usuario+'/ciudades'         , icon: "fa-car"                  , agrupamiento: "Parametrización"  , orden: 3  },
+      { opcion: 'Cargos'              , url: '/'+this.usuario+'/cargos'           , icon: "fa-user-circle-o"        , agrupamiento: "Parametrización"  , orden: 3  },
+      { opcion: 'Especialidades'      , url: '/'+this.usuario+'/especialidades'   , icon: "fa-graduation-cap"       , agrupamiento: "Parametrización"  , orden: 3  },
+      { opcion: 'Cambiar Contraseña'  , url: '/'+this.usuario+'/editarClave'      , icon: "fa-key"                  , agrupamiento: "Usuarios"         , orden: 4  }
     ];
     
     var menuActual="";

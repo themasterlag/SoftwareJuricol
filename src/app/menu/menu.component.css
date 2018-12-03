@@ -122,7 +122,7 @@ hr{
     position: sticky;
     display: block;
     height: 10vh;
-    width: 78vh;
+    width: 104%;
     overflow-y: hidden;
     overflow-x: auto;
     transition: all 0.4s ease 0s;
@@ -138,7 +138,7 @@ hr{
     position: sticky;
     display: block;
     height: 35vh;
-    width: 78vh;
+    width: 104%;
     overflow-y: auto;
     overflow-x: auto;
     transition: all 0.4s ease 0s;
