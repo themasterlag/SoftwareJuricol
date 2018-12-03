@@ -80,7 +80,7 @@ const rutas: Routes =[
         { path:'departamentos', component:ListaDepartamentosComponent},
         { path:'ciudades', component:ListaCiudadesComponent},
         { path:'especialidades', component:ListaEspecialidadesComponent},
-        { path:'estadosDemanda', component:ListaEstadosDemandaComponent},
+        { path:'estadosDemandas', component:ListaEstadosDemandaComponent},
         { path:'estadosProcesos', component:ListaEstadosProcesosComponent},
         { path:'institucionesLaborales', component:ListaInstitucionesLaboralesComponent},
         { path:'juzgados', component:ListaJuzgadosComponent},
