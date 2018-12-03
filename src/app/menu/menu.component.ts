@@ -35,7 +35,7 @@ export class MenuComponent implements OnInit {
     this.usuario = servicioSesion.GetUsuario();
 
     this.menu = [
-      { opcion: 'Ver demandas'              , url: '/'+this.usuario+'/demandas'                  , icon: "fa-balance-scale"        , agrupamiento: "Procesos"         , orden: 1  },
+      { opcion: 'Demandas'              , url: '/'+this.usuario+'/demandas'                  , icon: "fa-balance-scale"        , agrupamiento: "Procesos"         , orden: 1  },
       { opcion: 'Procesador PDF'            , url: '/'+this.usuario+'/convertidorPdf'            , icon: "fa-file-pdf-o"           , agrupamiento: "Procesos"         , orden: 1  },
       { opcion: 'Clientes'                  , url: '/'+this.usuario+'/clientes'                  , icon: "fa-id-card-o"            , agrupamiento: "Administración"   , orden: 2  },
       { opcion: 'Empleados y Usarios'       , url: '/'+this.usuario+'/empleados'                 , icon: "fa-user-o"               , agrupamiento: "Administración"   , orden: 2  },
