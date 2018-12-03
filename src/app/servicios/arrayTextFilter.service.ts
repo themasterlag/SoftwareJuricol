@@ -32,14 +32,15 @@ export class ArrayTextFilter implements PipeTransform {
        let encontrado : boolean = false; 
        let filtroEvaluable : boolean = false;
        let filtrosCorrectos : number = 0;
+      
       filtroEvaluable = this.analizarFiltro(filtros);
-       
+
       for(var nombreAtr in filtros){
         it[nombreAtr] = it[nombreAtr]+"";
+
         if(filtroEvaluable){
-          
           if(filtros[nombreAtr] != ""){
-            if(it[nombreAtr].toLocaleLowerCase().includes(filtros[nombreAtr].toLocaleLowerCase())){
+            if(it[nombreAtr].toLocaleLowerCase().includes(filtros[nombreAtr])){
               filtrosCorrectos++;
             }
           }
