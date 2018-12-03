@@ -7,8 +7,11 @@
 .btn-danger{
     margin-left: 10px;
 }
+textarea{
+    width: 200px;
+}
 .fecha{
-    width: 150px;
+    width: 170px;
     padding: 5px 10px;
     margin: 8px 0;  
 }
