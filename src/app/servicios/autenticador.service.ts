@@ -77,19 +77,26 @@ export class AutenticadorService {
   public autenticarToken(base64) {
     this.GetToken();
 
-    var fecha1:Date = new Date();
-    var fecha2 = new Date(base64.exp*1000);
-    
-    if (fecha1 > fecha2){
-      alert("La sesion ha caducado");
-      console.log("aqui vencio token");
+    if(this.token == null){
+      alert("Por favor inicie sesion");
+      console.log("No token");
       this.CerrarSesion();
       return false;
     }
     else{
-      return true;
+      var fecha1:Date = new Date();
+      var fecha2 = new Date(base64.exp*1000);
+      
+      if (fecha1 > fecha2){
+        alert("La sesion ha caducado");
+        console.log("aqui vencio token");
+        this.CerrarSesion();
+        return false;
+      }
+      else{
+        return true;
+      }
     }
-
   }
 
 

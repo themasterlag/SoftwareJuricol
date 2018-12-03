@@ -108,6 +108,15 @@ export class Parametrizacion {
                 }
             );
         }
+
+        if(this.tipo == "estadosProceso"){
+            return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarEstadosProcesos").subscribe(
+                response =>{
+                    this.listaDatos = response['mensaje'];
+                    console.log(this.listaDatos);
+                }
+            );
+        }
     }
 
     public GuardarParametrizacion(){
