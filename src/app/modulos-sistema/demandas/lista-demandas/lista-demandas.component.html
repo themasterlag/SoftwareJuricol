@@ -58,6 +58,21 @@
     <table class="table table-striped">
       <!-- titulos de columnas -->
       <thead>
+          <tr>
+          
+              <th>&nbsp;</th>
+              <th scope="col">&nbsp;</th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Documento" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Nombres" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Apellidos" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Telefono" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Celular" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Correo" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Direccion" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Edad"></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.CiudadResidencia"></th>
+              <th>&nbsp;</th>
+          </tr>
         <tr>
           <td><img src="../../../../assets/iconos/semaforo/2x/twotone_traffic_black_18dp.png" class="imgSemaforo"></td>
           <th scope="col">#</th>
@@ -75,7 +90,19 @@
 
       <!-- informacion de la tabla o lista de edemandas -->
       <tbody>
-        <tr *ngFor="let Demanda of listaDemandas">
+        <tr *ngFor="let Demanda of listaDemandas | arrayFilter : 
+          { 
+            Documento:   searchObject.Documento,  
+            Nombres:  searchObject.Nombres,
+            Apellidos:searchObject.Apellidos,
+            Telefono: searchObject.Telefono,
+            Celular:  searchObject.Celular,
+            Correo:   searchObject.Correo,
+            Direccion:searchObject.Direccion,
+            Edad:     searchObject.Edad,
+            Estado:   searchObject.Estado,
+            CiudadResidencia:   searchObject.CiudadResidencia
+          }">
           <td> <div [ngClass]="{'negro':Demanda.DiasRestantes<0, 'gris':Demanda.DiasRestantes>31, 'rojo':Demanda.DiasRestantes==0, 'amarillo':Demanda.DiasRestantes>0 && Demanda.DiasRestantes<8, 'verde':Demanda.DiasRestantes>8 && Demanda.DiasRestantes<32}" >  </div> </td>
           <!-- <td>{{Demanda.DiasRestantes}}</td> -->
           <th scope="row">{{Demanda.IdDemanda}}</th> 

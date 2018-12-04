@@ -18,7 +18,18 @@ export class ListaDemandasComponent implements OnInit {
   // variable con las diferentes demandas
 
   // listaDemandas:any;
-
+  searchObject:any={
+    Documento:"",
+    Nombres:"",
+    Apellidos:"",
+    Telefono:"",
+    Celular:"",
+    Correo:"",
+    Direccion:"",
+    Edad:"",
+    Estado:"",
+    CiudadResidencia:""
+  }
   listaDemandas:any;
   con:number = 0;
 
@@ -31,11 +42,25 @@ export class ListaDemandasComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.controladorDemanda.BuscarDemandas().add(
-      response =>{
-        this.listaDemandas = this.controladorDemanda.GetListaDemandas();
-      }
-    );
+    if(this.autenticadorService.GetRol() == 'Abogado'){
+      let IdEmpleado: number;
+      IdEmpleado =  this.autenticadorService.GetIdEmpleado();
+       this.controladorDemanda.BuscarDemandas(IdEmpleado).add(
+         response =>{
+           this.listaDemandas = this.controladorDemanda.GetListaDemandas();
+         }
+       );
+    }
+    else{
+      let IdEmpleado = null;
+      this.controladorDemanda.BuscarDemandas(IdEmpleado).add(
+        response =>{
+          this.listaDemandas = this.controladorDemanda.GetListaDemandas();
+        }
+      );
+
+    }
+    
   }
 
   semaforo(fechaInicioEstado,fechaVencimiento){

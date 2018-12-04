@@ -256,6 +256,7 @@ export class Demanda {
     }
 
     public BuscarEstadosProcesos(){
+      
         return this.http.get("https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarEstadosProcesos").subscribe(
             response =>{
                 this.listaEstadosProcesos = response["mensaje"];
@@ -274,9 +275,10 @@ export class Demanda {
     }
 
     public BuscarDemanda(){
+        
         return this.http.get("https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarDemandas&Filtro=Demanda"+"&IdDemanda="+this.id).subscribe(
             response=>{
-                console.log(response);
+                console.log(response['mensaje']);
                 this.id = response["mensaje"][0]["IdDemanda"];
                 this.categoria = response["mensaje"][0]["IdCategoria"];
                 this.nombreCategoria = response["mensaje"][0]["NombreCategoria"];
@@ -302,8 +304,8 @@ export class Demanda {
     }
 
 
-    public BuscarDemandas(){
-        return this.http.get("https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarDemandas").subscribe(
+    public BuscarDemandas(IdEmpleado){
+            return this.http.get("https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarDemandas&IdEmpleado="+IdEmpleado).subscribe(
             response=>{
                 this.listaDemandas = response["mensaje"];
                 console.log(this.listaDemandas);

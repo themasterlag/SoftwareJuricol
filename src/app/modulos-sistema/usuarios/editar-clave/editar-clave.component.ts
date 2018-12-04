@@ -17,12 +17,14 @@ export class EditarClaveComponent implements OnInit {
   claveNueva:any;
   claveConfirmar:any;
   ControladorUsuario : Usuario;
+  NombreUsuario: string;
   constructor(private http: HttpClient,private autenticadorService: AutenticadorService) { 
 
     this.ControladorUsuario= new Usuario(http);
    
     this.idUsuario = this.autenticadorService.GetIdUsuario();
     this.usuario = this.autenticadorService.GetUsuario();
+    this.NombreUsuario= this.autenticadorService.GetNombre();
  
 
   }
