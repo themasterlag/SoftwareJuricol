@@ -21,6 +21,7 @@ export class Empleado {
     private ciudad:number ; // atributo donde se guarda temporalmete la Cuidad del cliente
     private tipoDocumento: number;
     private tarjeta : number ;
+    private rol : number ;
     
 
     // atributos
@@ -33,6 +34,9 @@ export class Empleado {
     
     public GetListaEmpleados(){
         return this.listaEmpleados;
+    }
+    public SetRol(Rol){
+        this.rol = Rol
     }
     
     public BuscarEmpleados(){
@@ -253,7 +257,8 @@ export class Empleado {
              IdCiudad: this.ciudad,
              TarjetaProfesional : this.tarjeta,
              IdTipoDocumento : this.tipoDocumento,
-             Direccion : this.direccion
+             Direccion : this.direccion,
+             IdRol : this.rol
          },{headers:new HttpHeaders ({"content-type":"application/json"})}
      );
 

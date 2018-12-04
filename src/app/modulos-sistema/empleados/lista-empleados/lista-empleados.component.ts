@@ -92,7 +92,7 @@ export class ListaEmpleadosComponent implements OnInit {
   //----------------Usuarios--------------------------------
 
   crearUsuario(IdEmpleado,Posicion){
-    if(this.listaEmpleados[Posicion]['Rol'] == 0 || this.listaEmpleados[Posicion]['Rol'] == null || this.listaEmpleados[Posicion]['Rol'] == ""){
+    if(this.listaEmpleados[Posicion]['IdRol'] == 0 ){
       swal({
         type: 'error',
         title:"Seleccione un Rol",
@@ -114,6 +114,8 @@ export class ListaEmpleadosComponent implements OnInit {
               title:"Usuario Creado",
               timer: 5000
             });
+
+            this.ngOnInit();
           }
           else{
             swal({
@@ -123,7 +125,7 @@ export class ListaEmpleadosComponent implements OnInit {
             });
           }
           
-          this.ngOnInit();
+          
         },err=>{
           if(err.error['codigo'] != 200){
             swal({

@@ -45,6 +45,7 @@ export class EditarEmpleadoComponent implements OnInit {
   rol: number;
   Roles:Array<Object>=[];
   RolPropio;
+  BloqueoRol;
   
   private DatosJSON: any;
 
@@ -78,6 +79,10 @@ export class EditarEmpleadoComponent implements OnInit {
           this.titular = this.DatosJSON[0].Titular;
           this.cargo = this.DatosJSON[0].IdCargo;
           this.rol = this.DatosJSON[0].IdRol
+          if(this.rol == null || this.rol == undefined){
+            this.rol = 0;
+            this.BloqueoRol = true;
+          }
           console.log(this.DatosJSON);
 
           this.LlenarSelects();
@@ -254,6 +259,7 @@ export class EditarEmpleadoComponent implements OnInit {
     this.Empleado.SetCuidad(this.cuidad);
     this.Empleado.SetTarjeta(this.tarjeta);
     this.Empleado.SetCargo(this.cargo);
+    this.Empleado.SetRol(this.rol);
     
 
     this.Empleado.ActualizarAsociado().subscribe(

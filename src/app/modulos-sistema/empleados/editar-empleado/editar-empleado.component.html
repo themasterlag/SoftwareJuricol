@@ -125,7 +125,7 @@
         <div class="form-group row" *ngIf="RolPropio == 'Administrador'">
             <div class="col-md-3">
                 <label >Tipo de Rol:</label><br/>
-                <select class="form-control" [(ngModel)]="rol">
+                <select class="form-control" [(ngModel)]="rol" [disabled]="BloqueoRol">
                   <option value="0" disabled >--Seleccione un Rol--</option>
                   <option value="{{Rol.Id}}" *ngFor="let Rol of Roles">{{Rol.Descripcion}}</option>
                 </select>
