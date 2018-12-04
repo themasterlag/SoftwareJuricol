@@ -107,7 +107,7 @@ export class ListarClienteComponent implements OnInit {
       respuesta =>{
      
         this.ClientesJSON = respuesta["mensaje"];
-        console.log(this.ClientesJSON);
+       
           Hoy = moment();
           let i:any ;
          

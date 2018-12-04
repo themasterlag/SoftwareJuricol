@@ -14,6 +14,8 @@ export class AutenticadorService {
   usuario:number = null;
   token:any = null;
   tipoUsuario: string;
+  NombreEmpleado:string;
+  IdEmpleado: number;
 
   constructor(private router:Router) {  
     // this.SetToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5MjM5NTcsImV4cCI6MTU0Mzk1OTk1NywiZGF0YSI6eyJ1c3VhcmlvIjoiMTIzNDU2Nzg5IiwiSWRVc3VhcmlvIjoiMSIsIlRpcG9Vc3VhcmlvIjoiQWRtaW5pc3RyYWRvciJ9fQ.9p-w3YUGrJ5vkZxQ6vQ1BH86N_ow-u9iWbyFkdftzHc")   
@@ -26,7 +28,12 @@ export class AutenticadorService {
     this.token = Token;
     // this.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI3NDYxMTYsImV4cCI6MTU0Mjc4MjExNiwiZGF0YSI6eyJ1c3VhcmlvIjoiMTIzNDU2Nzg5In19.eHjX1nNxucTAzaydxdInNW3lngdgyzk2XRbbpWHwBuI";
   }
-  
+  public SetNombre(Nombre){
+    this.NombreEmpleado = Nombre
+  }
+  public GetNombre(){
+    return this.NombreEmpleado;
+  }
   public GetToken() {
     var token = sessionStorage.getItem("token");
     // console.log(token)
@@ -44,6 +51,9 @@ export class AutenticadorService {
   public GetRol(){
     return this.tipoUsuario;
   }
+  public GetIdEmpleado(){
+    return this.IdEmpleado;
+  }
 
   public ProcesarToken(){
     if(this.token != null){
@@ -55,6 +65,9 @@ export class AutenticadorService {
       
       this.usuario = base64.data.usuario;
       this.tipoUsuario = base64.data.TipoUsuario;
+      this.NombreEmpleado = base64.data.NombreEmpleado;
+      this.IdEmpleado = base64.data.IdEmpleado;
+
       this.GuardarToken(); 
       return this.autenticarToken(base64);
     }
