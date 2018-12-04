@@ -308,7 +308,7 @@ export class Demanda {
             return this.http.get("https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarDemandas&IdEmpleado="+IdEmpleado).subscribe(
             response=>{
                 this.listaDemandas = response["mensaje"];
-                console.log(response);
+                console.log(response,"Respuesta Recurso");
                 this.ProcesarDemandas();
             }
         );

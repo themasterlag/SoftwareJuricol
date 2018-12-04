@@ -59,58 +59,70 @@
       <!-- titulos de columnas -->
       <thead>
           <tr>
-          
+                                                                             
               <th>&nbsp;</th>
-              <th scope="col">&nbsp;</th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Documento" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Nombres" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Apellidos" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Telefono" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Celular" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Correo" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Direccion" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Edad"></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.CiudadResidencia"></th>
+              <th>&nbsp;</th>
+              <th scope="col"><input class="form-control" placeholder="Radicado"  [(ngModel)]="searchObject.NumDemanda" ></th>
+              <th scope="col"><input class="form-control" placeholder="Juzgado"   [(ngModel)]="searchObject.NombreJuzgado" ></th>
+              <th scope="col"><input class="form-control" placeholder="T.Demanda"[(ngModel)]="searchObject.NombreTipoDemanda" ></th>
+              <th scope="col"><input class="form-control" placeholder="T.Proceso"[(ngModel)]="searchObject.NombreTipoProceso" ></th>
+              <th scope="col"><input class="form-control" placeholder="N.Titular"[(ngModel)]="searchObject.NombreTitular" ></th>
+              <th scope="col"><input class="form-control" placeholder="N.Cliente"[(ngModel)]="searchObject.NombreCliente" ></th>
+              <th scope="col"><input class="form-control" placeholder="Estado"[(ngModel)]="searchObject.UltimoMovimiento" ></th>
+              <th scope="col"><input class="form-control" placeholder="FehcaM"[(ngModel)]="searchObject.FechaMovimiento"></th>
+              <th scope="col"><input class="form-control" placeholder="FechaF"[(ngModel)]="searchObject.FechaLimite"></th>
+              <th scope="col">
+                <select class="form-control" [(ngModel)]="searchObject.Finalizacion">
+                  <option value="">Todas</option>
+                  <option value="no">Activas</option>
+                  <option value="si">Finalizadas</option>
+                </select>
+              </th>
               <th>&nbsp;</th>
           </tr>
         <tr>
+            
           <td><img src="../../../../assets/iconos/semaforo/2x/twotone_traffic_black_18dp.png" class="imgSemaforo"></td>
           <th scope="col">#</th>
-          <th scope="col">Numero de radicado</th>
-          <th scope="col" id="tipoDemanda">Tipo de demanda</th>
-          <th scope="col">Fecha inicio de demanda</th>
+          <th scope="col">Radicado</th>
+          <th scope="col">Juzgado</th>
+          <th scope="col" >Tipo de demanda</th>
+          <th scope="col">Tipo de Proceso</th>
+          <th scope="col">Abogado Titular</th>
           <th scope="col">Cliente</th>
-          <th scope="col">Abogado principal</th>
           <th scope="col">Ultimo estado</th>
           <th scope="col">Fecha inicio estado</th>
           <th scope="col">Fecha limite estado</th>
+          <th scope="col"></th>
           <th scope="col"></th>
         </tr>
       </thead>
 
       <!-- informacion de la tabla o lista de edemandas -->
       <tbody>
+        
         <tr *ngFor="let Demanda of listaDemandas | arrayFilter : 
           { 
-            Documento:   searchObject.Documento,  
-            Nombres:  searchObject.Nombres,
-            Apellidos:searchObject.Apellidos,
-            Telefono: searchObject.Telefono,
-            Celular:  searchObject.Celular,
-            Correo:   searchObject.Correo,
-            Direccion:searchObject.Direccion,
-            Edad:     searchObject.Edad,
-            Estado:   searchObject.Estado,
-            CiudadResidencia:   searchObject.CiudadResidencia
+            NumDemanda:   searchObject.NumDemanda,  
+            NombreJuzgado:  searchObject.NombreJuzgado,
+            NombreTipoDemanda:searchObject.NombreTipoDemanda,
+            NombreTipoProceso: searchObject.NombreTipoProceso,
+            NombreTitular:  searchObject.NombreTitular,
+            NombreCliente:   searchObject.NombreCliente,
+            UltimoMovimiento:searchObject.UltimoMovimiento,
+            FechaMovimiento:     searchObject.FechaMovimiento,
+            FechaLimite:   searchObject.FechaLimite,
+            Finalizacion:   searchObject.Finalizacion
           }">
           <td> <div [ngClass]="{'negro':Demanda.DiasRestantes<0, 'gris':Demanda.DiasRestantes>31, 'rojo':Demanda.DiasRestantes==0, 'amarillo':Demanda.DiasRestantes>0 && Demanda.DiasRestantes<8, 'verde':Demanda.DiasRestantes>8 && Demanda.DiasRestantes<32}" >  </div> </td>
           <!-- <td>{{Demanda.DiasRestantes}}</td> -->
           <th scope="row">{{Demanda.IdDemanda}}</th> 
           <td>{{Demanda.NumDemanda}}</td>
+          <td>{{Demanda.NombreJuzgado}}</td>
           <td>{{Demanda.NombreTipoDemanda}}</td>
-          <td>{{Demanda.FechaCreacion}}</td>
-          <td>{{Demanda.NombreCliente}}</td>
+          <td>{{Demanda.NombreTipoProceso}}</td>
           <td>{{Demanda.NombreTitular}}</td>
+          <td>{{Demanda.NombreCliente}}</td>
           <td>{{Demanda.UltimoMovimiento}}</td>
           <td>{{Demanda.FechaMovimiento}}</td>
           <td>{{Demanda.FechaLimite}}</td>

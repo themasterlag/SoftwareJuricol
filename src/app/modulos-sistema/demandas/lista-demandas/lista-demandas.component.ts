@@ -16,19 +16,19 @@ export class ListaDemandasComponent implements OnInit {
 
   usuario = this.autenticadorService.GetUsuario();
   // variable con las diferentes demandas
-
+ 
   // listaDemandas:any;
   searchObject:any={
-    Documento:"",
-    Nombres:"",
-    Apellidos:"",
-    Telefono:"",
-    Celular:"",
-    Correo:"",
-    Direccion:"",
-    Edad:"",
-    Estado:"",
-    CiudadResidencia:""
+    NumDemanda:"",
+    NombreJuzgado:"",
+    NombreTipoDemanda:"",
+    NombreTipoProceso:"",
+    NombreTitular:"",
+    NombreCliente:"",
+    UltimoMovimiento:"",
+    FechaMovimiento: "",
+    FechaLimite:"",
+    Finalizacion:""
   }
   listaDemandas:any;
   rolPropio:string;
