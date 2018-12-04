@@ -9,19 +9,6 @@
       <button class="btn btn-primary" (click)="nuevoEmpleado()" *ngIf="RolPropio == 'Administrador'">Nuevo empleado</button>
     </div>
     <br>
-    <!-- searchObject:any={
-    Documento:"",
-    Nombres:"",
-    Apellidos:"",
-    NombreCargo:"",
-    Especialidadad:"",
-    TarjetaProfesional:"",
-    Celular:"",
-    CorreoElectronico:"",
-    Direccion:"",
-    NombreCiudad:"",
-    Titular:"",
-  } -->
 
     <table class="table table-striped">
       <!-- titulo de las columnas -->
@@ -40,6 +27,7 @@
               <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Direccion"></th>
               <th scope="col"><input class="form-control" [(ngModel)]="searchObject.NombreCiudad"></th>
               <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Titular"></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Rol" *ngIf="RolPropio == 'Administrador'"></th>
               <th>&nbsp;</th>   
           </tr>
         <tr class="colums">
@@ -55,6 +43,7 @@
           <th scope="col">Direccion</th>
           <th scope="col">Ciudad</th>
           <th scope="col">Titular</th> 
+          <th scope="col" *ngIf="RolPropio == 'Administrador'">Rol</th>
           <th scope="col" *ngIf="RolPropio == 'Administrador'"></th>
           <th scope="col"></th>
         </tr>
@@ -63,19 +52,22 @@
       <!-- informacion de la tabla o listado de empleados -->
       <tbody>
         <tr *ngFor="let Empleado of listaEmpleados | arrayFilter : 
-        { 
-          Documento:          searchObject.Documento,  
-          Nombres:            searchObject.Nombres,
-          Apellidos:          searchObject.Apellidos,
-          NombreCargo:        searchObject.NombreCargo,
-          Especialidadad:     searchObject.Especialidadad,
-          TarjetaProfesional: searchObject.TarjetaProfesional,
-          Celular:            searchObject.Celular,
-          CorreoElectronico:  searchObject.CorreoElectronico,
-          Direccion:          searchObject.Direccion,
-          NombreCiudad:       searchObject.NombreCiudad,
-          Titular:            searchObject.Titular
-        }">
+            { 
+              Documento:          searchObject.Documento,  
+              Nombres:            searchObject.Nombres,
+              Apellidos:          searchObject.Apellidos,
+              NombreCargo:        searchObject.NombreCargo,
+              Especialidadad:     searchObject.Especialidadad,
+              TarjetaProfesional: searchObject.TarjetaProfesional,
+              Celular:            searchObject.Celular,
+              CorreoElectronico:  searchObject.CorreoElectronico,
+              Direccion:          searchObject.Direccion,
+              NombreCiudad:       searchObject.NombreCiudad,
+              Titular:            searchObject.Titular,
+              Rol:                searchObject.Rol
+            };
+            let indice=index"
+        >
           <th scope="row">{{Empleado.IdEmpleado}}</th>
           <td>{{Empleado.Documento}}</td>
           <td>{{Empleado.Nombres}}</td>
@@ -88,12 +80,13 @@
           <td>{{Empleado.Direccion}}</td>
           <td>{{Empleado.NombreCiudad}}</td>
           <td>{{Empleado.Titular}}</td>
+          <td *ngIf="RolPropio == 'Administrador'">{{Empleado.Rol}}</td>
           <td *ngIf="Empleado['Usuario']=='No' && RolPropio == 'Administrador'" >
-              <select class="form-control" [(ngModel)]="Rol">
+              <select class="form-control" [(ngModel)]="listaEmpleados[indice].IdRol">
                   <option value="0" disabled >--Seleccione Rol--</option>
                   <option value="{{TipoRol.Id}}" *ngFor="let TipoRol of Roles">{{TipoRol.Descripcion}}</option>
               </select>
-            <button class="btn btn-danger" (click)="crearUsuario(Empleado.IdEmpleado)">Crear usuario</button>
+            <button class="btn btn-danger" (click)="crearUsuario(Empleado.IdEmpleado,indice)">Crear usuario</button>
           </td>
           <td *ngIf="Empleado['Usuario']=='Si' && RolPropio == 'Administrador'"><button class="btn btn-success" disabled>Usuario ya creado</button></td>
           <td><button class="btn btn-primary" (click)="verEmpleado(Empleado.IdEmpleado)">editar</button></td>

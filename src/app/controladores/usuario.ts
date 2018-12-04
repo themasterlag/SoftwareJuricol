@@ -58,7 +58,9 @@ export class Usuario {
     public CrearUsuario(){
     return this.http.post("https://localhost/GitHub/juricol/recursos/validar.php",{
         accion:'crearUsuario',
-        IdEmpleado: this.empleado});
+        IdEmpleado: this.empleado,
+        IdRol: this.rol
+      });
     }
     public ModicarPasword(){
         this.clave = Md5.init(this.clave);
