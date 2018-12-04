@@ -116,7 +116,7 @@
           <td>{{Demanda.FechaLimite}}</td>
 
           <td><button class="btn btn-primary" (click)="verDemanda(Demanda.IdDemanda,Demanda.FechaInicioEstado,Demanda.FechaVencimiento)">Ver</button></td>
-          <td><button class="btn btn-primary" (click)="Editar(Demanda.IdDemanda)">Editar</button></td>
+          <td><button class="btn btn-primary" *ngIf="rolPropio != 'Abogado'" (click)="Editar(Demanda.IdDemanda)">Editar</button></td>
         </tr>
       </tbody>
 

@@ -31,7 +31,7 @@ export class ListaDemandasComponent implements OnInit {
     CiudadResidencia:""
   }
   listaDemandas:any;
-  con:number = 0;
+  rolPropio:string;
 
   constructor(private router: Router, private http: HttpClient, private autenticadorService: AutenticadorService) {
     this.controladorDemanda = new Demanda(this.http);
@@ -42,7 +42,8 @@ export class ListaDemandasComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.autenticadorService.GetRol() == 'Abogado'){
+    this.rolPropio = this.autenticadorService.GetRol() ;
+    if(this.rolPropio == 'Abogado'){
       let IdEmpleado: number;
       IdEmpleado =  this.autenticadorService.GetIdEmpleado();
        this.controladorDemanda.BuscarDemandas(IdEmpleado).add(
