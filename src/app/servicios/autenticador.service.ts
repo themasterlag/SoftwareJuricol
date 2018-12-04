@@ -44,7 +44,7 @@ export class AutenticadorService {
   }
 
   public GetIdEmpleado(){
-    return this.idEmpleado
+    return this.idEmpleado;
   }
 
   public GetNombreEmpleado(){
@@ -64,7 +64,7 @@ export class AutenticadorService {
       console.log(base64);
       this.idUsuario = base64.data.IdUsuario;
       this.usuario = base64.data.usuario;
-      this.idEmpleado = base64.data.IdEmplead;
+      this.idEmpleado = base64.data.IdEmpleado;
       this.empledo = base64.data.NombreEmpleado;
       this.tipoUsuario = base64.data.TipoUsuario;
 
