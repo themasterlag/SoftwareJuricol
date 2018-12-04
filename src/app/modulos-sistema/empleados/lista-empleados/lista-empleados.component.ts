@@ -23,9 +23,9 @@ export class ListaEmpleadosComponent implements OnInit {
   controladorUsuario:Usuario;
 
 // ---------------------------Lista empleados------------------------------
-  Rol: number;
+  
   Roles:Array<Object>=[];
-  listaEmpleados:Object;
+  listaEmpleados:Array<Object>=[];
   RolPropio:string;
 
   controladorEmpleado: Empleado;
@@ -43,6 +43,7 @@ export class ListaEmpleadosComponent implements OnInit {
     Estado:"",
     NombreCiudad:"",
     Titular:"",
+    Rol:""
   }
 
   constructor(private router: Router, private http: HttpClient, private autenticadorService: AutenticadorService) {
@@ -62,7 +63,13 @@ export class ListaEmpleadosComponent implements OnInit {
     this.controladorEmpleado.BuscarEmpleados().add(
       response=>{
         this.listaEmpleados = this.controladorEmpleado.GetListaEmpleados();
-        console.log(this.listaEmpleados);
+        let i 
+        for(i = 0; i < this.listaEmpleados.length; i++){
+          if(this.listaEmpleados[i]['IdRol'] == null || this.listaEmpleados[i]['IdRol'] == undefined){
+            this.listaEmpleados[i]['IdRol'] = 0;
+            this.listaEmpleados[i]['Rol'] = "Sin Rol";
+          } 
+        }
       }
     );
     this.controladorUsuario.BuscarRoles().add(
@@ -84,8 +91,8 @@ export class ListaEmpleadosComponent implements OnInit {
 
   //----------------Usuarios--------------------------------
 
-  crearUsuario(IdEmpleado){
-    if(this.Rol == 0 || this.Rol == null ){
+  crearUsuario(IdEmpleado,Posicion){
+    if(this.listaEmpleados[Posicion]['Rol'] == 0 || this.listaEmpleados[Posicion]['Rol'] == null || this.listaEmpleados[Posicion]['Rol'] == ""){
       swal({
         type: 'error',
         title:"Seleccione un Rol",
@@ -97,6 +104,7 @@ export class ListaEmpleadosComponent implements OnInit {
       this.empleadoId = IdEmpleado;
 
       this.controladorUsuario.setEmpleado(this.empleadoId);
+      this.controladorUsuario.SetRol(this.listaEmpleados[Posicion]['IdRol']);
   
       this.controladorUsuario.CrearUsuario().subscribe(
         response =>{
@@ -104,6 +112,13 @@ export class ListaEmpleadosComponent implements OnInit {
             swal({
               type: 'success',
               title:"Usuario Creado",
+              timer: 5000
+            });
+          }
+          else{
+            swal({
+              type: 'error',
+              title:"Ocurrio Un Error al intentar crear el usuario",
               timer: 5000
             });
           }

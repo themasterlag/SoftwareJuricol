@@ -37,7 +37,7 @@ export class ConvertidorPdfComponent implements OnInit {
     this.uploader = new FileUploader({
       url:  'http://localhost/GitHub/juricol/recursos/validar.php?accion=pdf',
       authToken: this.token,
-      authTokenHeader: 'Authorization',
+      authTokenHeader:'Authorization',
       isHTML5: true,
       removeAfterUpload: true
     });
