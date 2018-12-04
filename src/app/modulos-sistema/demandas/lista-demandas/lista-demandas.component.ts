@@ -16,19 +16,19 @@ export class ListaDemandasComponent implements OnInit {
 
   usuario = this.autenticadorService.GetUsuario();
   // variable con las diferentes demandas
-
+ 
   // listaDemandas:any;
   searchObject:any={
-    aqui:"",
-    Nombres:"",
-    Apellidos:"",
-    Telefono:"",
-    Celular:"",
-    Correo:"",
-    Direccion:"",
-    Edad:"",
-    Estado:"",
-    CiudadResidencia:""
+    NumDemanda:"",
+    NombreJuzgado:"",
+    NombreTipoDemanda:"",
+    NombreTipoProceso:"",
+    NombreTitular:"",
+    NombreCliente:"",
+    UltimoMovimiento:"",
+    FechaMovimiento: "",
+    FechaLimite:"",
+    Finalizacion:""
   }
   
   listaDemandas:any;
@@ -54,10 +54,11 @@ export class ListaDemandasComponent implements OnInit {
        );
     }
     else{
-      let IdEmpleado = null;
+      let IdEmpleado = 0;
       this.controladorDemanda.BuscarDemandas(IdEmpleado).add(
         response =>{
           this.listaDemandas = this.controladorDemanda.GetListaDemandas();
+          
         }
       );
 

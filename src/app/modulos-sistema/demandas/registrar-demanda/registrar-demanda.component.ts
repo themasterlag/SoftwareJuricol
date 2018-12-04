@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import swal from 'sweetalert2';
 
 import { Demanda } from '../../../controladores/demanda';
 import { AutenticadorService } from '../../../servicios/autenticador.service';
@@ -118,7 +119,11 @@ export class RegistrarDemandaComponent implements OnInit {
       this.controladorDemanda.GuardarDemanda().subscribe(
         response =>{
           if(response["codigo"]==200){
-            alert("Demanda registrada correctamente");
+            swal({
+              type: 'success',
+              title: "Demanda registrada correctamente",
+              timer: 5000
+            });
             this.controladorDemanda.SetIdDemanda(response["mensaje"]);
             this.controladorDemanda.SetDescripcionTermino(this.descripcion);
             this.controladorDemanda.SetTermino(this.termino);

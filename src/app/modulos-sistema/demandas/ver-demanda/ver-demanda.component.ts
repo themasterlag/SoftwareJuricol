@@ -113,6 +113,7 @@ export class VerDemandaComponent implements OnInit {
   cerrarModal(){
     this.termino = 0;
     this.Ndescripcion = null;
+    this.descripcionMovimiento = null;
     this.fechaInicioEstado = null;
     this.fechaVencimiento = null;
     document.getElementById('id01').style.display='none';
