@@ -53,10 +53,11 @@ export class ListaDemandasComponent implements OnInit {
        );
     }
     else{
-      let IdEmpleado = null;
+      let IdEmpleado = 0;
       this.controladorDemanda.BuscarDemandas(IdEmpleado).add(
         response =>{
           this.listaDemandas = this.controladorDemanda.GetListaDemandas();
+          
         }
       );
 
