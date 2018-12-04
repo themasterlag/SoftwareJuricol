@@ -57,7 +57,10 @@
         <tr *ngFor="let especialidad of listaEspecialidades">
           <th scope="row">{{especialidad.Id}}</th>
           <td>{{especialidad.Descripcion}}</td>
-          <td><button class="btn btn-primary" (click)="editar(especialidad.Id,especialidad.Descripcion)">Editar</button></td>
+          <td>
+            <button class="btn btn-primary" (click)="editar(especialidad.Id,especialidad.Descripcion)">Editar</button>
+            <button class="btn btn-danger" (click)="editar(especialidad.Id)">Eliminar</button>
+          </td>
         </tr>
       </tbody>
 

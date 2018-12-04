@@ -468,14 +468,14 @@ export class Parametrizacion {
     public EliminarParametrizacion(){
         if(this.tipo == "tiposDocumentos"){
             // console.log("aqui list tipos");
-            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarTipoDocumento&IdTipoDocumento="+20).subscribe(
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarTipoDocumento&IdTipoDocumento="+this.id).subscribe(
                 response => {
                     if(response != null){
                         this.respuesta = response['mensaje'];
                         return this.respuesta;  
                     }
                 },error =>{
-                    this.error = "Error al eliminar tipo de documento";
+                    this.error = "Error al eliminar el tipo de documento";
                     console.log(this.error)
                     return this.error;                    
                 }
@@ -485,10 +485,14 @@ export class Parametrizacion {
         if(this.tipo == "paises"){
             // console.log("aqui list paises");
             return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarPais").subscribe(
-                response =>{
-                    this.listaDatos = response['mensaje'];
+                response => {
+                    if(response != null){
+                        this.respuesta = response['mensaje'];
+                        return this.respuesta;  
+                    }
                 },error =>{
-                    this.error = "Error al eliminar pais";
+                    this.error = "Error al eliminar el pais";
+                    console.log(this.error)
                     return this.error;                    
                 }
             );
@@ -498,10 +502,14 @@ export class Parametrizacion {
             // console.log("aqui list departamentos");
             if(this.idRelacion == null){
                 return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarDepartamento").subscribe(
-                    response =>{
-                        this.listaDatos = response['mensaje'];
+                    response => {
+                        if(response != null){
+                            this.respuesta = response['mensaje'];
+                            return this.respuesta;  
+                        }
                     },error =>{
-                        this.error = "Error al eliminar departamento";
+                        this.error = "Error al eliminar el departamentos";
+                        console.log(this.error)
                         return this.error;                    
                     }
                 );
@@ -512,10 +520,14 @@ export class Parametrizacion {
             // console.log("aqui list ciudades");
             if(this.idRelacion == null){
                 return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarCiudad").subscribe(
-                    response =>{
-                        this.listaDatos = response['mensaje'];
+                    response => {
+                        if(response != null){
+                            this.respuesta = response['mensaje'];
+                            return this.respuesta;  
+                        }
                     },error =>{
-                        this.error = "Error al eliminar ciudad";
+                        this.error = "Error al eliminar la ciudad";
+                        console.log(this.error)
                         return this.error;                    
                     }
                 );
@@ -524,10 +536,14 @@ export class Parametrizacion {
 
         if(this.tipo == "cargos"){
             return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarCargo").subscribe(
-                response =>{
-                    this.listaDatos = response['mensaje'];
+                response => {
+                    if(response != null){
+                        this.respuesta = response['mensaje'];
+                        return this.respuesta;  
+                    }
                 },error =>{
-                    this.error = "Error al eliminar cargo";
+                    this.error = "Error al eliminar el cargos";
+                    console.log(this.error)
                     return this.error;                    
                 }
             );
@@ -535,10 +551,14 @@ export class Parametrizacion {
 
         if(this.tipo == "especialidades"){
             return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarEspecialidad").subscribe(
-                response =>{
-                    this.listaDatos = response['mensaje'];
+                response => {
+                    if(response != null){
+                        this.respuesta = response['mensaje'];
+                        return this.respuesta;  
+                    }
                 },error =>{
-                    this.error = "Error al eliminar especialidad";
+                    this.error = "Error al eliminar la especialidades";
+                    console.log(this.error)
                     return this.error;                    
                 }
             );
@@ -546,10 +566,14 @@ export class Parametrizacion {
 
         if(this.tipo == "estadosDemanda"){
             return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarEstadoDemanda").subscribe(
-                response =>{
-                    this.listaDatos = response['mensaje'];
+                response => {
+                    if(response != null){
+                        this.respuesta = response['mensaje'];
+                        return this.respuesta;  
+                    }
                 },error =>{
-                    this.error = "Error al eliminar estado de demanda";
+                    this.error = "Error al eliminar el estado de demanda";
+                    console.log(this.error)
                     return this.error;                    
                 }
             );
@@ -557,11 +581,14 @@ export class Parametrizacion {
 
         if(this.tipo == "estadosProceso"){
             return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarEstadoProceso").subscribe(
-                response =>{
-                    this.listaDatos = response['mensaje'];
-                    console.log(this.listaDatos);
+                response => {
+                    if(response != null){
+                        this.respuesta = response['mensaje'];
+                        return this.respuesta;  
+                    }
                 },error =>{
-                    this.error = "Error al eliminar estado de proceso";
+                    this.error = "Error al eliminar el estados de proceso";
+                    console.log(this.error)
                     return this.error;                    
                 }
             );
@@ -569,11 +596,14 @@ export class Parametrizacion {
 
         if(this.tipo == "institucionesLaborales"){
             return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarInstitucionLaboral").subscribe(
-                response =>{
-                    this.listaDatos = response['mensaje'];
-                    console.log(this.listaDatos);
+                response => {
+                    if(response != null){
+                        this.respuesta = response['mensaje'];
+                        return this.respuesta;  
+                    }
                 },error =>{
-                    this.error = "Error al eliminar institucion laboral";
+                    this.error = "Error al eliminar la institucion laboral";
+                    console.log(this.error)
                     return this.error;                    
                 }
             );
@@ -581,11 +611,14 @@ export class Parametrizacion {
 
         if(this.tipo == "juzgados"){
             return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarJuzgado").subscribe(
-                response =>{
-                    this.listaDatos = response['mensaje'];
-                    console.log(this.listaDatos);
+                response => {
+                    if(response != null){
+                        this.respuesta = response['mensaje'];
+                        return this.respuesta;  
+                    }
                 },error =>{
-                    this.error = "Error al eliminar juzgado";
+                    this.error = "Error al eliminar el juzgado";
+                    console.log(this.error)
                     return this.error;                    
                 }
             );
@@ -593,11 +626,14 @@ export class Parametrizacion {
 
         if(this.tipo == "parentescos"){
             return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarParentesco").subscribe(
-                response =>{
-                    this.listaDatos = response['mensaje'];
-                    console.log(this.listaDatos);
+                response => {
+                    if(response != null){
+                        this.respuesta = response['mensaje'];
+                        return this.respuesta;  
+                    }
                 },error =>{
-                    this.error = "Error al eliminar parentesco";
+                    this.error = "Error al eliminar el parentesco";
+                    console.log(this.error)
                     return this.error;                    
                 }
             );
@@ -605,11 +641,14 @@ export class Parametrizacion {
 
         if(this.tipo == "tiposProcesos"){
             return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarTipoProceso").subscribe(
-                response =>{
-                    this.listaDatos = response['mensaje'];
-                    console.log(this.listaDatos);
+                response => {
+                    if(response != null){
+                        this.respuesta = response['mensaje'];
+                        return this.respuesta;  
+                    }
                 },error =>{
-                    this.error = "Error al eliminar tipo de proceso";
+                    this.error = "Error al eliminar el tipo de proceso";
+                    console.log(this.error)
                     return this.error;                    
                 }
             );
@@ -617,11 +656,14 @@ export class Parametrizacion {
 
         if(this.tipo == "tiposDemandas"){
             return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarTipoDemanda").subscribe(
-                response =>{
-                    this.listaDatos = response['mensaje'];
-                    console.log(this.listaDatos);
+                response => {
+                    if(response != null){
+                        this.respuesta = response['mensaje'];
+                        return this.respuesta;  
+                    }
                 },error =>{
-                    this.error = "Error al eliminar tipo de demanda";
+                    this.error = "Error al eliminar el tipo de demanda";
+                    console.log(this.error)
                     return this.error;                    
                 }
             );

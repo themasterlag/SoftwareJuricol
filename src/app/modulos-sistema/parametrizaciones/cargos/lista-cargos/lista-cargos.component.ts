@@ -92,6 +92,29 @@ export class ListaCargosComponent implements OnInit {
     this.activarModal("editar");
   }
 
-
+  eliminar(Id){
+    this.id = Id;
+    this.controladorParametrizacion.SetId(this.id);
+    this.controladorParametrizacion.EliminarParametrizacion().add(
+      response =>{
+        let respuesta = this.controladorParametrizacion.GetRespuesta();
+        if(respuesta == null){
+          this.error = this.controladorParametrizacion.GetError();
+          swal({
+            type: 'error',
+            title: this.error,
+            timer: 5000
+          })
+        }
+        else{
+          swal({
+            type: 'success',
+            title: "Eliminacion realizada satisfactoriamente",
+            timer: 5000
+          })
+        }
+      }
+    );
+  }
 
 }

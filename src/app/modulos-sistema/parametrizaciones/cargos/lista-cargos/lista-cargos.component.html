@@ -57,7 +57,10 @@
         <tr *ngFor="let cargo of listaCargos">
           <th scope="row">{{cargo.Id}}</th>
           <td>{{cargo.Descripcion}}</td>
-          <td><button class="btn btn-primary" (click)="editar(cargo.Id,cargo.Descripcion)">Editar</button></td>
+          <td>
+            <button class="btn btn-primary" (click)="editar(cargo.Id,cargo.Descripcion)">Editar</button>
+            <button class="btn btn-danger" (click)="eliminar(cargo.Id)">Eliminar</button>
+          </td>
         </tr>
       </tbody>
 

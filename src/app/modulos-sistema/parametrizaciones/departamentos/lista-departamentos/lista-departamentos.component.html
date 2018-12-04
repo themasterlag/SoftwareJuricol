@@ -63,7 +63,10 @@
         <tr *ngFor="let departamento of listaTipos">
           <th scope="row">{{departamento.Id}}</th>
           <td>{{departamento.Descripcion}}</td>
-          <td><button class="btn btn-primary" (click)="editar(departamento.Id,departamento.Descripcion,departamento.Paises_id)">Editar</button></td>
+          <td>
+            <button class="btn btn-primary" (click)="editar(departamento.Id,departamento.Descripcion,departamento.Paises_id)">Editar</button>
+            <button class="btn btn-danger" (click)="editar(departamento.Id)">Eliminar</button>
+          </td>
         </tr>
       </tbody>
 
