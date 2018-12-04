@@ -33,7 +33,7 @@
         </select>
         <label>Ciudades</label>
         <select class="form-control" [(ngModel)]="ciudad">
-          <option value="null" disabled>Seleccione un departamento</option>
+          <option value="null" disabled>Seleccione una ciudad</option>
           <option *ngFor="let ciudad of listaCiudades" value="{{ciudad.Id}}">{{ciudad.Descripcion}}</option>
         </select>
       </div>
@@ -71,7 +71,7 @@
         <tr *ngFor="let institucion of listaInstituciones">
           <th scope="row">{{institucion.Id}}</th>
           <td>{{institucion.Descripcion}}</td>
-          <td>{{institucion.Ciudad_id}}</td>
+          <td>{{institucion.NombreCiudad}}</td>
           <td><button class="btn btn-primary" (click)="editar(institucion.Id,institucion.Descripcion,institucion.Ciudad_id)">Editar</button></td>
         </tr>
       </tbody>
