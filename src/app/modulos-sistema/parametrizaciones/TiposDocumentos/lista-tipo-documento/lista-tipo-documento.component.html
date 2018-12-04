@@ -57,7 +57,10 @@
         <tr *ngFor="let tipo of listaTipos">
           <th scope="row">{{tipo.Id}}</th>
           <td>{{tipo.Descripcion}}</td>
-          <td><button class="btn btn-primary" (click)="editar(tipo.Id,tipo.Descripcion)">Editar</button></td>
+          <td>
+            <button class="btn btn-primary" (click)="editar(tipo.Id,tipo.Descripcion)">Editar</button> 
+            <button class="btn btn-danger" (click)="eliminar(tipo.Id)">Eliminar</button>
+          </td>
         </tr>
       </tbody>
 

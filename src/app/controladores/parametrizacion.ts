@@ -12,6 +12,7 @@ export class Parametrizacion {
     private listaDatos:Object = null;
     private idRelacion:number = null;
 
+    private respuesta:any = null;
     private error:any = null
 
     // metodos
@@ -42,12 +43,17 @@ export class Parametrizacion {
         this.diasLimite = DiasLimite;
     }
 
+
     public GetNombre(){
         return this.nombre;
     }
 
     public GetListaDatos(){
         return this.listaDatos;
+    }
+
+    public GetRespuesta(){
+        return this.respuesta;
     }
 
     public GetError(){
@@ -462,11 +468,12 @@ export class Parametrizacion {
     public EliminarParametrizacion(){
         if(this.tipo == "tiposDocumentos"){
             // console.log("aqui list tipos");
-            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarTipoDocumento").subscribe(
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarTipoDocumento&IdDocumento="+this.id).subscribe(
                 response => {
-                    return response['mensaje'];
+                    this.respuesta = response['mensaje'];
+                    return this.respuesta; 
                 },error =>{
-                    this.error = "Error al consultar tipos de documentos";
+                    this.error = "Error al eliminar tipo de documento";
                     return this.error;                    
                 }
             );
@@ -478,7 +485,7 @@ export class Parametrizacion {
                 response =>{
                     this.listaDatos = response['mensaje'];
                 },error =>{
-                    this.error = "Error al consultar paises";
+                    this.error = "Error al eliminar pais";
                     return this.error;                    
                 }
             );
@@ -491,7 +498,7 @@ export class Parametrizacion {
                     response =>{
                         this.listaDatos = response['mensaje'];
                     },error =>{
-                        this.error = "Error al consultar departamentos";
+                        this.error = "Error al eliminar departamento";
                         return this.error;                    
                     }
                 );
@@ -505,7 +512,7 @@ export class Parametrizacion {
                     response =>{
                         this.listaDatos = response['mensaje'];
                     },error =>{
-                        this.error = "Error al consultar ciudades";
+                        this.error = "Error al eliminar ciudad";
                         return this.error;                    
                     }
                 );
@@ -517,7 +524,7 @@ export class Parametrizacion {
                 response =>{
                     this.listaDatos = response['mensaje'];
                 },error =>{
-                    this.error = "Error al consultar cargos";
+                    this.error = "Error al eliminar cargo";
                     return this.error;                    
                 }
             );
@@ -528,7 +535,7 @@ export class Parametrizacion {
                 response =>{
                     this.listaDatos = response['mensaje'];
                 },error =>{
-                    this.error = "Error al consultar especialidades";
+                    this.error = "Error al eliminar especialidad";
                     return this.error;                    
                 }
             );
@@ -539,7 +546,7 @@ export class Parametrizacion {
                 response =>{
                     this.listaDatos = response['mensaje'];
                 },error =>{
-                    this.error = "Error al consultar estados de demandas";
+                    this.error = "Error al eliminar estado de demanda";
                     return this.error;                    
                 }
             );
@@ -551,7 +558,7 @@ export class Parametrizacion {
                     this.listaDatos = response['mensaje'];
                     console.log(this.listaDatos);
                 },error =>{
-                    this.error = "Error al consultar estados de procesos";
+                    this.error = "Error al eliminar estado de proceso";
                     return this.error;                    
                 }
             );
@@ -563,7 +570,7 @@ export class Parametrizacion {
                     this.listaDatos = response['mensaje'];
                     console.log(this.listaDatos);
                 },error =>{
-                    this.error = "Error al consultar instituciones laborales";
+                    this.error = "Error al eliminar institucion laboral";
                     return this.error;                    
                 }
             );
@@ -575,7 +582,7 @@ export class Parametrizacion {
                     this.listaDatos = response['mensaje'];
                     console.log(this.listaDatos);
                 },error =>{
-                    this.error = "Error al consultar juzgados";
+                    this.error = "Error al eliminar juzgado";
                     return this.error;                    
                 }
             );
@@ -587,7 +594,7 @@ export class Parametrizacion {
                     this.listaDatos = response['mensaje'];
                     console.log(this.listaDatos);
                 },error =>{
-                    this.error = "Error al consultar parentescos";
+                    this.error = "Error al eliminar parentesco";
                     return this.error;                    
                 }
             );
@@ -599,7 +606,7 @@ export class Parametrizacion {
                     this.listaDatos = response['mensaje'];
                     console.log(this.listaDatos);
                 },error =>{
-                    this.error = "Error al consultar tipos de procesos";
+                    this.error = "Error al eliminar tipo de proceso";
                     return this.error;                    
                 }
             );
@@ -611,7 +618,7 @@ export class Parametrizacion {
                     this.listaDatos = response['mensaje'];
                     console.log(this.listaDatos);
                 },error =>{
-                    this.error = "Error al consultar tipos de demandas";
+                    this.error = "Error al eliminar tipo de demanda";
                     return this.error;                    
                 }
             );
