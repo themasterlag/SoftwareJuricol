@@ -185,6 +185,15 @@ export class Parametrizacion {
                 }
             );
         }
+
+        if(this.tipo == "tiposDemandas"){
+            return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarTiposProcesos").subscribe(
+                response =>{
+                    this.listaDatos = response['mensaje'];
+                    console.log(this.listaDatos);
+                }
+            );
+        }
     }
 
     public GuardarParametrizacion(){
@@ -282,6 +291,13 @@ export class Parametrizacion {
                 return this.http.post("https:/localhost/GitHub/juricol/recursos/validar.php",{
                     accion:"crearTipoProceso",
                     tipoProcesoNuevo: this.nombre,
+                });
+            }
+
+            if(this.tipo == "tiposDemandas"){
+                return this.http.post("https:/localhost/GitHub/juricol/recursos/validar.php",{
+                    accion:"crearTipoDemanda",
+                    tipoDemandaNuevo: this.nombre,
                 });
             }
         }
@@ -390,6 +406,14 @@ export class Parametrizacion {
                     accion:"modificarTipoProceso",
                     IdTipoProceso: this.id,
                     tipoProcesoNuevo: this.nombre,
+                });
+            }
+
+            if(this.tipo == "tiposDemandas"){
+                return this.http.put("https:/localhost/GitHub/juricol/recursos/validar.php",{
+                    accion:"modificarTipoDemanda",
+                    IdTipoDemanda: this.id,
+                    tipoDemandaNuevo: this.nombre,
                 });
             }
         }
