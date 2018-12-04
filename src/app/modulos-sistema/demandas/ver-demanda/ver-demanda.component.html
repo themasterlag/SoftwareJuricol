@@ -44,32 +44,57 @@
 
     <h1 align="center"><strong>Demanda</strong></h1>
     <br>
-
-    <div class="form-group">
-      <label><h5>Numero de radicado: </h5> <input type="text" class="form-control" disabled [(ngModel)]="numRadicado"></label>
-      <br>
-      <label><h5>Tipo de demanda: </h5><input type="text" class="form-control" disabled [(ngModel)]="nombreTipoDemanda"> </label>
-      <br>
-      <label><h5>Cliente: </h5><input type="text" class="form-control" disabled [(ngModel)]="nombrecliente"></label>
-      <br>
-      <label><h5>Abogado titular: </h5><input type="text" class="form-control" disabled [(ngModel)]="nombreAbogadoTitular"></label>
-      <br>
-      <label><h5>Abogado suplente: </h5><input type="text" class="form-control" disabled [(ngModel)]="nombreAbogadoSuplente"></label>
-      <br>
-      <label><h5>Juzgado: </h5><input type="text" class="form-control" disabled [(ngModel)]="nombreJuzgado"> </label>
-      <br>
-      <label><h5>Contraparte (Demandante / Demandado): </h5> <input type="text" class="form-control" disabled [(ngModel)]="nombreContraparte"></label>
-      <br>
-      <label><h5>Tipo de proceso</h5><input type="text" class="form-control" disabled [(ngModel)]="nombreTipoProceso"> </label>
-      <br>
-      <label><h5>Estado de proceso</h5><input type="text" class="form-control" disabled [(ngModel)]="nombreEstadoProceso"></label>
-      <br>
-      <label><h5>Descripcion de la demanda</h5><input type="text" class="form-control" disabled [(ngModel)]="descripcion"> </label>
+    <div class="form-group row">
+        <div  class="col-md-6"> 
+            <label><h5>Numero de radicado: </h5> </label>
+            <input type="text" class="form-control" disabled [(ngModel)]="numRadicado">  
+        </div>
+        <div class="col-md-6">
+            <label><h5>Tipo de demanda: </h5> </label>
+            <input type="text" class="form-control" disabled [(ngModel)]="nombreTipoDemanda">
+        </div>
     </div>
-
-    <br>
-    <br>
-    <br>
+    <div class="form-group row">
+        <div  class="col-md-6"> 
+            <label><h5>Cliente: </h5></label>
+            <input type="text" class="form-control" disabled [(ngModel)]="nombrecliente">
+        </div>
+        <div class="col-md-6">
+            <label><h5>Abogado titular: </h5></label>
+            <input type="text" class="form-control" disabled [(ngModel)]="nombreAbogadoTitular">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div  class="col-md-6"> 
+            <label><h5>Abogado suplente: </h5></label>
+            <input type="text" class="form-control" disabled [(ngModel)]="nombreAbogadoSuplente">
+        </div>
+        <div class="col-md-6">
+            <label><h5>Juzgado: </h5> </label>
+            <input type="text" class="form-control" disabled [(ngModel)]="nombreJuzgado">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div  class="col-md-6"> 
+            <label><h5>Contraparte (Demandante / Demandado): </h5> </label>
+            <input type="text" class="form-control" disabled [(ngModel)]="nombreContraparte">
+        </div>
+        <div class="col-md-6">
+            <label><h5>Tipo de proceso</h5> </label>
+            <input type="text" class="form-control" disabled [(ngModel)]="nombreTipoProceso">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div  class="col-md-6"> 
+            <label><h5>Estado de proceso</h5></label>
+            <input type="text" class="form-control" disabled [(ngModel)]="nombreEstadoProceso">
+        </div>
+        <div class="col-md-6">
+            <label><h5>Descripcion de la demanda</h5> </label>
+            <textarea type="text" class="form-control" disabled [(ngModel)]="descripcion"></textarea>
+        </div>
+    </div>
+   
     <br>
       
     <div class="botonNuevo">
