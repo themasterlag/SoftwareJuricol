@@ -474,6 +474,7 @@ export class Parametrizacion {
                     return this.respuesta; 
                 },error =>{
                     this.error = "Error al eliminar tipo de documento";
+                    console.log(this.error)
                     return this.error;                    
                 }
             );
