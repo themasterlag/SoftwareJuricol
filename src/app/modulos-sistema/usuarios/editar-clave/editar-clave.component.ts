@@ -78,7 +78,10 @@ export class EditarClaveComponent implements OnInit {
             title: 'Se guardaron correctamente los cambios',
             timer: 5000
           
-          })
+          });
+          this.clave= null;
+          this.claveNueva=null;
+          this.claveConfirmar= null;
         }
       
       },err=>{

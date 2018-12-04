@@ -117,13 +117,6 @@ export class ListaEmpleadosComponent implements OnInit {
 
             this.ngOnInit();
           }
-          else{
-            swal({
-              type: 'error',
-              title:response['mensaje'],
-              timer: 5000
-            });
-          }
           
           
         },err=>{
