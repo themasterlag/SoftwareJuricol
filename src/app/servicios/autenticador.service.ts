@@ -28,10 +28,7 @@ export class AutenticadorService {
     this.token = Token;
     // this.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI3NDYxMTYsImV4cCI6MTU0Mjc4MjExNiwiZGF0YSI6eyJ1c3VhcmlvIjoiMTIzNDU2Nzg5In19.eHjX1nNxucTAzaydxdInNW3lngdgyzk2XRbbpWHwBuI";
   }
- 
-  public GetNombre(){
-    return this.empledo;
-  }
+
   public GetToken() {
     var token = sessionStorage.getItem("token");
     // console.log(token)
@@ -70,8 +67,6 @@ export class AutenticadorService {
       this.idEmpleado = base64.data.IdEmplead;
       this.empledo = base64.data.NombreEmpleado;
       this.tipoUsuario = base64.data.TipoUsuario;
-      this.NombreEmpleado = base64.data.NombreEmpleado;
-      this.IdEmpleado = base64.data.IdEmpleado;
 
       this.GuardarToken(); 
       return this.autenticarToken(base64);

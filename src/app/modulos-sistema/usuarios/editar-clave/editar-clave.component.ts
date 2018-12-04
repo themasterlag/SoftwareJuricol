@@ -24,7 +24,7 @@ export class EditarClaveComponent implements OnInit {
    
     this.idUsuario = this.autenticadorService.GetIdUsuario();
     this.usuario = this.autenticadorService.GetUsuario();
-    this.NombreUsuario= this.autenticadorService.GetNombre();
+    this.NombreUsuario= this.autenticadorService.GetNombreEmpleado();
  
 
   }
