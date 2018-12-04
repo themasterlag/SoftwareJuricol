@@ -15,7 +15,9 @@ export class AutenticadorService {
   token:any = null;
   tipoUsuario: string;
 
-  constructor(private router:Router) {     
+  constructor(private router:Router) {  
+    this.SetToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5MjM5NTcsImV4cCI6MTU0Mzk1OTk1NywiZGF0YSI6eyJ1c3VhcmlvIjoiMTIzNDU2Nzg5IiwiSWRVc3VhcmlvIjoiMSIsIlRpcG9Vc3VhcmlvIjoiQWRtaW5pc3RyYWRvciJ9fQ.9p-w3YUGrJ5vkZxQ6vQ1BH86N_ow-u9iWbyFkdftzHc")   
+    this.GuardarToken();
     this.token = this.GetToken();
     this.ProcesarToken();
   }

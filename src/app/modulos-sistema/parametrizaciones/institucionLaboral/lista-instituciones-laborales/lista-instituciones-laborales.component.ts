@@ -21,14 +21,14 @@ export class ListaInstitucionesLaboralesComponent implements OnInit {
 
   id:number = null;
   nombre:string = null;
-  ciudad:number = null;
   tipoAccion:boolean = false; //falso para crear nuevo tipo, verdadero para editar tipo
   pais:number = null;
   listaPaises:Object = null;
   departamento:number = null;
   listaDepartamentos:Object = null;
-  ciudades:number = null;
+  ciudad:number = null;
   listaCiudades:Object = null;
+
   listaInstituciones:Object = null;
 
   error:any = null;
@@ -75,6 +75,7 @@ export class ListaInstitucionesLaboralesComponent implements OnInit {
     else{
       if(this.tipoAccion == false){
         this.controladorParametrizacion.SetNombre(this.nombre);
+        this.controladorParametrizacion.SetIdRelacion(this.ciudad);
         this.controladorParametrizacion.GuardarParametrizacion().subscribe(
           response =>{
             console.log(response)
@@ -86,6 +87,7 @@ export class ListaInstitucionesLaboralesComponent implements OnInit {
       else{
         this.controladorParametrizacion.SetId(this.id);
         this.controladorParametrizacion.SetNombre(this.nombre);
+        this.controladorParametrizacion.SetIdRelacion(this.ciudad);
         this.controladorParametrizacion.GuardarParametrizacion().subscribe(
           response =>{
             this.cerrarModal();
@@ -110,7 +112,7 @@ export class ListaInstitucionesLaboralesComponent implements OnInit {
   }
 
   mostrasCiudades(){
-    this.controladorParametrizacion.SetTipo("paises");
+    this.controladorParametrizacion.SetTipo("ciudades");
     this.controladorParametrizacion.SetIdRelacion(this.departamento);
     this.controladorParametrizacion.buscarDatosLista().add(
       response => {
@@ -122,7 +124,7 @@ export class ListaInstitucionesLaboralesComponent implements OnInit {
     );
   }
 
-  // desactiva el modal de registrar o  editar tipo de la interfaz
+  // desactiva el modal de registrar o editar, de la interfaz
   cerrarModal(){
     this.nombre = null;
     this.error = null;
