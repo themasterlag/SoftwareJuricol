@@ -111,7 +111,7 @@ export class ListaEmpleadosComponent implements OnInit {
           if(response['codigo']==200){
             swal({
               type: 'success',
-              title:"Usuario Creado",
+              title: response['mensaje'],
               timer: 5000
             });
 
@@ -120,7 +120,7 @@ export class ListaEmpleadosComponent implements OnInit {
           else{
             swal({
               type: 'error',
-              title:"Ocurrio Un Error al intentar crear el usuario",
+              title:response['mensaje'],
               timer: 5000
             });
           }
