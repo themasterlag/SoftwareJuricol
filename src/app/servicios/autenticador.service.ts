@@ -12,8 +12,10 @@ export class AutenticadorService {
 
   idUsuario:number = null;
   usuario:number = null;
+  idEmpleado:number = null;
+  empledo:string = null;
+  tipoUsuario: string = null;
   token:any = null;
-  tipoUsuario: string;
 
   constructor(private router:Router) {  
     // this.SetToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5MjM5NTcsImV4cCI6MTU0Mzk1OTk1NywiZGF0YSI6eyJ1c3VhcmlvIjoiMTIzNDU2Nzg5IiwiSWRVc3VhcmlvIjoiMSIsIlRpcG9Vc3VhcmlvIjoiQWRtaW5pc3RyYWRvciJ9fQ.9p-w3YUGrJ5vkZxQ6vQ1BH86N_ow-u9iWbyFkdftzHc")   
@@ -41,6 +43,14 @@ export class AutenticadorService {
     return this.usuario;
   }
 
+  public GetIdEmpleado(){
+    return this.idEmpleado
+  }
+
+  public GetNombreEmpleado(){
+    return this.empledo;
+  }
+
   public GetRol(){
     return this.tipoUsuario;
   }
@@ -50,10 +60,11 @@ export class AutenticadorService {
       var base64Url = this.token.split('.')[1];
       var base64 = base64Url.replace('-', '+').replace('_', '/');
       base64 = JSON.parse(atob(base64))
-
+      console.log(base64);
       this.idUsuario = base64.data.IdUsuario;
-      
       this.usuario = base64.data.usuario;
+      this.idEmpleado = base64.data.IdEmplead;
+      this.empledo = base64.data.NombreEmpleado;
       this.tipoUsuario = base64.data.TipoUsuario;
       this.GuardarToken(); 
       return this.autenticarToken(base64);

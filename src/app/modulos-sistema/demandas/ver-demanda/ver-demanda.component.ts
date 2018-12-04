@@ -99,7 +99,9 @@ export class VerDemandaComponent implements OnInit {
           this.ngOnInit();
       },
       error =>{
-        this.error = error;
+        this.error = error.error["mensaje"];
+        console.log(this.error)
+
       } 
     );
   }

@@ -468,10 +468,12 @@ export class Parametrizacion {
     public EliminarParametrizacion(){
         if(this.tipo == "tiposDocumentos"){
             // console.log("aqui list tipos");
-            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarTipoDocumento&IdDocumento="+this.id).subscribe(
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarTipoDocumento&IdTipoDocumento="+this.id).subscribe(
                 response => {
-                    this.respuesta = response['mensaje'];
-                    return this.respuesta; 
+                    if(response != null){
+                        this.respuesta = response['mensaje'];
+                        return this.respuesta;  
+                    }
                 },error =>{
                     this.error = "Error al eliminar tipo de documento";
                     console.log(this.error)
