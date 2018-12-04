@@ -158,6 +158,15 @@ export class Parametrizacion {
                 }
             );
         }
+
+        if(this.tipo == "juzgados"){
+            return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarJuzgados").subscribe(
+                response =>{
+                    this.listaDatos = response['mensaje'];
+                    console.log(this.listaDatos);
+                }
+            );
+        }
     }
 
     public GuardarParametrizacion(){
@@ -236,9 +245,14 @@ export class Parametrizacion {
                     IdCiudad: this.idRelacion,
                 });
             }
-        }
 
-        
+            if(this.tipo == "juzgados"){
+                return this.http.post("https:/localhost/GitHub/juricol/recursos/validar.php",{
+                    accion:"crearJuzgado",
+                    juzgadoNuevo: this.nombre,
+                });
+            }
+        }
 
         // Editar un tipo
         else{
@@ -314,12 +328,20 @@ export class Parametrizacion {
                 });
             }
 
-            if(this.tipo == "modificarInstitucionLaboral"){
+            if(this.tipo == "institucionesLaborales"){
                 return this.http.put("https:/localhost/GitHub/juricol/recursos/validar.php",{
-                    accion:"modificarEstadoProceso",
+                    accion:"modificarInstitucionLaboral",
                     IdInstitucion: this.id,
                     institucionNueva: this.nombre,
                     IdCiudad: this.idRelacion,
+                });
+            }
+
+            if(this.tipo == "juzgados"){
+                return this.http.put("https:/localhost/GitHub/juricol/recursos/validar.php",{
+                    accion:"modificarJuzgado",
+                    IdJuzgado: this.id,
+                    juzgadoNuevo: this.nombre,
                 });
             }
         }
