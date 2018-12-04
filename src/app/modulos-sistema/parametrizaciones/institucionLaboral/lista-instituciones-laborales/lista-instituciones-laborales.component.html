@@ -26,6 +26,11 @@
           <option value="null" disabled>Seleccione un pais</option>
           <option *ngFor="let pais of listaPaises" value="{{pais.Id}}">{{pais.Descripcion}}</option>
         </select>
+        <label>Departamento</label>
+        <select class="form-control" [(ngModel)]="departamento" (change)="mostrasCiudades()">
+          <option value="null" disabled>Seleccione un departamento</option>
+          <option *ngFor="let departamento of listaDepartamentos" value="{{departamento.Id}}">{{departamento.Descripcion}}</option>
+        </select>
       </div>
       <!-- contenedor de acciones o botones -->
       <div class="container" style="background-color:#e2e2e2ee">

@@ -10,34 +10,12 @@
           <img *ngIf="tipoMenu==0" src="../../assets/iconos/menu/b/2x/twotone_menu_white_48dp.png" (click)='cambio()'>
           <img *ngIf="tipoMenu==1" src="../../assets/iconos/x/b/2x/baseline_clear_white_18dp.png" (click)='cambio()'>
         </div>
-        <!-- <ul class="sidebar-nav">
-          titulo de menu
-          <li class="sidebar-brand">
-            <h4><span>Juricol</span></h4>
-          </li>
-          opciones del menu
-          <li *ngFor='let Menu of menu'>
-            <a routerLink={{Menu.url}}>
-              <span>{{Menu.opcion}}</span>
-            </a>
-            <hr>
-          </li>
-          <div *ngIf="tipoMenu==0">
-            <br><br><br><br><br><br>
-          </div>
-          <div *ngIf="tipoMenu==1">
-            <br><br><br>
-          </div>
-          <li class="botonCerrarSesion">
-            <a (click)="cerrarSesion()">Cerrar sesion</a>
-          </li>
-          <br>
-        </ul> -->
       </nav>
 
       <div id="contenedorMenu">
         <div class="sidebar-brand">
-          <h4><span>Juricol</span></h4>
+          <img src="../../assets/imagenes/logo.jpg">
+          <h4>Juricol</h4>
         </div>
         <nav id="accordionMenu">        
             <div class="card"  *ngFor="let grupo of gruposMenu">
@@ -61,7 +39,12 @@
                   </div>
                 </div>
             </div>
-            <br><br><br><br><br>
+            <div *ngIf="tipoMenu==0">
+                <br><br><br><br><br><br>
+              </div>
+              <div *ngIf="tipoMenu==1">
+                <br><br><br>
+              </div>
             <div class="card">
               <div class="card-header">
                   <h5 class="mb-0">
@@ -73,7 +56,6 @@
             </div>
           </nav>
         </div>
-        <br><br><br><br><br><br>
     </div>
   </div>
 </body>

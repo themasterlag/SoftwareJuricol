@@ -53,15 +53,12 @@ export class LoginComponent implements OnInit {
         
 
         this.controladorVerificacion.IniciarSesion().subscribe(
-        (data)=> this.respuesta = {...data},
-        (error) => this.error = error['error']['mensaje'],).add(
+        (data)=> this.respuesta = {...data },
+        (error) => this.error = error['error']['mensaje']).add(
           response=>{
             if(this.error==null){
-              // console.log(this.respuesta);
               if(this.respuesta == null){
-                console.log(this.respuesta);
-                console.log("aqui");
-
+                this.error = "Error al iniciar sesion";
               }
               if(this.respuesta['mensaje']=='Acceso correcto'){
                 this.autenticadorService.SetToken(this.respuesta['token'])
@@ -76,16 +73,11 @@ export class LoginComponent implements OnInit {
                 this.error = this.respuesta['mensaje'];
               }
             }
-            else{
-                console.log(this.error);
-                // alert(this.error['error']['mensaje']); 
-            }
           }
         );
       }
     }
   }
-
 
   // prueba de errores
   Error(){

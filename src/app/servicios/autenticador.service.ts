@@ -27,6 +27,7 @@ export class AutenticadorService {
   
   public GetToken() {
     var token = sessionStorage.getItem("token");
+    // console.log(token)
     return token;
   }
 
@@ -52,7 +53,7 @@ export class AutenticadorService {
       
       this.usuario = base64.data.usuario;
       this.tipoUsuario = base64.data.TipoUsuario;
-      this.GuardarToken();
+      this.GuardarToken(); 
       return this.autenticarToken(base64);
     }
     else{
@@ -63,7 +64,7 @@ export class AutenticadorService {
 
 
   public GuardarToken(){
-    sessionStorage.setItem("token",this.token)
+    sessionStorage.setItem("token",this.token);
   }
 
   
@@ -75,7 +76,6 @@ export class AutenticadorService {
           type: 'error',
           title: "Por favor inicie sesion",
           timer: 5000
-        
         })
       this.CerrarSesion();
       return false;
@@ -83,15 +83,17 @@ export class AutenticadorService {
     else{
       var fecha1:Date = new Date();
       var fecha2 = new Date(base64.exp*1000);
-      
+      console.log(fecha2);
+
       if (fecha1 > fecha2){
         swal({
           type: 'error',
           title: "La sesion ha caducado",
           timer: 5000
-        
         })
         this.CerrarSesion();
+        console.log("aqui vence token");
+
         return false;
       }
       else{

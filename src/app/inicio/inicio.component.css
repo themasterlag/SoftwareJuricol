@@ -5,10 +5,13 @@
 }
 
 .contenido{
-    float: left;
-
+    float: right;
 }
 
 body{
     margin: 0%;
+}
+
+@media (max-width:575px) {
+
 }

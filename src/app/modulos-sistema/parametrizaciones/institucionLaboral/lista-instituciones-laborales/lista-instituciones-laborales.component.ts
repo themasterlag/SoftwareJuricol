@@ -107,7 +107,19 @@ export class ListaInstitucionesLaboralesComponent implements OnInit {
         }
       }
     );
+  }
 
+  mostrasCiudades(){
+    this.controladorParametrizacion.SetTipo("paises");
+    this.controladorParametrizacion.SetIdRelacion(this.departamento);
+    this.controladorParametrizacion.buscarDatosLista().add(
+      response => {
+        this.listaCiudades = this.controladorParametrizacion.GetListaDatos();
+        if(this.listaCiudades == null){
+          this.error = this.controladorParametrizacion.GetError();
+        }
+      }
+    );
   }
 
   // desactiva el modal de registrar o  editar tipo de la interfaz

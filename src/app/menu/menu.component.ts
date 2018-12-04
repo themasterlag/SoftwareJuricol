@@ -67,6 +67,10 @@ export class MenuComponent implements OnInit {
 
   }
 
+  ngOnInit() {
+  
+  }
+
   //muestra o culta el menu cuando la pantalla es pequeña
   cambio() { 
     if(this.tipoMenu==0){
@@ -77,9 +81,7 @@ export class MenuComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-  
-  }
+
 
   cerrarSesion(){
     this.servicioSesion.CerrarSesion();
