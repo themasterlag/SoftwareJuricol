@@ -10,7 +10,7 @@ export class Verificacion {
     private id:number = null;
     private usuario:string= null;
     private clave:string= null;
-    private codigoIngresado:number= null;   
+    private codigoIngresado:number= null;
 
 
     // metodos
