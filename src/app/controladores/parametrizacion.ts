@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import swal from 'sweetalert2';
 
 
 export class Parametrizacion {
@@ -60,6 +61,9 @@ export class Parametrizacion {
             return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarTiposDocumentos").subscribe(
                 response => {
                     this.listaDatos = response['mensaje'];
+                },error =>{
+                    this.error = "Error al consultar tipos de documentos";
+                    return this.error;                    
                 }
             );
         }
@@ -69,6 +73,9 @@ export class Parametrizacion {
             return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarPaises").subscribe(
                 response =>{
                     this.listaDatos = response['mensaje'];
+                },error =>{
+                    this.error = "Error al consultar paises";
+                    return this.error;                    
                 }
             );
         }
@@ -80,7 +87,6 @@ export class Parametrizacion {
                     response =>{
                         this.listaDatos = response['mensaje'];
                     },error =>{
-                        console.log(error.error["mensaje"])
                         this.error = "Error al consultar departamentos";
                         return this.error;                    
                     }
@@ -104,6 +110,9 @@ export class Parametrizacion {
                 return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarCiudades").subscribe(
                     response =>{
                         this.listaDatos = response['mensaje'];
+                    },error =>{
+                        this.error = "Error al consultar ciudades";
+                        return this.error;                    
                     }
                 );
             }
@@ -111,6 +120,9 @@ export class Parametrizacion {
                 return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarCiudades&IdDepartamento="+this.idRelacion).subscribe(
                     response =>{
                         this.listaDatos = response['mensaje'];
+                    },error =>{
+                        this.error = "Error al consultar ciudades";
+                        return this.error;                    
                     }
                 );
             }
@@ -121,6 +133,9 @@ export class Parametrizacion {
             return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarCargos").subscribe(
                 response =>{
                     this.listaDatos = response['mensaje'];
+                },error =>{
+                    this.error = "Error al consultar cargos";
+                    return this.error;                    
                 }
             );
         }
@@ -129,6 +144,9 @@ export class Parametrizacion {
             return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarEspecialidades").subscribe(
                 response =>{
                     this.listaDatos = response['mensaje'];
+                },error =>{
+                    this.error = "Error al consultar especialidades";
+                    return this.error;                    
                 }
             );
         }
@@ -137,6 +155,9 @@ export class Parametrizacion {
             return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarEstadosDemandas").subscribe(
                 response =>{
                     this.listaDatos = response['mensaje'];
+                },error =>{
+                    this.error = "Error al consultar estados de demandas";
+                    return this.error;                    
                 }
             );
         }
@@ -146,6 +167,9 @@ export class Parametrizacion {
                 response =>{
                     this.listaDatos = response['mensaje'];
                     console.log(this.listaDatos);
+                },error =>{
+                    this.error = "Error al consultar estados de procesos";
+                    return this.error;                    
                 }
             );
         }
@@ -155,6 +179,9 @@ export class Parametrizacion {
                 response =>{
                     this.listaDatos = response['mensaje'];
                     console.log(this.listaDatos);
+                },error =>{
+                    this.error = "Error al consultar instituciones laborales";
+                    return this.error;                    
                 }
             );
         }
@@ -164,6 +191,9 @@ export class Parametrizacion {
                 response =>{
                     this.listaDatos = response['mensaje'];
                     console.log(this.listaDatos);
+                },error =>{
+                    this.error = "Error al consultar juzgados";
+                    return this.error;                    
                 }
             );
         }
@@ -173,6 +203,9 @@ export class Parametrizacion {
                 response =>{
                     this.listaDatos = response['mensaje'];
                     console.log(this.listaDatos);
+                },error =>{
+                    this.error = "Error al consultar parentescos";
+                    return this.error;                    
                 }
             );
         }
@@ -182,6 +215,9 @@ export class Parametrizacion {
                 response =>{
                     this.listaDatos = response['mensaje'];
                     console.log(this.listaDatos);
+                },error =>{
+                    this.error = "Error al consultar tipos de procesos";
+                    return this.error;                    
                 }
             );
         }
@@ -191,6 +227,9 @@ export class Parametrizacion {
                 response =>{
                     this.listaDatos = response['mensaje'];
                     console.log(this.listaDatos);
+                },error =>{
+                    this.error = "Error al consultar tipos de demandas";
+                    return this.error;                    
                 }
             );
         }
@@ -416,6 +455,166 @@ export class Parametrizacion {
                     tipoDemandaNueva: this.nombre,
                 });
             }
+        }
+    }
+
+
+    public EliminarParametrizacion(){
+        if(this.tipo == "tiposDocumentos"){
+            // console.log("aqui list tipos");
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarTipoDocumento").subscribe(
+                response => {
+                    return response['mensaje'];
+                },error =>{
+                    this.error = "Error al consultar tipos de documentos";
+                    return this.error;                    
+                }
+            );
+        }
+
+        if(this.tipo == "paises"){
+            // console.log("aqui list paises");
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarPais").subscribe(
+                response =>{
+                    this.listaDatos = response['mensaje'];
+                },error =>{
+                    this.error = "Error al consultar paises";
+                    return this.error;                    
+                }
+            );
+        }
+
+        if(this.tipo == "departamentos"){
+            // console.log("aqui list departamentos");
+            if(this.idRelacion == null){
+                return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarDepartamento").subscribe(
+                    response =>{
+                        this.listaDatos = response['mensaje'];
+                    },error =>{
+                        this.error = "Error al consultar departamentos";
+                        return this.error;                    
+                    }
+                );
+            }
+        }
+
+        if(this.tipo == "ciudades"){
+            // console.log("aqui list ciudades");
+            if(this.idRelacion == null){
+                return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarCiudad").subscribe(
+                    response =>{
+                        this.listaDatos = response['mensaje'];
+                    },error =>{
+                        this.error = "Error al consultar ciudades";
+                        return this.error;                    
+                    }
+                );
+            }
+        }
+
+        if(this.tipo == "cargos"){
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarCargo").subscribe(
+                response =>{
+                    this.listaDatos = response['mensaje'];
+                },error =>{
+                    this.error = "Error al consultar cargos";
+                    return this.error;                    
+                }
+            );
+        }
+
+        if(this.tipo == "especialidades"){
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarEspecialidad").subscribe(
+                response =>{
+                    this.listaDatos = response['mensaje'];
+                },error =>{
+                    this.error = "Error al consultar especialidades";
+                    return this.error;                    
+                }
+            );
+        }
+
+        if(this.tipo == "estadosDemanda"){
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarEstadoDemanda").subscribe(
+                response =>{
+                    this.listaDatos = response['mensaje'];
+                },error =>{
+                    this.error = "Error al consultar estados de demandas";
+                    return this.error;                    
+                }
+            );
+        }
+
+        if(this.tipo == "estadosProceso"){
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarEstadoProceso").subscribe(
+                response =>{
+                    this.listaDatos = response['mensaje'];
+                    console.log(this.listaDatos);
+                },error =>{
+                    this.error = "Error al consultar estados de procesos";
+                    return this.error;                    
+                }
+            );
+        }
+
+        if(this.tipo == "institucionesLaborales"){
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarInstitucionLaboral").subscribe(
+                response =>{
+                    this.listaDatos = response['mensaje'];
+                    console.log(this.listaDatos);
+                },error =>{
+                    this.error = "Error al consultar instituciones laborales";
+                    return this.error;                    
+                }
+            );
+        }
+
+        if(this.tipo == "juzgados"){
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarJuzgado").subscribe(
+                response =>{
+                    this.listaDatos = response['mensaje'];
+                    console.log(this.listaDatos);
+                },error =>{
+                    this.error = "Error al consultar juzgados";
+                    return this.error;                    
+                }
+            );
+        }
+
+        if(this.tipo == "parentescos"){
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarParentesco").subscribe(
+                response =>{
+                    this.listaDatos = response['mensaje'];
+                    console.log(this.listaDatos);
+                },error =>{
+                    this.error = "Error al consultar parentescos";
+                    return this.error;                    
+                }
+            );
+        }
+
+        if(this.tipo == "tiposProcesos"){
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarTipoProceso").subscribe(
+                response =>{
+                    this.listaDatos = response['mensaje'];
+                    console.log(this.listaDatos);
+                },error =>{
+                    this.error = "Error al consultar tipos de procesos";
+                    return this.error;                    
+                }
+            );
+        }
+
+        if(this.tipo == "tiposDemandas"){
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarTipoDemanda").subscribe(
+                response =>{
+                    this.listaDatos = response['mensaje'];
+                    console.log(this.listaDatos);
+                },error =>{
+                    this.error = "Error al consultar tipos de demandas";
+                    return this.error;                    
+                }
+            );
         }
     }
 

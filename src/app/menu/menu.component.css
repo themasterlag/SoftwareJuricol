@@ -74,7 +74,8 @@
                 button:focus,
                 a .text:hover,
                 a .text:active,
-                a .text:focus {
+                a .text:focus,
+                a:hover {
   color: rgb(0, 0, 0);
   font-weight: bold;
   background: rgb(97, 200, 255);

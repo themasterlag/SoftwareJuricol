@@ -38,7 +38,9 @@ export class ListaDepartamentosComponent implements OnInit {
     this.controladorParametrizacion.buscarDatosLista().add(
       response =>{
         this.listaPaises = this.controladorParametrizacion.GetListaDatos();
-        // console.log(this.listaTipos);
+        if(this.listaPaises == null){
+          this.error = this.controladorParametrizacion.GetError();
+        }
       }
     );
 
@@ -46,7 +48,9 @@ export class ListaDepartamentosComponent implements OnInit {
     this.controladorParametrizacion.buscarDatosLista().add(
       response =>{
         this.listaTipos = this.controladorParametrizacion.GetListaDatos();
-        // console.log(this.listaTipos);
+        if(this.listaTipos == null){
+          this.error = this.controladorParametrizacion.GetError();
+        }
       }
     );
   }

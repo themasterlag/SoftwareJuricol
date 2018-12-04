@@ -132,10 +132,9 @@ export class ListaInstitucionesLaboralesComponent implements OnInit {
   }
 
 
-  editar(Id,Nombre,Ciudad){
+  editar(Id,Nombre){
     this.id = Id;
     this.nombre = Nombre;
-    this.ciudad = Ciudad;
     this.activarModal("editar");
   }
 
