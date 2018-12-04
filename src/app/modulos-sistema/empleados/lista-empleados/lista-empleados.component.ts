@@ -29,7 +29,21 @@ export class ListaEmpleadosComponent implements OnInit {
   RolPropio:string;
 
   controladorEmpleado: Empleado;
-
+ 
+  searchObject:any={
+    Documento:"",
+    Nombres:"",
+    Apellidos:"",
+    NombreCargo:"",
+    EdEspecialidadad:"",
+    TarjetaProfesional:"",
+    Celular:"",
+    CorreoElectronico:"",
+    Direccion:"",
+    Estado:"",
+    NombreCiudad:"",
+    Titular:"",
+  }
 
   constructor(private router: Router, private http: HttpClient, private autenticadorService: AutenticadorService) {
     //instanciacion de objeto Usuario y objeto Empleado
@@ -48,13 +62,14 @@ export class ListaEmpleadosComponent implements OnInit {
     this.controladorEmpleado.BuscarEmpleados().add(
       response=>{
         this.listaEmpleados = this.controladorEmpleado.GetListaEmpleados();
+        console.log(this.listaEmpleados);
       }
     );
-   this.controladorUsuario.BuscarRoles().add(
-     response=>{
-        this.Roles = response['mensaje']
-     }
-   )
+    this.controladorUsuario.BuscarRoles().add(
+      response=>{
+         this.Roles = this.controladorUsuario.GetRoles();
+      }
+    )
   }
 
 

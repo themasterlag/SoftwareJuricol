@@ -9,10 +9,39 @@
       <button class="btn btn-primary" (click)="nuevoEmpleado()" *ngIf="RolPropio == 'Administrador'">Nuevo empleado</button>
     </div>
     <br>
+    <!-- searchObject:any={
+    Documento:"",
+    Nombres:"",
+    Apellidos:"",
+    NombreCargo:"",
+    Especialidadad:"",
+    TarjetaProfesional:"",
+    Celular:"",
+    CorreoElectronico:"",
+    Direccion:"",
+    NombreCiudad:"",
+    Titular:"",
+  } -->
 
     <table class="table table-striped">
       <!-- titulo de las columnas -->
       <thead>
+          <tr>
+
+              <th>&nbsp;</th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Documento" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Nombres" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Apellidos" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.NombreCargo" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Especialidadad" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.TarjetaProfesional" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Celular" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.CorreoElectronico" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Direccion"></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.NombreCiudad"></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Titular"></th>
+              <th>&nbsp;</th>   
+          </tr>
         <tr class="colums">
           <th scope="col">#</th>
           <th scope="col">Numero de cedula</th>
@@ -20,12 +49,12 @@
           <th scope="col">Apellidos</th>
           <th scope="col">Cargo</th>
           <th scope="col">Especialidad</th>
-          <th scope="col">Titular</th>
-          <th scope="col">Telefono</th>
+          <th scope="col">Tarjeta Profesional</th>
           <th scope="col">Celular</th>
           <th scope="col">Correo Electronico</th>
           <th scope="col">Direccion</th>
-          <th scope="col">Estado del empleado</th>
+          <th scope="col">Ciudad</th>
+          <th scope="col">Titular</th> 
           <th scope="col" *ngIf="RolPropio == 'Administrador'"></th>
           <th scope="col"></th>
         </tr>
@@ -33,23 +62,36 @@
 
       <!-- informacion de la tabla o listado de empleados -->
       <tbody>
-        <tr *ngFor="let Empleado of listaEmpleados">
+        <tr *ngFor="let Empleado of listaEmpleados | arrayFilter : 
+        { 
+          Documento:          searchObject.Documento,  
+          Nombres:            searchObject.Nombres,
+          Apellidos:          searchObject.Apellidos,
+          NombreCargo:        searchObject.NombreCargo,
+          Especialidadad:     searchObject.Especialidadad,
+          TarjetaProfesional: searchObject.TarjetaProfesional,
+          Celular:            searchObject.Celular,
+          CorreoElectronico:  searchObject.CorreoElectronico,
+          Direccion:          searchObject.Direccion,
+          NombreCiudad:       searchObject.NombreCiudad,
+          Titular:            searchObject.Titular
+        }">
           <th scope="row">{{Empleado.IdEmpleado}}</th>
           <td>{{Empleado.Documento}}</td>
-          <td>{{Empleado.PrimerNombre}} {{Empleado.SegundoNombre}}</td>
-          <td>{{Empleado.PrimerApellido}} {{Empleado.SegundoApellido}}</td>
+          <td>{{Empleado.Nombres}}</td>
+          <td>{{Empleado.Apellidos}}</td>
           <td>{{Empleado.NombreCargo}}</td>
           <td>{{Empleado.Especialidad}}</td>
-          <td>{{Empleado.Titular}}</td>
-          <td>{{Empleado.Telefono}}</td>
+          <td>{{Empleado.TarjetaProfesional}}</td>
           <td>{{Empleado.Celular}}</td>
           <td>{{Empleado.CorreoElectronico}}</td>
           <td>{{Empleado.Direccion}}</td>
-          <td>{{Empleado.Estado}}</td>
+          <td>{{Empleado.NombreCiudad}}</td>
+          <td>{{Empleado.Titular}}</td>
           <td *ngIf="Empleado['Usuario']=='No' && RolPropio == 'Administrador'" >
               <select class="form-control" [(ngModel)]="Rol">
                   <option value="0" disabled >--Seleccione Rol--</option>
-                  <option value="{{TipoRol.Id}}" *ngFor="let TipoRol of tiposRoles">{{TipoRol.Descripcion}}</option>
+                  <option value="{{TipoRol.Id}}" *ngFor="let TipoRol of Roles">{{TipoRol.Descripcion}}</option>
               </select>
             <button class="btn btn-danger" (click)="crearUsuario(Empleado.IdEmpleado)">Crear usuario</button>
           </td>

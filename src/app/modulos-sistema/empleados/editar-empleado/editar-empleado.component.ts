@@ -4,6 +4,7 @@ import { HttpClient} from '@angular/common/http';
 import swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AutenticadorService } from '../../../servicios/autenticador.service';
+import { Usuario } from '../../../controladores/usuario';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { AutenticadorService } from '../../../servicios/autenticador.service';
 })
 export class EditarEmpleadoComponent implements OnInit {
 
- 
+  controladorUsuario:Usuario;
   id: number = null ;
   primerNombre: string = null;
   segundoNombre: string = null; 
@@ -41,6 +42,9 @@ export class EditarEmpleadoComponent implements OnInit {
   tiposDocumentos:[''];
   tipoDecumento:number;
   Respuesta : any;
+  rol: number;
+  Roles:Array<Object>=[];
+  RolPropio;
   
   private DatosJSON: any;
 
@@ -48,8 +52,9 @@ export class EditarEmpleadoComponent implements OnInit {
     if(autenticadorService.ProcesarToken() == false) {
       this.router.navigate(["/login"]);
     }
-    
+    this.controladorUsuario = new Usuario(this.http);
     this.Empleado = new Empleado(this.http) ;
+    this.RolPropio = autenticadorService.GetRol();
     this.route.params.subscribe(
       parametro=>{
         this.id= parametro.id
@@ -72,6 +77,8 @@ export class EditarEmpleadoComponent implements OnInit {
           this.tarjeta = this.DatosJSON[0].TarjetaProfesional;
           this.titular = this.DatosJSON[0].Titular;
           this.cargo = this.DatosJSON[0].IdCargo;
+          this.rol = this.DatosJSON[0].IdRol
+          console.log(this.DatosJSON);
 
           this.LlenarSelects();
           }
@@ -86,6 +93,11 @@ export class EditarEmpleadoComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.controladorUsuario.BuscarRoles().add(
+      response=>{
+         this.Roles = this.controladorUsuario.GetRoles();
+      }
+    )
   }
 
   GuardarAsociado(){
