@@ -37,7 +37,6 @@ export class ListaJuzgadosComponent implements OnInit {
     this.controladorParametrizacion.buscarDatosLista().add(
       response =>{
         this.listaJuzgados  = this.controladorParametrizacion.GetListaDatos();
-        // console.log(this.listaCiudades);
       }
     );
   }

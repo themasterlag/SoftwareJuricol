@@ -167,6 +167,24 @@ export class Parametrizacion {
                 }
             );
         }
+
+        if(this.tipo == "parentescos"){
+            return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarParentescos").subscribe(
+                response =>{
+                    this.listaDatos = response['mensaje'];
+                    console.log(this.listaDatos);
+                }
+            );
+        }
+
+        if(this.tipo == "tiposProcesos"){
+            return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarTiposProcesos").subscribe(
+                response =>{
+                    this.listaDatos = response['mensaje'];
+                    console.log(this.listaDatos);
+                }
+            );
+        }
     }
 
     public GuardarParametrizacion(){
@@ -250,6 +268,20 @@ export class Parametrizacion {
                 return this.http.post("https:/localhost/GitHub/juricol/recursos/validar.php",{
                     accion:"crearJuzgado",
                     juzgadoNuevo: this.nombre,
+                });
+            }
+
+            if(this.tipo == "parentescos"){
+                return this.http.post("https:/localhost/GitHub/juricol/recursos/validar.php",{
+                    accion:"crearParentesco",
+                    parentescoNuevo: this.nombre,
+                });
+            }
+
+            if(this.tipo == "tiposProcesos"){
+                return this.http.post("https:/localhost/GitHub/juricol/recursos/validar.php",{
+                    accion:"crearTipoProceso",
+                    tipoProcesoNuevo: this.nombre,
                 });
             }
         }
@@ -342,6 +374,22 @@ export class Parametrizacion {
                     accion:"modificarJuzgado",
                     IdJuzgado: this.id,
                     juzgadoNuevo: this.nombre,
+                });
+            }
+
+            if(this.tipo == "parentescos"){
+                return this.http.put("https:/localhost/GitHub/juricol/recursos/validar.php",{
+                    accion:"modificarParentesco",
+                    IdParentesco: this.id,
+                    parentescoNuevo: this.nombre,
+                });
+            }
+
+            if(this.tipo == "tiposProcesos"){
+                return this.http.put("https:/localhost/GitHub/juricol/recursos/validar.php",{
+                    accion:"modificarTipoProceso",
+                    IdTipoProceso: this.id,
+                    tipoProcesoNuevo: this.nombre,
                 });
             }
         }
