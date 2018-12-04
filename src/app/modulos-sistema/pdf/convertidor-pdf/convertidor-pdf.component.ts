@@ -35,7 +35,6 @@ export class ConvertidorPdfComponent implements OnInit {
     this.controladorParametrizacion = new Parametrizacion(this.http);
     this.PDF = new PDF(http);
     this.uploader = new FileUploader({
-      queueLimit:1,
       url:  'http://localhost/GitHub/juricol/recursos/validar.php?accion=pdf',
       authToken: this.token,
       authTokenHeader: 'Authorization',
