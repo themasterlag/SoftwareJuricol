@@ -14,9 +14,6 @@
             <h4 *ngIf="tipoAccion==false"><strong>Registrar pais</strong></h4>
             <h4 *ngIf="tipoAccion==true"><strong>Editar pais</strong></h4>
           </label>
-          <div *ngIf="error!=null" class="alert alert-danger" role="alert">
-            {{error}}
-          </div>
           <br>
           <br>
           <label><b>Nombre</b></label>
@@ -57,7 +54,10 @@
         <tr *ngFor="let pais of listaTipos">
           <th scope="row">{{pais.Id}}</th>
           <td>{{pais.Descripcion}}</td>
-          <td><button class="btn btn-primary" (click)="editar(pais.Id,pais.Descripcion)">Editar</button></td>
+          <td>
+            <button class="btn btn-primary" (click)="editar(pais.Id,pais.Descripcion)">Editar</button>
+            <button class="btn btn-danger" (click)="eliminar(pais.Id)">Eliminar</button>
+          </td>
         </tr>
       </tbody>
 

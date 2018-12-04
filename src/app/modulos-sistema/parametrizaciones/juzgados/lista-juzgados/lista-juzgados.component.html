@@ -14,9 +14,6 @@
           <h4 *ngIf="tipoAccion==false"><strong>Registrar juzgado</strong></h4>
           <h4 *ngIf="tipoAccion==true"><strong>Editar juzgado</strong></h4>
         </label>
-        <div *ngIf="error!=null" class="alert alert-danger" role="alert">
-          {{error}}
-        </div>
         <br>
         <br>
         <label><b>Nombre</b></label>
@@ -55,7 +52,11 @@
         <tr *ngFor="let juzgado of listaJuzgados">
           <th scope="row">{{juzgado.Id}}</th>
           <td>{{juzgado.Descripcion}}</td>
-          <td><button class="btn btn-primary" (click)="editar(juzgado.Id,juzgado.Descripcion)">Editar</button></td>
+          <td>
+            <button class="btn btn-primary" (click)="editar(juzgado.Id,juzgado.Descripcion)">Editar</button>
+            <button class="btn btn-danger" (click)="eliminar(juzgado.Id)">Eliminar</button>
+
+          </td>
         </tr>
       </tbody>
 

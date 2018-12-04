@@ -2,6 +2,15 @@
 
 body {font-family: Arial, Helvetica, sans-serif;}
 
+.btnaccion{
+    margin-left: 300px;
+}
+
+.btn-danger{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
 /* Set a style for all buttons */
 .modal button {
     background-color: #4CAF50;
@@ -81,7 +90,7 @@ span.psw {
     position: absolute;
     right: 25px;
     top: 0;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-size: 35px;
     font-weight: bold;
 }

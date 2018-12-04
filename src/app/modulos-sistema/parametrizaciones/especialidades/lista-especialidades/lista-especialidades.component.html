@@ -14,9 +14,6 @@
             <h4 *ngIf="tipoAccion==false"><strong>Registrar especialidad</strong></h4>
             <h4 *ngIf="tipoAccion==true"><strong>Editar especialidad</strong></h4>
           </label>
-          <div *ngIf="error!=null" class="alert alert-danger" role="alert">
-            {{error}}
-          </div>
           <br>
           <br>
           <label><b>Nombre</b></label>
@@ -59,7 +56,7 @@
           <td>{{especialidad.Descripcion}}</td>
           <td>
             <button class="btn btn-primary" (click)="editar(especialidad.Id,especialidad.Descripcion)">Editar</button>
-            <button class="btn btn-danger" (click)="editar(especialidad.Id)">Eliminar</button>
+            <button class="btn btn-danger" (click)="eliminar(especialidad.Id)">Eliminar</button>
           </td>
         </tr>
       </tbody>

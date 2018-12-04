@@ -14,9 +14,6 @@
           <h4 *ngIf="tipoAccion==false"><strong>Registrar estado</strong></h4>
           <h4 *ngIf="tipoAccion==true"><strong>Editar estado</strong></h4>
         </label>
-        <div *ngIf="error!=null" class="alert alert-danger" role="alert">
-          {{error}}
-        </div>
         <br>
         <br>
         <label><b>Nombre</b></label>
@@ -72,7 +69,10 @@
           <th scope="row">{{institucion.Id}}</th>
           <td>{{institucion.Descripcion}}</td>
           <td>{{institucion.NombreCiudad}}</td>
-          <td><button class="btn btn-primary" (click)="editar(institucion.Id,institucion.Descripcion,institucion.Ciudad_id)">Editar</button></td>
+          <td>
+            <button class="btn btn-primary" (click)="editar(institucion.Id,institucion.Descripcion,institucion.Ciudad_id)">Editar</button>
+            <button class="btn btn-danger" (click)="editar(institucion.Id)">Eliminar</button>
+          </td>
         </tr>
       </tbody>
 

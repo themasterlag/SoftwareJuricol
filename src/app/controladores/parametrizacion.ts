@@ -484,7 +484,7 @@ export class Parametrizacion {
 
         if(this.tipo == "paises"){
             // console.log("aqui list paises");
-            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarPais").subscribe(
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarPais&IdPais="+this.id).subscribe(
                 response => {
                     if(response != null){
                         this.respuesta = response['mensaje'];
@@ -501,7 +501,7 @@ export class Parametrizacion {
         if(this.tipo == "departamentos"){
             // console.log("aqui list departamentos");
             if(this.idRelacion == null){
-                return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarDepartamento").subscribe(
+                return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarDepartamento&IdDepartamento="+this.id).subscribe(
                     response => {
                         if(response != null){
                             this.respuesta = response['mensaje'];
@@ -519,7 +519,7 @@ export class Parametrizacion {
         if(this.tipo == "ciudades"){
             // console.log("aqui list ciudades");
             if(this.idRelacion == null){
-                return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarCiudad").subscribe(
+                return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarCiudad&IdCiudad="+this.id).subscribe(
                     response => {
                         if(response != null){
                             this.respuesta = response['mensaje'];
@@ -535,7 +535,7 @@ export class Parametrizacion {
         }
 
         if(this.tipo == "cargos"){
-            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarCargo").subscribe(
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarCargo&IdCargo="+this.id).subscribe(
                 response => {
                     if(response != null){
                         this.respuesta = response['mensaje'];
@@ -550,7 +550,7 @@ export class Parametrizacion {
         }
 
         if(this.tipo == "especialidades"){
-            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarEspecialidad").subscribe(
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarEspecialidad&IdEspecialidad="+this.id).subscribe(
                 response => {
                     if(response != null){
                         this.respuesta = response['mensaje'];
@@ -565,7 +565,7 @@ export class Parametrizacion {
         }
 
         if(this.tipo == "estadosDemanda"){
-            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarEstadoDemanda").subscribe(
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarEstadoDemanda&IdEstadoDemanda="+this.id).subscribe(
                 response => {
                     if(response != null){
                         this.respuesta = response['mensaje'];
@@ -580,7 +580,7 @@ export class Parametrizacion {
         }
 
         if(this.tipo == "estadosProceso"){
-            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarEstadoProceso").subscribe(
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarEstadoProceso&IdEstadoProceso="+this.id).subscribe(
                 response => {
                     if(response != null){
                         this.respuesta = response['mensaje'];
@@ -595,7 +595,7 @@ export class Parametrizacion {
         }
 
         if(this.tipo == "institucionesLaborales"){
-            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarInstitucionLaboral").subscribe(
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarInstitucionLaboral&IdInstitucionLaboral="+this.id).subscribe(
                 response => {
                     if(response != null){
                         this.respuesta = response['mensaje'];
@@ -610,7 +610,7 @@ export class Parametrizacion {
         }
 
         if(this.tipo == "juzgados"){
-            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarJuzgado").subscribe(
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarJuzgado&IdJuzgado="+this.id).subscribe(
                 response => {
                     if(response != null){
                         this.respuesta = response['mensaje'];
@@ -625,7 +625,7 @@ export class Parametrizacion {
         }
 
         if(this.tipo == "parentescos"){
-            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarParentesco").subscribe(
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarParentesco&IdParentesco="+this.id).subscribe(
                 response => {
                     if(response != null){
                         this.respuesta = response['mensaje'];
@@ -640,7 +640,7 @@ export class Parametrizacion {
         }
 
         if(this.tipo == "tiposProcesos"){
-            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarTipoProceso").subscribe(
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarTipoProceso&IdTipoProceso="+this.id).subscribe(
                 response => {
                     if(response != null){
                         this.respuesta = response['mensaje'];
@@ -655,7 +655,7 @@ export class Parametrizacion {
         }
 
         if(this.tipo == "tiposDemandas"){
-            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarTipoDemanda").subscribe(
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarTipoDemanda&IdTipoDemanda="+this.id).subscribe(
                 response => {
                     if(response != null){
                         this.respuesta = response['mensaje'];

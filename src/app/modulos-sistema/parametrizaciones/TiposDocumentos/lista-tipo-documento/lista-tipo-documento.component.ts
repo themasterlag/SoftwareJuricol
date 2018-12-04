@@ -116,6 +116,7 @@ export class ListaTipoDocumentoComponent implements OnInit {
             title: "Eliminacion realizada satisfactoriamente",
             timer: 5000
           })
+          this.ngOnInit();
         }
       }
     );

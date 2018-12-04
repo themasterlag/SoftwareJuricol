@@ -104,17 +104,19 @@ export class ListaCargosComponent implements OnInit {
             type: 'error',
             title: this.error,
             timer: 5000
-          })
+          });
         }
         else{
           swal({
             type: 'success',
             title: "Eliminacion realizada satisfactoriamente",
             timer: 5000
-          })
+          });
+          this.ngOnInit();
         }
       }
     );
+    
   }
 
 }

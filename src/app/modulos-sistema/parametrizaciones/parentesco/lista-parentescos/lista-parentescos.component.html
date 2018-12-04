@@ -14,9 +14,6 @@
           <h4 *ngIf="tipoAccion==false"><strong>Registrar parentesco</strong></h4>
           <h4 *ngIf="tipoAccion==true"><strong>Editar parentesco</strong></h4>
         </label>
-        <div *ngIf="error!=null" class="alert alert-danger" role="alert">
-          {{error}}
-        </div>
         <br>
         <br>
         <label><b>Nombre</b></label>
@@ -55,7 +52,10 @@
         <tr *ngFor="let parentesco of listaParentescos">
           <th scope="row">{{parentesco.Id}}</th>
           <td>{{parentesco.Descripcion}}</td>
-          <td><button class="btn btn-primary" (click)="editar(parentesco.Id,parentesco.Descripcion)">Editar</button></td>
+          <td>
+            <button class="btn btn-primary" (click)="editar(parentesco.Id,parentesco.Descripcion)">Editar</button>
+            <button class="btn btn-danger" (click)="eliminar(parentesco.Id)">Eliminar</button>
+          </td>
         </tr>
       </tbody>
 

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { AutenticadorService } from '../../../../servicios/autenticador.service';
 import { Parametrizacion } from '../../../../controladores/parametrizacion';
+import swal from 'sweetalert2';
 
 
 @Component({
@@ -41,6 +42,8 @@ export class ListaInstitucionesLaboralesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.controladorParametrizacion.SetIdRelacion(null);
+
     this.controladorParametrizacion.SetTipo("paises");
     this.controladorParametrizacion.buscarDatosLista().add(
       response =>{
@@ -138,5 +141,30 @@ export class ListaInstitucionesLaboralesComponent implements OnInit {
     this.activarModal("editar");
   }
 
+  eliminar(Id){
+    this.id = Id;
+    this.controladorParametrizacion.SetId(this.id);
+    this.controladorParametrizacion.EliminarParametrizacion().add(
+      response =>{
+        let respuesta = this.controladorParametrizacion.GetRespuesta();
+        if(respuesta == null){
+          this.error = this.controladorParametrizacion.GetError();
+          swal({
+            type: 'error',
+            title: this.error,
+            timer: 5000
+          });
+        }
+        else{
+          swal({
+            type: 'success',
+            title: "Eliminacion realizada satisfactoriamente",
+            timer: 5000
+          });
+          this.ngOnInit();
+        }
+      }
+    );
+  }
 
 }

@@ -19,7 +19,7 @@ export class ListaDemandasComponent implements OnInit {
 
   // listaDemandas:any;
   searchObject:any={
-    Documento:"",
+    aqui:"",
     Nombres:"",
     Apellidos:"",
     Telefono:"",
@@ -30,6 +30,7 @@ export class ListaDemandasComponent implements OnInit {
     Estado:"",
     CiudadResidencia:""
   }
+  
   listaDemandas:any;
   rolPropio:string;
 

@@ -35,6 +35,8 @@ export class ListaCiudadesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.controladorParametrizacion.SetIdRelacion(null);
+
     this.controladorParametrizacion.SetTipo("departamentos");
     this.controladorParametrizacion.buscarDatosLista().add(
       response =>{
@@ -127,14 +129,15 @@ export class ListaCiudadesComponent implements OnInit {
             type: 'error',
             title: this.error,
             timer: 5000
-          })
+          });
         }
         else{
           swal({
             type: 'success',
             title: "Eliminacion realizada satisfactoriamente",
             timer: 5000
-          })
+          });
+          this.ngOnInit();
         }
       }
     );

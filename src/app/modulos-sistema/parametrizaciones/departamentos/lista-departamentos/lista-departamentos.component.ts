@@ -25,7 +25,6 @@ export class ListaDepartamentosComponent implements OnInit {
   tipoAccion:boolean = false; //falso para crear nuevo tipo, verdadero para editar tipo
   listaTipos:Object = null;
   pais:number = 0;
-
   error:any = null;
 
   constructor(private router: Router, private autenticadorService: AutenticadorService, private http:HttpClient) { 
@@ -36,6 +35,9 @@ export class ListaDepartamentosComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.controladorParametrizacion.SetIdRelacion(null);
+
     this.controladorParametrizacion.SetTipo("paises");
     this.controladorParametrizacion.buscarDatosLista().add(
       response =>{
@@ -106,7 +108,8 @@ export class ListaDepartamentosComponent implements OnInit {
 
   // desactiva el modal de registrar o  editar tipo de la interfaz
   cerrarModal(){
-    this.nombre = null;
+    this.id = null;
+    this.nombre= null;
     this.pais = 0;
     this.error = null;
     document.getElementById('id01').style.display='none';
@@ -131,14 +134,15 @@ export class ListaDepartamentosComponent implements OnInit {
             type: 'error',
             title: this.error,
             timer: 5000
-          })
+          });
         }
         else{
           swal({
             type: 'success',
             title: "Eliminacion realizada satisfactoriamente",
             timer: 5000
-          })
+          });
+          this.ngOnInit();
         }
       }
     );

@@ -58,21 +58,20 @@
     <table class="table table-striped">
       <!-- titulos de columnas -->
       <thead>
-          <tr>
-          
-              <th>&nbsp;</th>
-              <th scope="col">&nbsp;</th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Documento" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Nombres" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Apellidos" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Telefono" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Celular" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Correo" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Direccion" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Edad"></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.CiudadResidencia"></th>
-              <th>&nbsp;</th>
-          </tr>
+        <tr>
+            <th>&nbsp;</th>
+            <th scope="col">&nbsp;</th>
+            <th scope="col"><input class="form-control" [(ngModel)]="searchObject.aqui" ></th>
+            <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Nombres" ></th>
+            <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Apellidos" ></th>
+            <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Telefono" ></th>
+            <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Celular" ></th>
+            <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Correo" ></th>
+            <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Direccion" ></th>
+            <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Edad"></th>
+            <th scope="col"><input class="form-control" [(ngModel)]="searchObject.CiudadResidencia"></th>
+            <th>&nbsp;</th>
+        </tr>
         <tr>
           <td><img src="../../../../assets/iconos/semaforo/2x/twotone_traffic_black_18dp.png" class="imgSemaforo"></td>
           <th scope="col">#</th>
@@ -92,7 +91,7 @@
       <tbody>
         <tr *ngFor="let Demanda of listaDemandas | arrayFilter : 
           { 
-            Documento:   searchObject.Documento,  
+            aqui:   searchObject.aqui,  
             Nombres:  searchObject.Nombres,
             Apellidos:searchObject.Apellidos,
             Telefono: searchObject.Telefono,
