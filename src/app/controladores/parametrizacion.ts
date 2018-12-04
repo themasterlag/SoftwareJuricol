@@ -468,7 +468,7 @@ export class Parametrizacion {
     public EliminarParametrizacion(){
         if(this.tipo == "tiposDocumentos"){
             // console.log("aqui list tipos");
-            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarTipoDocumento&IdTipoDocumento="+this.id).subscribe(
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarTipoDocumento&IdTipoDocumento="+20).subscribe(
                 response => {
                     if(response != null){
                         this.respuesta = response['mensaje'];

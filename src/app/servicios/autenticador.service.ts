@@ -61,7 +61,7 @@ export class AutenticadorService {
       var base64Url = this.token.split('.')[1];
       var base64 = base64Url.replace('-', '+').replace('_', '/');
       base64 = JSON.parse(atob(base64))
-      console.log(base64);
+      // console.log(base64);
       this.idUsuario = base64.data.IdUsuario;
       this.usuario = base64.data.usuario;
       this.idEmpleado = base64.data.IdEmpleado;
@@ -98,7 +98,7 @@ export class AutenticadorService {
     else{
       var fecha1:Date = new Date();
       var fecha2 = new Date(base64.exp*1000);
-      console.log(fecha2);
+      // console.log(fecha2);
 
       if (fecha1 > fecha2){
         swal({
