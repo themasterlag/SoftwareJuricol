@@ -35,6 +35,7 @@ export class ConvertidorPdfComponent implements OnInit {
     this.controladorParametrizacion = new Parametrizacion(this.http);
     this.PDF = new PDF(http);
     this.uploader = new FileUploader({
+      queueLimit:1,
       url:  'http://localhost/GitHub/juricol/recursos/validar.php?accion=pdf',
       authToken: this.token,
       authTokenHeader:'Authorization',
@@ -78,7 +79,7 @@ export class ConvertidorPdfComponent implements OnInit {
           timer: 5000
         
         });
-       let i
+       let i = 0;
    
        
    
@@ -125,9 +126,7 @@ export class ConvertidorPdfComponent implements OnInit {
     this.hasBaseDropZoneOver = e;
   }
 
-  abrirVentana(ventana) { 
-      this.ObtenerDatos = null;
-        this.DatosEvnio = []; 
+  abrirVentana(ventana) {  
     ventana.click();
   }
 
