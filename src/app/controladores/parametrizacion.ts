@@ -187,7 +187,7 @@ export class Parametrizacion {
         }
 
         if(this.tipo == "tiposDemandas"){
-            return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarTiposProcesos").subscribe(
+            return this.http.get("https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarTiposDemandas").subscribe(
                 response =>{
                     this.listaDatos = response['mensaje'];
                     console.log(this.listaDatos);
@@ -297,7 +297,7 @@ export class Parametrizacion {
             if(this.tipo == "tiposDemandas"){
                 return this.http.post("https:/localhost/GitHub/juricol/recursos/validar.php",{
                     accion:"crearTipoDemanda",
-                    tipoDemandaNuevo: this.nombre,
+                    tipoDemandaNueva: this.nombre,
                 });
             }
         }
@@ -413,7 +413,7 @@ export class Parametrizacion {
                 return this.http.put("https:/localhost/GitHub/juricol/recursos/validar.php",{
                     accion:"modificarTipoDemanda",
                     IdTipoDemanda: this.id,
-                    tipoDemandaNuevo: this.nombre,
+                    tipoDemandaNueva: this.nombre,
                 });
             }
         }
