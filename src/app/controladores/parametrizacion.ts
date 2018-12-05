@@ -610,7 +610,7 @@ export class Parametrizacion {
         }
 
         if(this.tipo == "juzgados"){
-            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarJuzgado&IdJuzgado="+this.id).subscribe(
+            return this.http.delete("https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarJuzgados&IdJuzgado="+this.id).subscribe(
                 response => {
                     if(response != null){
                         this.respuesta = response['mensaje'];
