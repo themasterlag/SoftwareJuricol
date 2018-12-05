@@ -21,26 +21,31 @@ export class Usuario {
     public GetRoles(){
       return this.roles;
     }
+
     public SetRol(Rol){
         this.rol = Rol;
     }
+
     public setEmpleado(empleadoId){
         this.empleado = empleadoId;
     } 
+
     public SetIdUsuario(idUsuario){
         this.idUsuario = idUsuario;
-      }
+    }
+
     public SetClave(clave){
       this.clave= clave;
-  
     }
+
     public SetUsuario(usuario){
       this.usuario = usuario;
     }
+
     public SetClaveNueva(claveNueva){
-  
       this.claveNueva = claveNueva;
     }
+
     public BuscarRoles(){
       return this.http.get('https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarRoles').subscribe(
           response => {
@@ -49,12 +54,11 @@ export class Usuario {
             this.roles = response['mensaje'];
             console.log(this.roles,"Clase roles");
           },err=>{
-
              console.log(err.error['mensaje']);
-              
           }
       );
-  }
+    }
+
     public CrearUsuario(){
     return this.http.post("https://localhost/GitHub/juricol/recursos/validar.php",{
         accion:'crearUsuario',
@@ -62,6 +66,7 @@ export class Usuario {
         IdRol: this.rol
       });
     }
+
     public ModicarPasword(){
         this.clave = Md5.init(this.clave);
         this.claveNueva = Md5.init(this.claveNueva);
@@ -70,17 +75,11 @@ export class Usuario {
           let accionAztualizar = "cambiarPassword"
           return this.http.put('https://localhost/GitHub/juricol/recursos/validar.php',
               { 
-                  accion: accionAztualizar,
-                //   viejaClave:this.clave,
-                  NuevaClave : this.claveNueva,
-                //   IdUsuario : this.idUsuario
+                accion: accionAztualizar,
+                NuevaClave : this.claveNueva,
                 NomUsuario: this.usuario
-                  
               },{headers:new HttpHeaders ({"content-type":"application/json"})}
           );
-    
       }
 
-
-   
 }
