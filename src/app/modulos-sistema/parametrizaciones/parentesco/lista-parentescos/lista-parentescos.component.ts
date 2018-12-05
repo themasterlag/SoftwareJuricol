@@ -62,7 +62,6 @@ export class ListaParentescosComponent implements OnInit {
         this.controladorParametrizacion.SetNombre(this.nombre);
         this.controladorParametrizacion.GuardarParametrizacion().subscribe(
           response =>{
-            console.log(response)
             this.cerrarModal();
             this.ngOnInit();
           }

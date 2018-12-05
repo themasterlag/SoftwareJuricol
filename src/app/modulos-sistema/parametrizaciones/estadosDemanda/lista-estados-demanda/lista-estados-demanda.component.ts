@@ -68,7 +68,6 @@ export class ListaEstadosDemandaComponent implements OnInit {
         this.controladorParametrizacion.SetDiasLimites(this.diasLimite);
         this.controladorParametrizacion.GuardarParametrizacion().subscribe(
           response =>{
-            console.log(response)
             this.cerrarModal();
             this.ngOnInit();
           }

@@ -83,8 +83,6 @@ export class EditarEmpleadoComponent implements OnInit {
             this.rol = 0;
             this.BloqueoRol = true;
           }
-          console.log(this.DatosJSON);
-
           this.LlenarSelects();
           }
         );

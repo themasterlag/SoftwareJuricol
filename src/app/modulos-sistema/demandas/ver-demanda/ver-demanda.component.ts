@@ -100,8 +100,6 @@ export class VerDemandaComponent implements OnInit {
       },
       error =>{
         this.error = error.error["mensaje"];
-        console.log(this.error)
-
       } 
     );
   }

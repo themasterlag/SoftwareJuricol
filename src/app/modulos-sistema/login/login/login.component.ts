@@ -78,16 +78,4 @@ export class LoginComponent implements OnInit {
       }
     }
   }
-
-  // prueba de errores
-  Error(){
-     if(this.error==null){
-       console.log('nada')
-       console.log(this.respuesta)
-     }
-     else{
-       console.log(this.error['error'])
-     }
-   }
-  
 }

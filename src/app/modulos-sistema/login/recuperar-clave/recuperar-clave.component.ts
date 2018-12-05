@@ -25,12 +25,10 @@ export class RecuperarClaveComponent implements OnInit {
   }
 
   verificacionUsuario(){
-
     this.controlador.setUsuario(this.usuario);
-    console.log(this.usuario)
     this.controlador.VerificarUsuario().subscribe(
       response =>{
-        console.log(response)
+        
       }
     );
     // this.router.navigateByUrl('/codigoVerificacion');

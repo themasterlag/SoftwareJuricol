@@ -22,7 +22,6 @@ export class Verificacion {
     }
 
     public setClave(clave){
-        // console.log(Md5.init(clave));
         this.clave = clave;
     }
 
@@ -35,7 +34,6 @@ export class Verificacion {
         // juricol.000webhostapp.com
     public IniciarSesion(){
         this.clave = Md5.init(this.clave);
-        console.log(this.clave);
         return this.http.post("https://localhost/GitHub/juricol/recursos/validar.php",
             {accion:'validar',
             usuario:this.usuario,
@@ -55,8 +53,6 @@ export class Verificacion {
     // envia el codigo que ingresa el usuario al recurso para que sea validado
     public ValidarCodigo(){
         alert(this.codigoIngresado);
-        // this.http.post('',
-        // {codigo:this.codigoIngresado});
     }
 
     // envia la nueva clave para remplazar la antigua

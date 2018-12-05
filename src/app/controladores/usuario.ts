@@ -52,7 +52,6 @@ export class Usuario {
     
             //llenado de variable lista de demandas con resultados de la consulta
             this.roles = response['mensaje'];
-            console.log(this.roles,"Clase roles");
           },err=>{
              console.log(err.error['mensaje']);
           }

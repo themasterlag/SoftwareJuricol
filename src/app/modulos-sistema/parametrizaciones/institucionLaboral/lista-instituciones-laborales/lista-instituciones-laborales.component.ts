@@ -81,7 +81,6 @@ export class ListaInstitucionesLaboralesComponent implements OnInit {
         this.controladorParametrizacion.SetIdRelacion(this.ciudad);
         this.controladorParametrizacion.GuardarParametrizacion().subscribe(
           response =>{
-            console.log(response)
             this.cerrarModal();
             this.ngOnInit();
           }
