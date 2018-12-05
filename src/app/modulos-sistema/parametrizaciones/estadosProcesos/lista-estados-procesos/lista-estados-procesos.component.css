@@ -118,6 +118,13 @@ span.psw {
     to {transform: scale(1)}
 }
 
+@media (max-width:680px){
+    .btn-danger{
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+}
+
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
     span.psw {
