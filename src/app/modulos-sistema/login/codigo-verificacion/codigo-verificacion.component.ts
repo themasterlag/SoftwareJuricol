@@ -18,6 +18,8 @@ export class CodigoVerificacionComponent implements OnInit {
   codigoIngresado: number;
   controlador: Verificacion;
 
+  error:any = null;
+
   constructor(private router:Router, private http:HttpClient) {
     this.controlador= new Verificacion(this.http);
   }
@@ -26,10 +28,21 @@ export class CodigoVerificacionComponent implements OnInit {
   }
 
   verificacionCodigo(){
+    this.router.navigateByUrl("/restablecerClave");
 
     this.controlador.setCodigoIngresado(this.codigoIngresado);
-    
-    this.controlador.ValidarCodigo();
+    this.controlador.ValidarCodigo().subscribe(
+      response =>{
+        if(response["mensaje"] != "El codigo es correcto"){
+          this.error = response["mensaje"];
+        }
+        else{
+          this.router.navigateByUrl("/restablecerClave");
+        }
+      },error =>{
+        this.error = "Error al validar el codigo";
+      }
+    );
   }
 
 }

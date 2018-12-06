@@ -19,7 +19,9 @@
         <label>
           <h4><strong>Codigo de seguridad</strong></h4>
         </label>
-        <br>
+        <div *ngIf="error!=null" class="alert alert-danger" role="alert">
+          {{error}}
+        </div>
         <br>
         <label><b>Codigo</b></label>
         <input type="text" class="form-control" [(ngModel)]="codigoIngresado" placeholder="Ingrese el codigo recibido"

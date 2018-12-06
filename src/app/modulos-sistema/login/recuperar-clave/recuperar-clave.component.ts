@@ -13,9 +13,11 @@ import { Verificacion } from '../../../controladores/verificacion';
 })
 export class RecuperarClaveComponent implements OnInit {
 
-  usuario:string;
+  usuario:string = null;
 
   controlador:Verificacion;
+
+  error:any = null;
 
   constructor(private router:Router, private http:HttpClient) { 
     this.controlador= new Verificacion(this.http);
@@ -25,13 +27,27 @@ export class RecuperarClaveComponent implements OnInit {
   }
 
   verificacionUsuario(){
-    this.controlador.setUsuario(this.usuario);
-    this.controlador.VerificarUsuario().subscribe(
-      response =>{
-        
-      }
-    );
-    // this.router.navigateByUrl('/codigoVerificacion');
+    if(this.usuario == null ){
+      this.error = "Ingrese un usuario";
+    }
+    else{
+      this.controlador.setUsuario(this.usuario);
+      this.controlador.VerificarUsuario().subscribe(
+        response =>{
+          if(response != "Correo enviado"){
+          this.error = response["mensaje"];
+          console.log(response);
+          }
+          else{
+            this.router.navigateByUrl('/codigoVerificacion');
+          }
+        },error =>{
+          this.error = "Error al validar usuario"
+          // console.log(error.error);
+        }
+      );
+    }
+    
 
   }
 

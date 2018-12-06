@@ -17,6 +17,9 @@
         <label>
           <h5><strong>Recuperar contraseña</strong></h5>
         </label>
+        <div *ngIf="error!=null" class="alert alert-danger" role="alert">
+          {{error}}
+        </div>
         <br>
         <br>
         <label><b>Usuario</b></label>

@@ -49,10 +49,11 @@ export class Verificacion {
         );
     }
 
-
     // envia el codigo que ingresa el usuario al recurso para que sea validado
     public ValidarCodigo(){
-        alert(this.codigoIngresado);
+        return this.http.post("https://localhost/GitHub/juricol/recursos/recuperacion.php",{
+            Codigo: this.codigoIngresado
+        });
     }
 
     // envia la nueva clave para remplazar la antigua
