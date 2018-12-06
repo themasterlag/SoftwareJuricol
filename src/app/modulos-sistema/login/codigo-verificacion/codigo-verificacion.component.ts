@@ -12,6 +12,7 @@ import { Verificacion } from '../../../controladores/verificacion';
   templateUrl: './codigo-verificacion.component.html',
   styleUrls: ['./codigo-verificacion.component.css']
 })
+
 export class CodigoVerificacionComponent implements OnInit {
 
 
