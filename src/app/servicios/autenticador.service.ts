@@ -29,6 +29,10 @@ export class AutenticadorService {
     // this.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDI3NDYxMTYsImV4cCI6MTU0Mjc4MjExNiwiZGF0YSI6eyJ1c3VhcmlvIjoiMTIzNDU2Nzg5In19.eHjX1nNxucTAzaydxdInNW3lngdgyzk2XRbbpWHwBuI";
   }
 
+  public SetUsuario(Usuario){
+    this.usuario = Usuario;
+  }
+
   public GetToken() {
     var token = sessionStorage.getItem("token");
     // console.log(token)

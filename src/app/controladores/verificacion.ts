@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Md5} from "md5-typescript";
+import { AutenticadorService } from '../servicios/autenticador.service';
+import swal from 'sweetalert2';
 
 
 
@@ -9,12 +11,13 @@ export class Verificacion {
     // atributos
     private id:number = null;
     private usuario:string= null;
+    private nombreUsuario:number = null;
     private clave:string= null;
     private codigoIngresado:number= null;
 
 
     // metodos
-    constructor(private http:HttpClient ){ }
+    constructor(private http:HttpClient, private autenticadorService: AutenticadorService){ }
 
 
     public setUsuario(usuario){
@@ -29,6 +32,9 @@ export class Verificacion {
         this.codigoIngresado = codigo;
     }
 
+    public GetUsuario(){
+        return this.usuario;
+    }
 
     // envia el usuario y clave al recurso para validar que sean correctos
         // juricol.000webhostapp.com
@@ -52,13 +58,19 @@ export class Verificacion {
     // envia el codigo que ingresa el usuario al recurso para que sea validado
     public ValidarCodigo(){
         return this.http.post("https://localhost/GitHub/juricol/recursos/recuperacion.php",{
+            NomUsuario: this.usuario,
             Codigo: this.codigoIngresado
         });
     }
 
     // envia la nueva clave para remplazar la antigua
     public restablecerClave(){
-        
+
+        return this.http.post("https://localhost/GitHub/juricol/recursos/recuperacion.php",{
+            Codigo: "nuevaClave",
+            NomUsuario: this.usuario,
+            NuevaClave: this.clave
+        });
     }
 
 }

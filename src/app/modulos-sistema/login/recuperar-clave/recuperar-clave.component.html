@@ -17,11 +17,12 @@
         <label>
           <h5><strong>Recuperar contraseña</strong></h5>
         </label>
+        <div class="alert alert-warning">
+          <p><strong>Aviso:</strong> No actualice la pagina del navegador mientras realiza el proceso.</p>
+        </div>
         <div *ngIf="error!=null" class="alert alert-danger" role="alert">
           {{error}}
         </div>
-        <br>
-        <br>
         <label><b>Usuario</b></label>
         <input type="text" class="form-control" [(ngModel)]="usuario" placeholder="Ingrese el nombre de usuario" (keydown.enter)="verificacionUsuario()" required>
       </div>

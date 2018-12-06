@@ -175,7 +175,7 @@ export class Demanda {
 
     public GuardarDemanda(){
         if(this.id == null){
-            return this.http.post('http://localhost/GitHub/juricol/recursos/validar.php',{
+            return this.http.post('https://localhost/GitHub/juricol/recursos/validar.php',{
                 accion:"crearDemanda",
                 Categoria: this.categoria,
                 NumDemanda: this.numRadicado,
@@ -191,7 +191,7 @@ export class Demanda {
             });
         }
         else{
-            return this.http.put('http://localhost/GitHub/juricol/recursos/validar.php',{
+            return this.http.put('https://localhost/GitHub/juricol/recursos/validar.php',{
                 accion:"modificarDemanda",
                 IdDemanda:this.id,
                 Categoria: this.categoria,

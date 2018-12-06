@@ -52,6 +52,7 @@ import { EditarClaveComponent } from './modulos-sistema/usuarios/editar-clave/ed
 //Rutas para redirecciones por url
 const rutas: Routes =[
     { path:'', redirectTo:'login', pathMatch:'full' },
+
     { path:'login', component:LoginComponent},
         { path:'recuperarClave', component:RecuperarClaveComponent},
         { path:'codigoVerificacion', component:CodigoVerificacionComponent},
@@ -88,6 +89,7 @@ const rutas: Routes =[
         { path:'parentesco', component:ListaParentescosComponent},
         { path:'tiposProcesos', component:ListaTiposProcesosComponent},
         { path:'tipoDemandas', component:ListaTiposDemandasComponent},
+        
     ]},
 ];
 

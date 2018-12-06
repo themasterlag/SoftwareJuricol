@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   error:any = null;
 
   constructor(private router:Router, private http:HttpClient, private autenticadorService: AutenticadorService ) {
-    this.controladorVerificacion= new Verificacion(this.http);
+    this.controladorVerificacion= new Verificacion(this.http, autenticadorService);
     if(autenticadorService.ProcesarToken() == true) {
       this.router.navigateByUrl('/'+autenticadorService.GetUsuario()+'/demandas');
     }

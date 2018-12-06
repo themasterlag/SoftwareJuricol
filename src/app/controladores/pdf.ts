@@ -7,7 +7,7 @@ export class PDF  {
 
       }
 ObtenerEstados(){// Recurso que permite consultar todas los Cargos posibles para los empleados
-   return this.http.get('http://localhost/GitHub/juricol/recursos/validar.php?accion=consultarEstadosDemandas')
+   return this.http.get('https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarEstadosDemandas')
 
 }
 Movimiento:Array<Object>=[];
@@ -21,7 +21,7 @@ GetMovimiento(Movimeinto){
   
 
     let accionPDF = "crearMovimiento";
-         return this.http.post('http://localhost/GitHub/juricol/recursos/validar.php',
+         return this.http.post('https://localhost/GitHub/juricol/recursos/validar.php',
           {           
                 
              accion : accionPDF,

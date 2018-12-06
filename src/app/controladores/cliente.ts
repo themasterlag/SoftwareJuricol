@@ -183,21 +183,21 @@ private TipoDucumentoAdicional:number
     //      Recursos
 
     EliminarCliente(IdCliente){
-        return this.http.delete('http://localhost/GitHub/juricol/recursos/validar.php?accion=eliminarCliente&IdCliente='+IdCliente)
+        return this.http.delete('https://localhost/GitHub/juricol/recursos/validar.php?accion=eliminarCliente&IdCliente='+IdCliente)
         }
         BuscarCliente(IdCliente){ // Recurso que consulta a la BD los datos de un solo cliente
         
-        return this.http.get('http://localhost/GitHub/juricol/recursos/validar.php?accion=consultarClientes&IdCliente='+IdCliente )
+        return this.http.get('https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarClientes&IdCliente='+IdCliente )
         }
         BuscarClientes(Activo){ // Recurso que consulta a la BD los datos la informacion de los clientes
 
-            return this.http.get('http://localhost/GitHub/juricol/recursos/validar.php?accion=consultarClientes&Activo='+Activo);
+            return this.http.get('https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarClientes&Activo='+Activo);
     
         }
         insertarCliente(){ // Recurso que permite inserta la insersion de un cliente a la BD
         
         let accionCrear = "crearCliente"
-        return this.http.post('http://localhost/GitHub/juricol/recursos/validar.php',
+        return this.http.post('https://localhost/GitHub/juricol/recursos/validar.php',
             {           
                 
             accion : accionCrear,
@@ -229,36 +229,36 @@ private TipoDucumentoAdicional:number
         }
         
         ObtenerTiposDoc(){
-        return this.http.get('http://localhost/GitHub/juricol/recursos/validar.php?accion=consultarTiposDocumentos' )
+        return this.http.get('https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarTiposDocumentos' )
         
         }
         ObtenerPaises(){
-        return this.http.get('http://localhost/GitHub/juricol/recursos/validar.php?accion=consultarPaises' )
+        return this.http.get('https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarPaises' )
         }
         
         ObtenerDepartamentos(IdPais){
-        return this.http.get('http://localhost/GitHub/juricol/recursos/validar.php?accion=consultarDepartamentos&IdPais='+IdPais )
+        return this.http.get('https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarDepartamentos&IdPais='+IdPais )
         }
         ObtenerDepartamento(IdDepartamento){
-        return this.http.get('http://localhost/GitHub/juricol/recursos/validar.php?accion=consultarDepartamentos&IdDepartamento='+IdDepartamento )
+        return this.http.get('https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarDepartamentos&IdDepartamento='+IdDepartamento )
         }
         ObtenerCiudades(IdDepartamento){
-        return this.http.get('http://localhost/GitHub/juricol/recursos/validar.php?accion=consultarCiudades&IdDepartamento='+IdDepartamento )
+        return this.http.get('https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarCiudades&IdDepartamento='+IdDepartamento )
         }
         ObtenerCiudad(IdCiudad){
-        return this.http.get('http://localhost/GitHub/juricol/recursos/validar.php?accion=consultarCiudades&IdCiudad='+IdCiudad )
+        return this.http.get('https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarCiudades&IdCiudad='+IdCiudad )
         }
         
         ObtenerEntidades(){
-        return this.http.get('http://localhost/GitHub/juricol/recursos/validar.php?accion=consultarInstitucionesLaborales' )
+        return this.http.get('https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarInstitucionesLaborales' )
         }
         ObtenerParentescos(){
-        return this.http.get('http://localhost/GitHub/juricol/recursos/validar.php?accion=consultarParentescos' )
+        return this.http.get('https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarParentescos' )
         }
         ActualizarCliente(){ // Recurso que permite la actualizacion de los datos de un cliente.
         
         let accionActualizar = "modificarCliente"
-        return this.http.put('http://localhost/GitHub/juricol/recursos/validar.php',
+        return this.http.put('https://localhost/GitHub/juricol/recursos/validar.php',
             {           
                 
         

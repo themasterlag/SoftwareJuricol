@@ -50,7 +50,7 @@
     <br>
       
     <div class="botonNuevo">
-      <button class="btn btn-primary" (click)="nuevaDemanda()">Nueva demanda</button>
+      <button class="btn btn-primary" (click)="nuevaDemanda()" *ngIf="rolPropio != 'Abogado'">Nueva demanda</button>
     </div>
 
     <br>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
+import { AutenticadorService } from '../../../servicios/autenticador.service';
 
 import { Verificacion } from '../../../controladores/verificacion';
 
@@ -19,8 +19,8 @@ export class RecuperarClaveComponent implements OnInit {
 
   error:any = null;
 
-  constructor(private router:Router, private http:HttpClient) { 
-    this.controlador= new Verificacion(this.http);
+  constructor(private router:Router, private http:HttpClient, private autenticadorService: AutenticadorService) { 
+    this.controlador= new Verificacion(this.http, autenticadorService);
   }
 
   ngOnInit() {
@@ -35,10 +35,11 @@ export class RecuperarClaveComponent implements OnInit {
       this.controlador.VerificarUsuario().subscribe(
         response =>{
           if(response != "Correo enviado"){
-          this.error = response["mensaje"];
-          console.log(response);
+            this.error = response["mensaje"];
+            // console.log(response);
           }
           else{
+            this.autenticadorService.SetUsuario(this.usuario);
             this.router.navigateByUrl('/codigoVerificacion');
           }
         },error =>{
