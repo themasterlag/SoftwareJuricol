@@ -58,7 +58,6 @@ export class ListaDemandasComponent implements OnInit {
       this.controladorDemanda.BuscarDemandas(IdEmpleado).add(
         response =>{
           this.listaDemandas = this.controladorDemanda.GetListaDemandas();
-          
         }
       );
 

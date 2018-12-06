@@ -21,28 +21,28 @@ export class RegistrarDemandaComponent implements OnInit {
   pantalla:number = 0;
 
   id:number = null;
-  numRadicado:number;
+  numRadicado:number = null;
   tipoDemanda:number = 0;
-  listaTiposDemandas:Object;
+  listaTiposDemandas:Object = null;
   cliente:number = 0;
-  listaClientes:Object;
+  listaClientes:Object = null;
   titular:number = 0;
   suplente:number = 0;
-  listaEmpleados:Object;
-  descripcion:number;
+  listaEmpleados:Object = null;
+  descripcion:number = null;
   estadoProceso:number = 0;
-  listaEstadosProcesos:Object;
+  listaEstadosProcesos:Object = null;
   tipoProceso:number = 0;
-  listaTiposProcesos:Object;
-  contraparte:string;
-  juzgado:number = 0;
-  listaJuzgados:Object;
+  listaTiposProcesos:Object = null;
+  contraparte:string = null;
+  juzgado:number = null;
+  listaJuzgados:Object = null;
   categoria:number = null;
-  termino:number = 0;
-  listaTerminos:Object;
-  descripcionTermino:string;
-  fechaInicioEstado:Date;
-  fechaVencimiento:Date;
+  termino:number = null;
+  listaTerminos:Object = null;
+  descripcionTermino:string = null;
+  fechaInicioEstado:Date = null;
+  fechaVencimiento:Date = null;
 
   error:any;
 
@@ -99,12 +99,19 @@ export class RegistrarDemandaComponent implements OnInit {
   }
 
   guardarDemanda(){
-    if (this.estadoProceso == null){
-      this.error = "Seleccione un estado del proceso";
+
+    if(this.categoria == null || this.tipoDemanda == null || this.tipoDemanda == null || this.cliente == null || this.titular == null || this.suplente == null || this.contraparte == null || this.tipoProceso == null || this.estadoProceso == null || this.descripcion == null || this.estadoProceso == null){
+      this.error = "Por favor llene todos los campos";
+    }
+    else{
+
+    }
+    
+    if ( this.termino == 0 || this.descripcionTermino == null){
     }
     else{
       this.controladorDemanda.SetIdDemanda(this.id);
-      this.controladorDemanda.SetCategoria(this.categoria)
+      this.controladorDemanda.SetCategoria(this.categoria);
       this.controladorDemanda.SetNumeroRadicado(this.numRadicado);
       this.controladorDemanda.SetTipoDemanda(this.tipoDemanda);
       this.controladorDemanda.SetCliente(this.cliente);
@@ -148,7 +155,6 @@ export class RegistrarDemandaComponent implements OnInit {
         }
       );
     }
-    
   }
 
   cancelar(){
@@ -171,7 +177,4 @@ export class RegistrarDemandaComponent implements OnInit {
     }
   }
 
-  verDemanda(){
-    
-  }
 }
