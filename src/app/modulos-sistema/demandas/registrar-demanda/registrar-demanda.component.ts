@@ -22,17 +22,17 @@ export class RegistrarDemandaComponent implements OnInit {
 
   id:number = null;
   numRadicado:number = null;
-  tipoDemanda:number = 0;
+  tipoDemanda:number = null;
   listaTiposDemandas:Object = null;
-  cliente:number = 0;
+  cliente:number = null;
   listaClientes:Object = null;
-  titular:number = 0;
-  suplente:number = 0;
+  titular:number = null;
+  suplente:number = null;
   listaEmpleados:Object = null;
   descripcion:number = null;
-  estadoProceso:number = 0;
+  estadoProceso:number = null;
   listaEstadosProcesos:Object = null;
-  tipoProceso:number = 0;
+  tipoProceso:number = null;
   listaTiposProcesos:Object = null;
   contraparte:string = null;
   juzgado:number = null;
@@ -104,56 +104,55 @@ export class RegistrarDemandaComponent implements OnInit {
       this.error = "Por favor llene todos los campos";
     }
     else{
-
-    }
+      if ( this.termino == 0 || this.descripcionTermino == null){
+        this.error = "Por favor ingrese la informacion del estado"
+      }
+      else{
+        this.controladorDemanda.SetIdDemanda(this.id);
+        this.controladorDemanda.SetCategoria(this.categoria);
+        this.controladorDemanda.SetNumeroRadicado(this.numRadicado);
+        this.controladorDemanda.SetTipoDemanda(this.tipoDemanda);
+        this.controladorDemanda.SetCliente(this.cliente);
+        this.controladorDemanda.SetTitular(this.titular);
+        this.controladorDemanda.SetSuplente(this.suplente);
+        this.controladorDemanda.SetJuzgado(this.juzgado);
+        this.controladorDemanda.SetContraparte(this.contraparte);
+        this.controladorDemanda.SetTipoProceso(this.tipoProceso);
+        this.controladorDemanda.SetEstadoProceso(this.estadoProceso);
+        this.controladorDemanda.SetDescripcion(this.descripcion);
     
-    if ( this.termino == 0 || this.descripcionTermino == null){
-    }
-    else{
-      this.controladorDemanda.SetIdDemanda(this.id);
-      this.controladorDemanda.SetCategoria(this.categoria);
-      this.controladorDemanda.SetNumeroRadicado(this.numRadicado);
-      this.controladorDemanda.SetTipoDemanda(this.tipoDemanda);
-      this.controladorDemanda.SetCliente(this.cliente);
-      this.controladorDemanda.SetTitular(this.titular);
-      this.controladorDemanda.SetSuplente(this.suplente);
-      this.controladorDemanda.SetJuzgado(this.juzgado);
-      this.controladorDemanda.SetContraparte(this.contraparte);
-      this.controladorDemanda.SetTipoProceso(this.tipoProceso);
-      this.controladorDemanda.SetEstadoProceso(this.estadoProceso);
-      this.controladorDemanda.SetDescripcion(this.descripcion);
-  
-      this.controladorDemanda.GuardarDemanda().subscribe(
-        response =>{
-          if(response["codigo"]==200){
-            swal({
-              type: 'success',
-              title: "Demanda registrada correctamente",
-              timer: 5000
-            });
-            this.controladorDemanda.SetIdDemanda(response["mensaje"]);
-            this.controladorDemanda.SetDescripcionTermino(this.descripcion);
-            this.controladorDemanda.SetTermino(this.termino);
-            this.controladorDemanda.SetFechaInicioEstado(this.fechaInicioEstado);
-            this.controladorDemanda.SetFechaVencimiento(this.fechaVencimiento);
-  
-            this.controladorDemanda.CrearMovimiento().subscribe(
-              response =>{
-                if(response["codigo"]==200){
-                  this.router.navigateByUrl("/"+this.usuario+"/demandas");
+        this.controladorDemanda.GuardarDemanda().subscribe(
+          response =>{
+            if(response["codigo"]==200){
+              swal({
+                type: 'success',
+                title: "Demanda registrada correctamente",
+                timer: 5000
+              });
+              this.controladorDemanda.SetIdDemanda(response["mensaje"]);
+              this.controladorDemanda.SetDescripcionTermino(this.descripcion);
+              this.controladorDemanda.SetTermino(this.termino);
+              this.controladorDemanda.SetFechaInicioEstado(this.fechaInicioEstado);
+              this.controladorDemanda.SetFechaVencimiento(this.fechaVencimiento);
+    
+              this.controladorDemanda.CrearMovimiento().subscribe(
+                response =>{
+                  if(response["codigo"]==200){
+                    this.router.navigateByUrl("/"+this.usuario+"/demandas");
+                  }
+                  else{
+                    this.error = response["mensaje"];
+                  }
                 }
-                else{
-                  this.error = response["mensaje"];
-                }
-              }
-            );
-            
+              );
+              
+            }
+            else{
+              this.error = response["mensaje"];
+            }
           }
-          else{
-            this.error = response["mensaje"];
-          }
-        }
-      );
+        );
+      }
     }
   }
 

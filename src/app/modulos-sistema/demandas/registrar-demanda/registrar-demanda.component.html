@@ -43,7 +43,7 @@
                         <label>Tipo demanda</label>
                         <div>
                             <select class="form-control select" [(ngModel)]="tipoDemanda">
-                                <option value="0" disabled>Seleccione un tipo de demanda</option>
+                                <option value="null" disabled>Seleccione un tipo de demanda</option>
                                 <option *ngFor="let tipo of listaTiposDemandas" value="{{tipo.Id}}">{{tipo.Descripcion}}</option>
                             </select>
                         </div>
@@ -55,7 +55,7 @@
                         <label>Cliente</label>
                         <div>
                             <select class="form-control select" [(ngModel)]="cliente">
-                                <option value="0" disabled>Seleccione un cliente</option>
+                                <option value="null" disabled>Seleccione un cliente</option>
                                 <option *ngFor="let cliente of listaClientes" value="{{cliente.IdCliente}}">{{cliente.PrimerNombre}} {{cliente.SegundoApellido}} {{cliente.PrimerApellido}} {{cliente.SegundoApellido}}</option>
                             </select>
                         </div>
@@ -64,7 +64,7 @@
                     <div class="col-md-6">
                         <label> Abogado titular </label>
                         <select class="form-control select" [(ngModel)]="titular">
-                            <option value="0" disabled>Seleccione un empleado</option>
+                            <option value="null" disabled>Seleccione un empleado</option>
                             <option *ngFor="let empleado of listaEmpleados" value="{{empleado.IdEmpleado}}">{{empleado.PrimerNombre}} {{empleado.SegundoNombre}} {{empleado.PrimerApellido}} {{empleado.SegundoApellido}}</option>
                         </select>
                     </div>
@@ -74,7 +74,7 @@
                     <div class="col-md-6">
                         <label> Abogado suplente </label>
                         <select class="form-control select" [(ngModel)]="suplente">
-                            <option value="0" disabled>Seleccione un empleado suplente</option>
+                            <option value="null" disabled>Seleccione un empleado suplente</option>
                             <option *ngFor="let empleado of listaEmpleados" value="{{empleado.IdEmpleado}}">{{empleado.PrimerNombre}} {{empleado.SegundoNombre}} {{empleado.PrimerApellido}} {{empleado.SegundoApellido}}</option>
                         </select>
                     </div>
@@ -82,7 +82,7 @@
                     <div class="col-md-6">
                         <label> Juzgado </label>
                         <select class="form-control select" [(ngModel)]="juzgado">
-                            <option value="0" disabled>Seleccione un juzgado</option>
+                            <option value="null" disabled>Seleccione un juzgado</option>
                             <option *ngFor="let juzgado of listaJuzgados" value="{{juzgado.Id}}">{{juzgado.Descripcion}}</option>
                         </select>
                     </div>
@@ -97,7 +97,7 @@
                     <div class="col-md-6">
                         <label> Tipo de proceso </label>
                         <select class="form-control select" [(ngModel)]="tipoProceso">
-                            <option value="0" disabled>Seleccione un tipo de proceso</option>
+                            <option value="null" disabled>Seleccione un tipo de proceso</option>
                             <option *ngFor="let tipo of listaTiposProcesos" value="{{tipo.Id}}">{{tipo.Descripcion}}</option>
                         </select>
                     </div>
@@ -107,7 +107,7 @@
                     <div class="col-md-6">
                         <label> Estado del proceso </label>
                         <select class="form-control select" [(ngModel)]="estadoProceso">
-                            <option value="0" disabled>Seleccione un estado</option>
+                            <option value="null" disabled>Seleccione un estado</option>
                             <option *ngFor="let proceso of listaEstadosProcesos" value="{{proceso.Id}}">{{proceso.Descripcion}}</option>
                         </select>
                     </div>
@@ -115,7 +115,7 @@
                     <div class="col-md-6">
                         <label> Estado de la demanda </label>
                         <select class="form-control select" [(ngModel)]="termino">
-                            <option value="0" disabled>Seleccione un estado</option>
+                            <option value="null" disabled>Seleccione un estado</option>
                             <option *ngFor="let Termino of listaTerminos" value="{{Termino.Id}}">{{Termino.Descripcion}}</option>
                         </select>
                     </div>
