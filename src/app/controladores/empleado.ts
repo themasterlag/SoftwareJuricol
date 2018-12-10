@@ -1,4 +1,5 @@
 import { HttpClient , HttpHeaders} from '@angular/common/http';
+import { AmbienteService } from '../servicios/ambiente.service';
 
 // clase para objeto Empleado
 export class Empleado {
@@ -23,13 +24,15 @@ export class Empleado {
     private tarjeta : number ;
     private rol : number ;
     
-
-    // atributos
-    
     listaEmpleados:Array<Object>=[];
 
+    private ruta:string = null;
+
+
     // metodos
-    constructor( private http:HttpClient ){}
+    constructor( private http:HttpClient, private ambienteService: AmbienteService){
+        this.ruta = this.ambienteService.GetRutaAmbiente();
+    }
 
     
     public GetListaEmpleados(){

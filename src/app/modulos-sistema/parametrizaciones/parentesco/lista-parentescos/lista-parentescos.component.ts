@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { AutenticadorService } from '../../../../servicios/autenticador.service';
 import { Parametrizacion } from '../../../../controladores/parametrizacion';
 import swal from 'sweetalert2';
+import { AmbienteService } from 'src/app/servicios/ambiente.service';
 
 
 @Component({
@@ -26,11 +27,9 @@ export class ListaParentescosComponent implements OnInit {
 
   error:any = null;
 
-  constructor(private router: Router, private autenticadorService: AutenticadorService, private http:HttpClient) { 
-    this.controladorParametrizacion = new Parametrizacion(this.http);
-    if(autenticadorService.ProcesarToken() == false) {
-      this.router.navigate(["/login"]);
-    }
+  constructor(private router: Router, private autenticadorService: AutenticadorService, private http:HttpClient, private ambienteService: AmbienteService) { 
+    this.controladorParametrizacion = new Parametrizacion(this.http, this.ambienteService);
+    autenticadorService.ProcesarToken();
   }
 
   ngOnInit() {

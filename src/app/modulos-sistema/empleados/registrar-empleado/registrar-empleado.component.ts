@@ -4,6 +4,7 @@ import { HttpClient} from '@angular/common/http';
 import swal from 'sweetalert2';
 import { AutenticadorService } from '../../../servicios/autenticador.service';
 import { Router } from '@angular/router';
+import { AmbienteService } from 'src/app/servicios/ambiente.service';
 
 
 @Component({
@@ -42,25 +43,23 @@ export class RegistrarEmpleadoComponent implements OnInit {
   Respuesta : any;
 
 
-  constructor(private router: Router,private http : HttpClient,private autenticadorService: AutenticadorService) {
-    if(autenticadorService.ProcesarToken() == false) {
-      this.router.navigate(["/login"]);
+  constructor(private router: Router,private http : HttpClient,private autenticadorService: AutenticadorService,  private ambienteService: AmbienteService) {
+    if(autenticadorService.ProcesarToken() != false) {
+      this.tipoDecumento= 0;
+      this.cargo = 0 ;
+      this.especialidad = 0;
+      this.titular = -1;
+      this.pais = 0 ;
+      this.departamento = 0;
+      this.cuidad = 0;
+      this.Empleado = new Empleado(this.http, this.ambienteService);
+      this.tarjeta= null ;
+      this.CargarPaises();
+      this.CargarTiposDoc();
+      this.CargarCargos();
+      this.CargarEspecialidades();
     }
-    this.tipoDecumento= 0;
-    this.cargo = 0 ;
-    this.especialidad = 0;
-    this.titular = -1;
-    this.pais = 0 ;
-    this.departamento = 0;
-    this.cuidad = 0;
-    this.Empleado = new Empleado(this.http) ;
-    this.tarjeta= null ;
-    this.CargarPaises();
-    this.CargarTiposDoc();
-    this.CargarCargos();
-    this.CargarEspecialidades();
-      }
-
+  }
   ngOnInit() {
     
   }

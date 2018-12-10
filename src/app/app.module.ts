@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './servicios/http-interceptor.service';
+import { CookieService } from 'ngx-cookie-service';
+
 
 import { appRutasModules } from './app.routing.module';
 
@@ -97,7 +99,8 @@ import { EditarClaveComponent } from './modulos-sistema/usuarios/editar-clave/ed
   providers: [
     {provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
-    multi: true}
+    multi: true},
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

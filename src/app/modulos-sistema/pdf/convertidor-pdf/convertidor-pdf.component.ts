@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { AutenticadorService } from '../../../servicios/autenticador.service';
 import { isArray } from 'util';
 import { Parametrizacion } from '../../../controladores/parametrizacion';
+import { AmbienteService } from 'src/app/servicios/ambiente.service';
 
 
 @Component({
@@ -27,22 +28,27 @@ export class ConvertidorPdfComponent implements OnInit {
   tipoAccion:boolean = false; //falso para crear nuevo tipo, verdadero para editar tipo
   error:any = null;
   PDF : PDF ;
+
+  private ruta:string = null;
+
   private token = this.autenticadorService.GetToken();
-  constructor(private route : Router,private autenticadorService: AutenticadorService, private http: HttpClient) {
-    if(autenticadorService.ProcesarToken() == false) {
-      this.route.navigate(["/login"]);
+
+  constructor(private route : Router,private autenticadorService: AutenticadorService, private http: HttpClient, private ambienteService: AmbienteService) {
+
+    this.ruta = this.ambienteService.GetRutaAmbiente();
+
+    if(autenticadorService.ProcesarToken() != false) {    
+      this.controladorParametrizacion = new Parametrizacion(this.http, this.ambienteService);
+      this.PDF = new PDF(this.http, this.ambienteService);
+      this.uploader = new FileUploader({
+        queueLimit:1,
+        url:  this.ruta+'validar.php?accion=pdf',
+        authToken: this.token,
+        authTokenHeader:'Authorization',
+        isHTML5: true,
+        removeAfterUpload: true
+      });
     }
-    this.controladorParametrizacion = new Parametrizacion(this.http);
-    this.PDF = new PDF(http);
-    this.uploader = new FileUploader({
-      queueLimit:1,
-      url:  'https://localhost/GitHub/juricol/recursos/validar.php?accion=pdf',
-      authToken: this.token,
-      authTokenHeader:'Authorization',
-      isHTML5: true,
-      removeAfterUpload: true
-    });
-   
   }
 
   ConsultarEstados(){

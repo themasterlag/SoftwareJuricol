@@ -4,6 +4,7 @@ import { HttpClient} from '@angular/common/http';// importacion de la libreria H
 import { Router, Routes }  from '@angular/router';
 import swal from 'sweetalert2';
 import { AutenticadorService } from '../../../servicios/autenticador.service';
+import { AmbienteService } from 'src/app/servicios/ambiente.service';
 
 @Component({
   selector: 'app-registrar-cliente',
@@ -47,23 +48,22 @@ export class RegistrarClienteComponent  {
 
   //una variable de tipo HttpClient para hacer el debido procesamineto del constructor
 
-  constructor(private http : HttpClient,private autenticadorService: AutenticadorService, private route : Router,private router : Router) {
-    if(autenticadorService.ProcesarToken() == false) {
-      this.router.navigate(["/login"]);
+  constructor(private http : HttpClient,private autenticadorService: AutenticadorService, private route: Router,private router: Router,  private ambienteService: AmbienteService) {
+    if(autenticadorService.ProcesarToken() != false) {
+      this.Cliente = new Cliente(this.http,this.ambienteService) ; // instanciacion de un objeto tipo Cliente
+      this.Pais = 0 ;
+      this.Departamento = 0;
+      this.Cuidad = 0;
+      this.Entidad = 0;
+      this.Parentesco = 0;
+      this.TipoDocumento=0;
+      this.TipoDocumentoAdicional=0;
+      this.CargarPaises();
+      this.CargarEntidad();
+      this.CargarTiposDoc();
+      this.CargarParentescos();
     }
-    this.Cliente = new Cliente(this.http) ; // instanciacion de un objeto tipo Cliente
-    this.Pais = 0 ;
-    this.Departamento = 0;
-    this.Cuidad = 0;
-    this.Entidad = 0;
-    this.Parentesco = 0;
-    this.TipoDocumento=0;
-    this.TipoDocumentoAdicional=0;
-    this.CargarPaises();
-    this.CargarEntidad();
-    this.CargarTiposDoc();
-    this.CargarParentescos();
-   }
+  }
 
   // Metodo de la interfaz que utiliza metodos del objeto empleado para transferir los datos introducidos en pantalla
   // ademas el metodo de intertar un cliente para Crear un registro de cliente en la BD.

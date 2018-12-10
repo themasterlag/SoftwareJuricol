@@ -1,6 +1,7 @@
 import { Semaforo } from './semaforo';
 
 import { HttpClient } from '@angular/common/http';
+import { AmbienteService } from '../servicios/ambiente.service';
 
 // clase para objeto Empleado
 export class Termino {
@@ -19,8 +20,12 @@ export class Termino {
     private fechaInicioEstado:Date;
     private fechaVencimiento:Date;
 
+    private ruta:string = null;
+
+
     // metodos
-    constructor(private http:HttpClient){
+    constructor(private http:HttpClient, private ambienteService: AmbienteService){
+        this.ruta = this.ambienteService.GetRutaAmbiente();
         this.diasVencimiento = null;
     }
 
@@ -54,7 +59,7 @@ export class Termino {
 
 
     public ConsultarTerminos(){
-        return this.http.get("https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarEstadosDemandas").subscribe(
+        return this.http.get(this.ruta+"validar.php?accion=consultarEstadosDemandas").subscribe(
             response=>{
                 this.listaTerminos = response['mensaje'];
             }
@@ -66,7 +71,7 @@ export class Termino {
     }
 
     public ConsultarMovimientosDemanda(){
-        return this.http.get("https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarMovimientos&IdDemanda="+this.idDemanda).subscribe(
+        return this.http.get(this.ruta+"validar.php?accion=consultarMovimientos&IdDemanda="+this.idDemanda).subscribe(
             response =>{
                 this.listaMoviminetos = response["mensaje"];
                 // console.log(this.listaMoviminetos)
@@ -75,7 +80,7 @@ export class Termino {
     }
 
     public CrearMovimiento(){
-        return this.http.post("https://localhost/GitHub/juricol/recursos/validar.php",{
+        return this.http.post(this.ruta+"validar.php",{
             accion:"crearMovimiento",
             IdDemanda: this.idDemanda,
             IdEstadoDemanda: this.idEstadoDemanda,

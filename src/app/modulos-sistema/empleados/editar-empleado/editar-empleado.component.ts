@@ -5,6 +5,7 @@ import swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AutenticadorService } from '../../../servicios/autenticador.service';
 import { Usuario } from '../../../controladores/usuario';
+import { AmbienteService } from 'src/app/servicios/ambiente.service';
 
 
 @Component({
@@ -49,12 +50,11 @@ export class EditarEmpleadoComponent implements OnInit {
   
   private DatosJSON: any;
 
-  constructor(private router: Router, private http: HttpClient, private autenticadorService: AutenticadorService,private route:ActivatedRoute) {
-    if(autenticadorService.ProcesarToken() == false) {
-      this.router.navigate(["/login"]);
-    }
-    this.controladorUsuario = new Usuario(this.http);
-    this.Empleado = new Empleado(this.http) ;
+  constructor(private router: Router, private http: HttpClient, private autenticadorService: AutenticadorService,private route:ActivatedRoute,  private ambienteService: AmbienteService) {
+    if(autenticadorService.ProcesarToken() != false) {
+
+    this.controladorUsuario = new Usuario(this.http, this.ambienteService);
+    this.Empleado = new Empleado(this.http, this.ambienteService) ;
     this.RolPropio = autenticadorService.GetRol();
     this.route.params.subscribe(
       parametro=>{
@@ -92,8 +92,8 @@ export class EditarEmpleadoComponent implements OnInit {
         this.CargarPaises();
         this.CargarCargos();
         this.CargarEspecialidades();
-        
-   }
+    }
+  }
 
   ngOnInit() {
     this.controladorUsuario.BuscarRoles().add(

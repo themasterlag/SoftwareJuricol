@@ -3,6 +3,7 @@ import { AutenticadorService} from "../../../servicios/autenticador.service";
 import {Usuario} from "../../../controladores/Usuario";
 import { HttpClient, HttpHeaders} from '@angular/common/http'; //Importacion de la libreria HttpClient y HttpHeaders 
 import swal from 'sweetalert2';
+import { AmbienteService } from 'src/app/servicios/ambiente.service';
 
 @Component({
   selector: 'app-editar-clave',
@@ -18,9 +19,11 @@ export class EditarClaveComponent implements OnInit {
   claveConfirmar:any;
   ControladorUsuario : Usuario;
   NombreUsuario: string;
-  constructor(private http: HttpClient,private autenticadorService: AutenticadorService) { 
+  constructor(private http: HttpClient,private autenticadorService: AutenticadorService, private ambienteService: AmbienteService) { 
 
-    this.ControladorUsuario= new Usuario(http);
+    autenticadorService.ProcesarToken();
+
+    this.ControladorUsuario= new Usuario(this.http, this.ambienteService);
    
     this.idUsuario = this.autenticadorService.GetIdUsuario();
     this.usuario = this.autenticadorService.GetUsuario();

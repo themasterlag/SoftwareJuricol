@@ -6,6 +6,7 @@ import swal from 'sweetalert2';
 
 import { AutenticadorService } from '../../../../servicios/autenticador.service';
 import { Parametrizacion } from '../../../../controladores/parametrizacion';
+import { AmbienteService } from 'src/app/servicios/ambiente.service';
 
 @Component({
   selector: 'app-lista-departamentos',
@@ -27,11 +28,9 @@ export class ListaDepartamentosComponent implements OnInit {
   pais:number = 0;
   error:any = null;
 
-  constructor(private router: Router, private autenticadorService: AutenticadorService, private http:HttpClient) { 
-    this.controladorParametrizacion = new Parametrizacion(this.http);
-    if(autenticadorService.ProcesarToken() == false) {
-      this.router.navigate(["/login"]);
-    }
+  constructor(private router: Router, private autenticadorService: AutenticadorService, private http:HttpClient,  private ambienteService: AmbienteService) { 
+    this.controladorParametrizacion = new Parametrizacion(this.http, this.ambienteService);
+    autenticadorService.ProcesarToken();
   }
 
   ngOnInit() {

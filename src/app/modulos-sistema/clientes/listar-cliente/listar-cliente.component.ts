@@ -8,6 +8,7 @@ import swal from 'sweetalert2';
 import { AutenticadorService } from '../../../servicios/autenticador.service';
 
 import { extendMoment } from 'moment-range';
+import { AmbienteService } from 'src/app/servicios/ambiente.service';
  
 const moment = extendMoment(momento);
 @Component({
@@ -36,14 +37,12 @@ export class ListarClienteComponent implements OnInit {
     CiudadResidencia:""
   }
   
-  constructor(private http : HttpClient ,private autenticadorService: AutenticadorService,private router: Router) {
-    if(autenticadorService.ProcesarToken() == false) {
-      this.router.navigate(["/login"]);
+  constructor(private http : HttpClient ,private autenticadorService: AutenticadorService,private router: Router,  private ambienteService: AmbienteService) {
+    if(autenticadorService.ProcesarToken() != false) {    
+      this.Cliente = new Cliente(this.http, this.ambienteService);
+      this.Recargar();
+      this.rol = autenticadorService.GetRol();
     }
-    
-    this.Cliente = new Cliente(http);
-    this.Recargar();
-    this.rol = autenticadorService.GetRol();
   }
 
   ngOnInit() {

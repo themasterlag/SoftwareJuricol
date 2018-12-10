@@ -34,12 +34,10 @@ export class MenuComponent implements OnInit {
   }
 
   constructor(private router: Router, private ruta: ActivatedRoute, private servicioSesion: AutenticadorService) {
-    this.usuario = servicioSesion.GetUsuario();
+    if(servicioSesion.ProcesarToken() != false) {
+   
+      this.usuario = servicioSesion.GetUsuario();
 
-    if(servicioSesion.ProcesarToken() == false) {
-      this.router.navigate(["/login"]);
-    }
-    else{
       let tipoUsuario = this.servicioSesion.GetRol();
 
       if(tipoUsuario == "Abogado"){

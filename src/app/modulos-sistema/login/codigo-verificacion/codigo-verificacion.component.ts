@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Verificacion } from '../../../controladores/verificacion';
 import { AutenticadorService } from 'src/app/servicios/autenticador.service';
 import swal from 'sweetalert2';
+import { AmbienteService } from 'src/app/servicios/ambiente.service';
 
 
 
@@ -23,8 +24,8 @@ export class CodigoVerificacionComponent implements OnInit {
 
   error:any = null;
 
-  constructor(private router:Router, private http:HttpClient, autenticadorService: AutenticadorService) {
-    this.controlador= new Verificacion(this.http, autenticadorService);
+  constructor(private router:Router, private http:HttpClient, private autenticadorService: AutenticadorService, private ambienteService: AmbienteService) {
+    this.controlador= new Verificacion(this.http, this.autenticadorService, this.ambienteService);
     this.usuario = autenticadorService.GetUsuario();
     if(this.usuario == null){
       swal({

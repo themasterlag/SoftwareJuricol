@@ -6,6 +6,7 @@ import { Empleado } from '../../../controladores/empleado';
 import { Usuario } from '../../../controladores/usuario';
 import { AutenticadorService } from '../../../servicios/autenticador.service';
 import swal from 'sweetalert2';
+import { AmbienteService } from 'src/app/servicios/ambiente.service';
 
 
 @Component({
@@ -46,13 +47,11 @@ export class ListaEmpleadosComponent implements OnInit {
     Rol:""
   }
 
-  constructor(private router: Router, private http: HttpClient, private autenticadorService: AutenticadorService) {
+  constructor(private router: Router, private http: HttpClient, private autenticadorService: AutenticadorService, private ambienteService: AmbienteService) {
     //instanciacion de objeto Usuario y objeto Empleado
-    this.controladorUsuario = new Usuario(this.http);
-    this.controladorEmpleado = new Empleado(this.http);
-    if(autenticadorService.ProcesarToken() == false) {
-      this.router.navigate(["/login"]);
-    }
+    this.controladorUsuario = new Usuario(this.http, this.ambienteService);
+    this.controladorEmpleado = new Empleado(this.http, this.ambienteService);
+    autenticadorService.ProcesarToken();
   }
 
 

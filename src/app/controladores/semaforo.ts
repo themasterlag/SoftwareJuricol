@@ -1,5 +1,6 @@
 import * as momento from 'moment';
 import { extendMoment } from 'moment-range';
+import { AmbienteService } from '../servicios/ambiente.service';
 
 const moment = extendMoment(momento);
 
@@ -14,12 +15,12 @@ export class Semaforo {
     
     private diasRestantes:number = null;
 
-
-
+    private ruta:string = null;
 
 
     // metodos
-    constructor(){
+    constructor(private ambienteService: AmbienteService){
+        this.ruta = this.ambienteService.GetRutaAmbiente();
         this.fechaActual= new Date();
     }
 

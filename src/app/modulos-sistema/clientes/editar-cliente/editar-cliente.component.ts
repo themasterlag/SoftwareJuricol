@@ -4,6 +4,7 @@ import { Cliente } from '../../../controladores/cliente';
 import { HttpClient} from '@angular/common/http';
 import swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AmbienteService } from 'src/app/servicios/ambiente.service';
 
 @Component({
   selector: 'app-editar-cliente',
@@ -44,12 +45,11 @@ export class EditarClienteComponent implements OnInit {
 
   
   private DatosJSON: any;
-  constructor( private http : HttpClient ,private autenticadorService: AutenticadorService,private router: Router, private route:ActivatedRoute) { 
-    if(autenticadorService.ProcesarToken() == false) {
-      this.router.navigate(["/login"]);
-    }
+  constructor( private http : HttpClient ,private autenticadorService: AutenticadorService,private router: Router, private route:ActivatedRoute,  private ambienteService: AmbienteService) { 
+    if(autenticadorService.ProcesarToken() != false) {
+      
    
-    this.Cliente = new Cliente(this.http) ;
+    this.Cliente = new Cliente(this.http,this.ambienteService) ;
     this.route.params.subscribe(
       parametro=>{
         
@@ -90,8 +90,9 @@ export class EditarClienteComponent implements OnInit {
         );
         
         });
-
+    }
   }
+  
   CargarEntidad(){
     this.Cliente.ObtenerEntidades().subscribe  
     (       //Asignacion de la respuesta del metodo al atributo cargos

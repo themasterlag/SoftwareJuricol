@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Demanda } from '../../../controladores/demanda';
 import { AutenticadorService } from '../../../servicios/autenticador.service';
+import { AmbienteService } from 'src/app/servicios/ambiente.service';
 
 @Component({
   selector: 'app-lista-demandas',
@@ -34,11 +35,9 @@ export class ListaDemandasComponent implements OnInit {
   listaDemandas:any;
   rolPropio:string;
 
-  constructor(private router: Router, private http: HttpClient, private autenticadorService: AutenticadorService) {
-    this.controladorDemanda = new Demanda(this.http);
-    if(autenticadorService.ProcesarToken() == false) {
-      this.router.navigate(["/login"]);
-    }
+  constructor(private router: Router, private http: HttpClient, private autenticadorService: AutenticadorService,  private ambienteService: AmbienteService) {
+    this.controladorDemanda = new Demanda(this.http, this.ambienteService);
+    autenticadorService.ProcesarToken();
     
   }
 

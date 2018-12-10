@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Router} from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import swal from 'sweetalert2';
 
 // import decode from 'jwt-decode';
@@ -17,7 +18,7 @@ export class AutenticadorService {
   tipoUsuario: string = null;
   token:any = null;
 
-  constructor(private router:Router) {  
+  constructor(private router:Router, private cookieService: CookieService) {  
     // this.SetToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5MjM5NTcsImV4cCI6MTU0Mzk1OTk1NywiZGF0YSI6eyJ1c3VhcmlvIjoiMTIzNDU2Nzg5IiwiSWRVc3VhcmlvIjoiMSIsIlRpcG9Vc3VhcmlvIjoiQWRtaW5pc3RyYWRvciJ9fQ.9p-w3YUGrJ5vkZxQ6vQ1BH86N_ow-u9iWbyFkdftzHc")   
     // this.GuardarToken();
     this.token = this.GetToken();
@@ -34,9 +35,16 @@ export class AutenticadorService {
   }
 
   public GetToken() {
-    var token = sessionStorage.getItem("token");
-    // console.log(token)
-    return token;
+    var tokenExists: boolean = this.cookieService.check("token");
+    if(tokenExists == true){
+      var token = this.cookieService.get("token");
+      console.log(token)
+      return token;
+    }
+    else{
+      console.log(token)
+      return token = null;
+    }
   }
 
   public GetIdUsuario(){
@@ -83,7 +91,7 @@ export class AutenticadorService {
 
 
   public GuardarToken(){
-    sessionStorage.setItem("token",this.token);
+    this.cookieService.set("token",this.token);
   }
 
   
@@ -96,7 +104,7 @@ export class AutenticadorService {
           title: "Por favor inicie sesion",
           timer: 5000
         })
-      this.CerrarSesion();
+      // this.CerrarSesion();
       return false;
     }
     else{
@@ -110,9 +118,8 @@ export class AutenticadorService {
           title: "La sesion ha caducado",
           timer: 5000
         })
-        this.CerrarSesion();
+        // this.CerrarSesion();
         console.log("aqui vence token");
-
         return false;
       }
       else{
@@ -123,7 +130,8 @@ export class AutenticadorService {
 
 
   public CerrarSesion(){
-    sessionStorage.removeItem("token");
+    console.log("cerrar")
+    this.cookieService.delete("token");
     this.token = null;
     this.router.navigateByUrl("/login");
   }

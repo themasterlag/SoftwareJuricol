@@ -1,6 +1,7 @@
 import { HttpClient , HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Md5} from "md5-typescript";
+import { AmbienteService } from '../servicios/ambiente.service';
 
 // clase para objeto Usuaurio
 export class Usuario {
@@ -15,9 +16,12 @@ export class Usuario {
    
     private empleado:number = null;
 
+    private ruta:string = null;
 
     // metodos
-    constructor( private http:HttpClient ){}
+    constructor( private http:HttpClient, private ambienteService: AmbienteService){
+      this.ruta = this.ambienteService.GetRutaAmbiente();
+    }
     public GetRoles(){
       return this.roles;
     }
@@ -59,7 +63,7 @@ export class Usuario {
     }
 
     public CrearUsuario(){
-    return this.http.post("https://localhost/GitHub/juricol/recursos/validar.php",{
+    return this.http.post(this.ruta+"validar.php",{
         accion:'crearUsuario',
         IdEmpleado: this.empleado,
         IdRol: this.rol
@@ -72,7 +76,7 @@ export class Usuario {
         
          // Recurso que permite la actualizacion de los datos de un Empleado.
           let accionAztualizar = "cambiarPassword"
-          return this.http.put('https://localhost/GitHub/juricol/recursos/validar.php',
+          return this.http.put(this.ruta+'validar.php',
               { 
                 accion: accionAztualizar,
                 NuevaClave : this.claveNueva,

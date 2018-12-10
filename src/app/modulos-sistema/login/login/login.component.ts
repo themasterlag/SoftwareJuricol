@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { AutenticadorService } from '../../../servicios/autenticador.service';
 import { Verificacion } from '../../../controladores/verificacion';
+import { AmbienteService } from 'src/app/servicios/ambiente.service';
 
 @Component({
   selector: 'app-login',
@@ -23,8 +24,8 @@ export class LoginComponent implements OnInit {
   respuesta:any;
   error:any = null;
 
-  constructor(private router:Router, private http:HttpClient, private autenticadorService: AutenticadorService ) {
-    this.controladorVerificacion= new Verificacion(this.http, autenticadorService);
+  constructor(private router:Router, private http:HttpClient, private autenticadorService: AutenticadorService, private ambienteService: AmbienteService) {
+    this.controladorVerificacion= new Verificacion(this.http, this.autenticadorService, this.ambienteService);
     if(autenticadorService.ProcesarToken() == true) {
       this.router.navigateByUrl('/'+autenticadorService.GetUsuario()+'/demandas');
     }

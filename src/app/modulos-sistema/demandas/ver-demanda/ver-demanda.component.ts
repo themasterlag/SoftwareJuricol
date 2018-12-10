@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Demanda } from '../../../controladores/demanda';
 import { AutenticadorService } from '../../../servicios/autenticador.service';
+import { AmbienteService } from 'src/app/servicios/ambiente.service';
 
 @Component({
   selector: 'app-ver-demanda',
@@ -42,11 +43,9 @@ export class VerDemandaComponent implements OnInit {
   listaMovimientos:Object;
   listaTerminos:Object;
 
-  constructor(private router: Router, private http: HttpClient, private autenticadorService: AutenticadorService, private rute: ActivatedRoute) {
-    this.controladorDemanda = new Demanda(this.http);
-    if(autenticadorService.ProcesarToken() == false) {
-      this.router.navigate(["/login"]);
-    }
+  constructor(private router: Router, private http: HttpClient, private autenticadorService: AutenticadorService, private rute: ActivatedRoute, private ambienteService: AmbienteService) {
+    this.controladorDemanda = new Demanda(this.http, this.ambienteService);
+    autenticadorService.ProcesarToken();
   }
 
   ngOnInit() {

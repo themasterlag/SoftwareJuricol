@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Md5} from "md5-typescript";
 import { AutenticadorService } from '../servicios/autenticador.service';
 import swal from 'sweetalert2';
+import { AmbienteService } from '../servicios/ambiente.service';
 
 
 
@@ -15,9 +16,13 @@ export class Verificacion {
     private clave:string= null;
     private codigoIngresado:number= null;
 
+    private ruta:string = null;
+
 
     // metodos
-    constructor(private http:HttpClient, private autenticadorService: AutenticadorService){ }
+    constructor(private http:HttpClient, private autenticadorService: AutenticadorService, private ambienteService: AmbienteService){ 
+        this.ruta = this.ambienteService.GetRutaAmbiente();
+    }
 
 
     public setUsuario(usuario){
@@ -40,7 +45,7 @@ export class Verificacion {
         // juricol.000webhostapp.com
     public IniciarSesion(){
         this.clave = Md5.init(this.clave);
-        return this.http.post("https://localhost/GitHub/juricol/recursos/validar.php",
+        return this.http.post(this.ruta+"validar.php",
             {accion:'validar',
             usuario:this.usuario,
             password:this.clave}
@@ -50,14 +55,14 @@ export class Verificacion {
 
     // verifica la existencia del usuario para reestablecer la clave
     public VerificarUsuario(){
-        return this.http.post("https://localhost/GitHub/juricol/recursos/recuperacion.php",{
+        return this.http.post(this.ruta+"recuperacion.php",{
             NomUsuario: this.usuario}
         );
     }
 
     // envia el codigo que ingresa el usuario al recurso para que sea validado
     public ValidarCodigo(){
-        return this.http.post("https://localhost/GitHub/juricol/recursos/recuperacion.php",{
+        return this.http.post(this.ruta+"recuperacion.php",{
             NomUsuario: this.usuario,
             Codigo: this.codigoIngresado
         });
@@ -66,7 +71,7 @@ export class Verificacion {
     // envia la nueva clave para remplazar la antigua
     public restablecerClave(){
 
-        return this.http.post("https://localhost/GitHub/juricol/recursos/recuperacion.php",{
+        return this.http.post(this.ruta+"recuperacion.php",{
             Codigo: "nuevaClave",
             NomUsuario: this.usuario,
             NuevaClave: this.clave

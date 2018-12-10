@@ -1,5 +1,8 @@
 /******************************************/
 /* Acordeon */
+body{
+  margin-right: 3%;
+}
 
 #accordionMenu{
   padding: 0;
@@ -117,7 +120,7 @@
   background: rgb(5, 130, 197);
   position: fixed;
   display: block;
-  height: 100vh;
+  height: 100%;
   width: 15%;
   overflow-y: auto;
   overflow-x: auto;
@@ -130,7 +133,7 @@
   background: rgb(5, 130, 197);
   position: fixed;
   display: block;
-  height: 100vh;
+  height: 100%;
   width: 15%;
   overflow-y: auto;
   overflow-x: auto;

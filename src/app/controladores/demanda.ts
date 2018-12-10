@@ -3,6 +3,7 @@ import { Empleado } from './empleado';
 import { Cliente } from './cliente';
 import { Termino } from './termino';
 import { Semaforo } from './semaforo';
+import { AmbienteService } from '../servicios/ambiente.service';
 
 class ObjetoDemanda {
     DiasRestantes:number;
@@ -67,12 +68,16 @@ export class Demanda {
 
     private diasRestantes:any;
 
+    private ruta:string = null;
+
+
     // metodos
-    constructor( private http:HttpClient ){
-        this.controladorCliente= new Cliente(this.http);
-        this.controladorEmpleado= new Empleado(this.http);
-        this.controladorTermino= new Termino(this.http);
-        this.controladorSemaforo= new Semaforo();
+    constructor( private http:HttpClient, private ambienteService: AmbienteService){
+        this.ruta = ambienteService.GetRutaAmbiente();
+        this.controladorCliente= new Cliente(this.http, this.ambienteService);
+        this.controladorEmpleado= new Empleado(this.http,this.ambienteService);
+        this.controladorTermino= new Termino(this.http,this.ambienteService);
+        this.controladorSemaforo= new Semaforo(this.ambienteService);
     }
 
     public SetIdDemanda(IdDemanda){
@@ -175,7 +180,7 @@ export class Demanda {
 
     public GuardarDemanda(){
         if(this.id == null){
-            return this.http.post('https://localhost/GitHub/juricol/recursos/validar.php',{
+            return this.http.post(this.ruta+'validar.php',{
                 accion:"crearDemanda",
                 Categoria: this.categoria,
                 NumDemanda: this.numRadicado,
@@ -191,7 +196,7 @@ export class Demanda {
             });
         }
         else{
-            return this.http.put('https://localhost/GitHub/juricol/recursos/validar.php',{
+            return this.http.put(this.ruta+'validar.php',{
                 accion:"modificarDemanda",
                 IdDemanda:this.id,
                 Categoria: this.categoria,
@@ -237,7 +242,7 @@ export class Demanda {
     }
 
     public BuscarTipoDemandas(){
-        return this.http.get("https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarTiposDemandas").subscribe(
+        return this.http.get(this.ruta+"validar.php?accion=consultarTiposDemandas").subscribe(
             response =>{
                 this.listaTiposDemandas = response["mensaje"];
             }
@@ -245,7 +250,7 @@ export class Demanda {
     }
 
     public BuscarTiposProcesos(){
-        return this.http.get("https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarTiposProcesos").subscribe(
+        return this.http.get(this.ruta+"validar.php?accion=consultarTiposProcesos").subscribe(
             response =>{
                 this.listaTiposProcesos = response["mensaje"];
             }
@@ -254,7 +259,7 @@ export class Demanda {
 
     public BuscarEstadosProcesos(){
       
-        return this.http.get("https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarEstadosProcesos").subscribe(
+        return this.http.get(this.ruta+"validar.php?accion=consultarEstadosProcesos").subscribe(
             response =>{
                 this.listaEstadosProcesos = response["mensaje"];
             }
@@ -262,7 +267,7 @@ export class Demanda {
     }
 
     public BuscarJuzgados(){
-        return this.http.get("https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarJuzgados").subscribe(
+        return this.http.get(this.ruta+"validar.php?accion=consultarJuzgados").subscribe(
             response =>{
                 this.listaJuzgados = response["mensaje"];
             }
@@ -271,7 +276,7 @@ export class Demanda {
 
     public BuscarDemanda(){
         
-        return this.http.get("https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarDemandas&Filtro=Demanda"+"&IdDemanda="+this.id).subscribe(
+        return this.http.get(this.ruta+"validar.php?accion=consultarDemandas&Filtro=Demanda"+"&IdDemanda="+this.id).subscribe(
             response=>{
                 this.id = response["mensaje"][0]["IdDemanda"];
                 this.categoria = response["mensaje"][0]["IdCategoria"];
@@ -299,7 +304,7 @@ export class Demanda {
 
 
     public BuscarDemandas(IdEmpleado){
-            return this.http.get("https://localhost/GitHub/juricol/recursos/validar.php?accion=consultarDemandas&IdEmpleado="+IdEmpleado).subscribe(
+            return this.http.get(this.ruta+"validar.php?accion=consultarDemandas&IdEmpleado="+IdEmpleado).subscribe(
             response=>{
                 this.listaDemandas = response["mensaje"];
                 this.ProcesarDemandas();
