@@ -11,7 +11,6 @@ export class Termino {
 
     private id:number;
     private descipcion:string;
-    private diasVencimiento:number;
     private listaTerminos:Object;
     private listaMoviminetos:Object;
 
@@ -26,7 +25,6 @@ export class Termino {
     // metodos
     constructor(private http:HttpClient, private ambienteService: AmbienteService){
         this.ruta = this.ambienteService.GetRutaAmbiente();
-        this.diasVencimiento = null;
     }
 
     public SetIdDemanda(IdDemanda){

@@ -13,6 +13,6 @@ export class AppComponent {
 
   constructor(private servicioSesion: AutenticadorService, private ambienteService: AmbienteService){
     // this.ambienteService.SetTipoAmbiente("desarrollo");
-    this.ambienteService.SetTipoAmbiente("produccion");
+    this.ambienteService.SetTipoAmbiente("");
   }
 }
