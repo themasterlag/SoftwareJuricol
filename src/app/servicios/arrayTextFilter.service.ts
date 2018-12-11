@@ -40,7 +40,7 @@ export class ArrayTextFilter implements PipeTransform {
 
         if(filtroEvaluable){
           if(filtros[nombreAtr] != ""){
-            if(it[nombreAtr].toLocaleLowerCase().includes(filtros[nombreAtr])){
+            if(it[nombreAtr].toLocaleLowerCase().includes(filtros[nombreAtr].toLocaleLowerCase())){
               filtrosCorrectos++;
             }
           }
