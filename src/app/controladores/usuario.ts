@@ -7,12 +7,12 @@ import { AmbienteService } from '../servicios/ambiente.service';
 export class Usuario {
 
     // atributos
-    clave;
-    usuario;
-    idUsuario;
-    claveNueva;
-    private rol : number ;
-    private roles : Array<Object>=[];
+    private idUsuario: number = null;
+    private usuario:number = null;
+    private clave:any = null;
+    private claveNueva:any = null;
+    private rol: number ;
+    private roles: Array<Object>=[];   
    
     private empleado:number = null;
 
@@ -22,6 +22,7 @@ export class Usuario {
     constructor( private http:HttpClient, private ambienteService: AmbienteService){
       this.ruta = this.ambienteService.GetRutaAmbiente();
     }
+
     public GetRoles(){
       return this.roles;
     }
