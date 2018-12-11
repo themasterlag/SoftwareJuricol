@@ -3,12 +3,11 @@ import {Router} from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import swal from 'sweetalert2';
 
-// import decode from 'jwt-decode';
-
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AutenticadorService {
 
   idUsuario:number = null;
@@ -38,11 +37,11 @@ export class AutenticadorService {
     var tokenExists: boolean = this.cookieService.check("token");
     if(tokenExists == true){
       var token = this.cookieService.get("token");
-      console.log(token)
+      // console.log(token)
       return token;
     }
     else{
-      console.log(token)
+      // console.log(token)
       return token = null;
     }
   }
@@ -130,7 +129,7 @@ export class AutenticadorService {
 
 
   public CerrarSesion(){
-    console.log("cerrar")
+    // console.log("cerrarSesion");
     this.cookieService.delete("token");
     this.token = null;
     this.router.navigateByUrl("/login");
