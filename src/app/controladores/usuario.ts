@@ -52,7 +52,7 @@ export class Usuario {
     }
 
     public BuscarRoles(){
-      return this.http.get('https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarRoles').subscribe(
+      return this.http.get(this.ruta+'validar.php?accion=consultarRoles').subscribe(
           response => {
     
             //llenado de variable lista de demandas con resultados de la consulta

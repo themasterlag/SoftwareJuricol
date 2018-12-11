@@ -43,7 +43,7 @@ export class Empleado {
     }
     
     public BuscarEmpleados(){
-        return this.http.get('https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarEmpleados').subscribe(
+        return this.http.get(this.ruta+'validar.php?accion=consultarEmpleados').subscribe(
             response => {
         
               this.listaEmpleados = response['mensaje'];
@@ -175,46 +175,46 @@ export class Empleado {
         //      Recursos
  
  public EliminarEmpleado(){
-     return this.http.get('https:/localhost/GitHub/juricol/recursos/validar.php?accion=eliminarEmpleado')
+     return this.http.get(this.ruta+'validar.php?accion=eliminarEmpleado')
  }
  public BuscarEmpleado(id){ // Recurso que consulta a la BD los datos de un solo Empleado
-     return this.http.get('https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarEmpleados&IdEmpleado='+id)
+     return this.http.get(this.ruta+'validar.php?accion=consultarEmpleados&IdEmpleado='+id)
  }
 
  public ObtenerEspecialidades(){ // Recurso que permite consultar todas la especialidades posibles para los empleados
-     return this.http.get('https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarEspecialidades')
+     return this.http.get(this.ruta+'validar.php?accion=consultarEspecialidades')
 
  }
  public ObtenerTiposDoc(){
-     return this.http.get('https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarTiposDocumentos')
+     return this.http.get(this.ruta+'validar.php?accion=consultarTiposDocumentos')
      
  }
  public ObtenerPaises(){
-     return this.http.get('https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarPaises')
+     return this.http.get(this.ruta+'validar.php?accion=consultarPaises')
  }
  
  public ObtenerDepartamentos(IdPais){
-     return this.http.get('https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarDepartamentos&IdPais='+IdPais)
+     return this.http.get(this.ruta+'validar.php?accion=consultarDepartamentos&IdPais='+IdPais)
  }
  public ObtenerDepartamento(IdDepartamento){
-     return this.http.get('https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarDepartamentos&IdDepartamento='+IdDepartamento)
+     return this.http.get(this.ruta+'validar.php?accion=consultarDepartamentos&IdDepartamento='+IdDepartamento)
  }
  public ObtenerCiudades(IdDepartamento){
-     return this.http.get('https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarCiudades&IdDepartamento='+IdDepartamento)
+     return this.http.get(this.ruta+'validar.php?accion=consultarCiudades&IdDepartamento='+IdDepartamento)
  }
  public ObtenerCiudad(IdCiudad){
-     return this.http.get('https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarCiudades&IdCiudad='+IdCiudad)
+     return this.http.get(this.ruta+'validar.php?accion=consultarCiudades&IdCiudad='+IdCiudad)
  }
 
  public ObtenerCargos(){// Recurso que permite consultar todas los Cargos posibles para los empleados
-     return this.http.get('https:/localhost/GitHub/juricol/recursos/validar.php?accion=consultarCargos')
+     return this.http.get(this.ruta+'validar.php?accion=consultarCargos')
 
  } 
  public insertarEmpleado(){ // Recurso que permite inserta la insersion de un Empleado a la BD
 
     
      let accionCrear = "crearEmpleado"
-     return this.http.post('https:/localhost/GitHub/juricol/recursos/validar.php',
+     return this.http.post(this.ruta+'validar.php',
          { 
              accion: accionCrear,
              PrimerNombre : this.primerNombre,
@@ -241,7 +241,7 @@ export class Empleado {
  
  public ActualizarAsociado(){ // Recurso que permite la actualizacion de los datos de un Empleado.
      let accionAztualizar = "modificarEmpleado"
-     return this.http.put('https:/localhost/GitHub/juricol/recursos/validar.php',
+     return this.http.put(this.ruta+'validar.php',
          { 
              accion: accionAztualizar,
              IdEmpleado : this.id,
