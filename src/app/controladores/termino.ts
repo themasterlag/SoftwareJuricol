@@ -64,9 +64,6 @@ export class Termino {
         );
     }
 
-    public CrearTermino(){
-
-    }
 
     public ConsultarMovimientosDemanda(){
         return this.http.get(this.ruta+"validar.php?accion=consultarMovimientos&IdDemanda="+this.idDemanda).subscribe(

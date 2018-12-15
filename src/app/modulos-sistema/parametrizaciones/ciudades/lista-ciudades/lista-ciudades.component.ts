@@ -12,6 +12,7 @@ import { AmbienteService } from 'src/app/servicios/ambiente.service';
   templateUrl: './lista-ciudades.component.html',
   styleUrls: ['./lista-ciudades.component.css']
 })
+
 export class ListaCiudadesComponent implements OnInit {
 
   controladorParametrizacion:Parametrizacion;
@@ -19,28 +20,30 @@ export class ListaCiudadesComponent implements OnInit {
   usuario = this.autenticadorService.GetUsuario();
 
   listaDepartamentos:Object;
+  listaPaises:Object;
 
   id:number = null;
   nombre:string = null;
   tipoAccion:boolean = false; //falso para crear nuevo tipo, verdadero para editar tipo
   listaCiudades:Object = null;
   departamento:number = 0;
+  pais:number = 0;
 
   error:any = null;
 
   constructor(private router: Router, private autenticadorService: AutenticadorService, private http:HttpClient,  private ambienteService: AmbienteService) { 
-    this.controladorParametrizacion = new Parametrizacion(this.http, this.ambienteService);
     autenticadorService.ProcesarToken();
+    this.controladorParametrizacion = new Parametrizacion(this.http, this.ambienteService);
   }
 
   ngOnInit() {
     this.controladorParametrizacion.SetIdRelacion(null);
 
-    this.controladorParametrizacion.SetTipo("departamentos");
+    this.controladorParametrizacion.SetTipo("paises");
     this.controladorParametrizacion.buscarDatosLista().add(
       response =>{
-        this.listaDepartamentos = this.controladorParametrizacion.GetListaDatos();
-        // console.log(this.listaCiudades);
+        this.listaPaises = this.controladorParametrizacion.GetListaDatos();
+        // console.log(this.listaPaises);
       }
     );
 
@@ -53,6 +56,7 @@ export class ListaCiudadesComponent implements OnInit {
     );
   }
 
+
   // activa el modal de registrar o editar tipo en la interfaz
   activarModal(TipoAccion){
     if(TipoAccion == "crear"){
@@ -64,47 +68,58 @@ export class ListaCiudadesComponent implements OnInit {
     document.getElementById('id01').style.display='block';
   }
 
+  
   guardarDepartamento(){
+    this.controladorParametrizacion.SetTipo("ciudades");
+
     if(this.nombre == null){
       this.error = "Ingrese un nombre valido";
     }
     else{
-      if(this.departamento == 0){
+      if(this.pais == 0){
         this.error = "Seleccione un pais";
       }
       else{
-        if(this.tipoAccion == false){
-          this.controladorParametrizacion.SetNombre(this.nombre);
-          this.controladorParametrizacion.SetIdRelacion(this.departamento);
-          this.controladorParametrizacion.GuardarParametrizacion().subscribe(
-            response =>{
-              this.cerrarModal();
-              this.ngOnInit();
-            }
-          );
+        if(this.departamento == 0){
+          this.error = "Seleccione un departamento";
         }
         else{
-          this.controladorParametrizacion.SetId(this.id);
-          this.controladorParametrizacion.SetNombre(this.nombre);
-          this.controladorParametrizacion.SetIdRelacion(this.departamento);
-          this.controladorParametrizacion.GuardarParametrizacion().subscribe(
-            response =>{
-              this.cerrarModal();
-              this.ngOnInit();
-            }
-          );
+          if(this.tipoAccion == false){
+            this.controladorParametrizacion.SetId(null);
+            this.controladorParametrizacion.SetNombre(this.nombre);
+            this.controladorParametrizacion.SetIdRelacion(this.departamento);
+            this.controladorParametrizacion.GuardarParametrizacion().subscribe(
+              response =>{
+                this.cerrarModal();
+                this.ngOnInit();
+              }
+            );
+          }
+          else{
+            this.controladorParametrizacion.SetId(this.id);
+            this.controladorParametrizacion.SetNombre(this.nombre);
+            this.controladorParametrizacion.SetIdRelacion(this.departamento);
+            this.controladorParametrizacion.GuardarParametrizacion().subscribe(
+              response =>{
+                this.cerrarModal();
+                this.ngOnInit();
+              }
+            );
+          }
         }
       }
     }
   }
 
 
-
   // desactiva el modal de registrar o  editar tipo de la interfaz
   cerrarModal(){
+    this.id = null;
     this.nombre = null;
     this.departamento = 0;
+    this.pais = 0;
     this.error = null;
+    this.listaDepartamentos = null;
     document.getElementById('id01').style.display='none';
   }
 
@@ -142,5 +157,14 @@ export class ListaCiudadesComponent implements OnInit {
     );
   }
 
-
+  mostrarDepartamentos(){
+    this.controladorParametrizacion.SetIdRelacion(this.pais);
+    this.controladorParametrizacion.SetTipo("departamentos");
+    this.controladorParametrizacion.buscarDatosLista().add(
+      response =>{
+        this.listaDepartamentos = this.controladorParametrizacion.GetListaDatos();
+        // console.log(this.listaDepartamentos);
+      }
+    );
+  }
 }

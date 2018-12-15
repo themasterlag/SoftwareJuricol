@@ -26,6 +26,8 @@ export class MenuComponent implements OnInit {
 
   //opciones del menu con nombre y url
   menu:any;
+  
+  nuevoMenu:Array<Object> = [];
 
   gruposMenu: Array<Object> = [];
 
@@ -96,17 +98,30 @@ export class MenuComponent implements OnInit {
     var menuActual="";
     for (var unmenu of this.menu) {
       if(menuActual != unmenu.agrupamiento){
-        this.gruposMenu.push({nombre: unmenu.agrupamiento, orden: unmenu.orden, icon: unmenu.icon });
+        this.gruposMenu.push({nombre: unmenu.agrupamiento, orden: unmenu.orden, opciones: [] });
         menuActual = unmenu.agrupamiento;
       }
     }
 
-  // console.log(this.gruposMenu);
+    for (var grupo of this.gruposMenu) {
+      
+      
+      for(var opcion of this.menu){
+        if(grupo['orden'] == opcion['orden']){
+          grupo['opciones'].push(opcion);
+        }
+        
+      }
+      this.nuevoMenu.push(grupo);  
+    }
+
+    //console.log(this.nuevoMenu);
+
 
   }
 
+
   ngOnInit() {
-  
   }
 
   //muestra o culta el menu cuando la pantalla es pequeña

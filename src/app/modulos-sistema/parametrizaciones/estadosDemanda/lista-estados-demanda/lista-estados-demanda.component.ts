@@ -62,6 +62,7 @@ export class ListaEstadosDemandaComponent implements OnInit {
     }
     else{
       if(this.tipoAccion == false){
+        this.controladorParametrizacion.SetId(null);
         this.controladorParametrizacion.SetNombre(this.nombre);
         this.controladorParametrizacion.SetTipoDato(this.tipo);
         this.controladorParametrizacion.SetDiasLimites(this.diasLimite);
@@ -90,6 +91,7 @@ export class ListaEstadosDemandaComponent implements OnInit {
 
   // desactiva el modal de registrar o  editar tipo de la interfaz
   cerrarModal(){
+    this.id = null;
     this.nombre = null;
     this.tipo = null;
     this.diasLimite = null;

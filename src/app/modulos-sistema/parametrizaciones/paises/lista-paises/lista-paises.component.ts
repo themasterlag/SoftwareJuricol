@@ -57,6 +57,7 @@ export class ListaPaisesComponent implements OnInit {
     }
     else{
       if(this.tipoAccion == false){
+        this.controladorParametrizacion.SetId(null);
         this.controladorParametrizacion.SetNombre(this.nombre);
         this.controladorParametrizacion.GuardarParametrizacion().subscribe(
           response =>{
@@ -82,6 +83,7 @@ export class ListaPaisesComponent implements OnInit {
 
   // desactiva el modal de registrar o  editar tipo de la interfaz
   cerrarModal(){
+    this.id = null;
     this.nombre = null;
     this.error = null;
     document.getElementById('id01').style.display='none';

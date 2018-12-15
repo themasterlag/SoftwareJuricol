@@ -14,10 +14,19 @@
             <h4 *ngIf="tipoAccion==false"><strong>Registrar tipo de documento</strong></h4>
             <h4 *ngIf="tipoAccion==true"><strong>Editar tipo de documento</strong></h4>
           </label>
+          <div *ngIf="error!=null" class="alert alert-danger" role="alert">
+            {{error}}
+          </div>
           <br>
           <br>
           <label><b>Nombre</b></label>
           <input type="text" class="form-control" [(ngModel)]="nombre" placeholder="Ingrese el nombre del tipo de documento" (keydown.enter)="guardarDepartamento()" required>
+          <br>
+          <label><b>Pais de la ciudad</b></label>
+          <select class="form-control select" [(ngModel)]="pais" (change)="mostrarDepartamentos()">
+            <option value="0" disabled>Seleccione un departamento</option>
+            <option *ngFor="let departamento of listaPaises" value="{{departamento.Id}}">{{departamento.Descripcion}}</option>
+          </select>
           <br>
           <label><b>Departamento de la ciudad</b></label>
           <select class="form-control select" [(ngModel)]="departamento">

@@ -79,6 +79,7 @@ export class ListaDepartamentosComponent implements OnInit {
       }
       else{
         if(this.tipoAccion == false){
+          this.controladorParametrizacion.SetId(null);
           this.controladorParametrizacion.SetNombre(this.nombre);
           this.controladorParametrizacion.SetIdRelacion(this.pais);
           this.controladorParametrizacion.GuardarParametrizacion().subscribe(

@@ -14,6 +14,9 @@
             <h4 *ngIf="tipoAccion==false"><strong>Registrar cargo</strong></h4>
             <h4 *ngIf="tipoAccion==true"><strong>Editar cargo</strong></h4>
           </label>
+          <div *ngIf="error!=null" class="alert alert-danger" role="alert">
+            {{error}}
+          </div>
           <br>
           <br>
           <label><b>Nombre</b></label>
