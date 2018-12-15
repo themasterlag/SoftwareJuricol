@@ -15,19 +15,19 @@
       <thead>
           <tr>
               <th>&nbsp;</th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Documento" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Nombres" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Apellidos" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.NombreCargo" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Especialidadad" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.TarjetaProfesional" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Celular" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.CorreoElectronico" ></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Direccion"></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.NombreCiudad"></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Titular"></th>
-              <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Rol" *ngIf="RolPropio == 'Administrador'"></th>
-              <th>&nbsp;</th>   
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObjectEmpleados.Documento" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObjectEmpleados.Nombres" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObjectEmpleados.Apellidos" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObjectEmpleados.NombreCargo" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObjectEmpleados.Especialidadad" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObjectEmpleados.TarjetaProfesional" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObjectEmpleados.Celular" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObjectEmpleados.CorreoElectronico" ></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObjectEmpleados.Direccion"></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObjectEmpleados.NombreCiudad"></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObjectEmpleados.Titular"></th>
+              <th scope="col"><input class="form-control" [(ngModel)]="searchObjectEmpleados.Rol" *ngIf="RolPropio == 'Administrador'"></th>
+              <th></th>   
           </tr>
         <tr class="colums">
           <th scope="col">#</th>
@@ -43,7 +43,7 @@
           <th scope="col">Ciudad</th>
           <th scope="col">Titular</th> 
           <th scope="col" *ngIf="RolPropio == 'Administrador'">Rol</th>
-          <th scope="col" *ngIf="RolPropio == 'Administrador'"></th>
+          <th scope="col" *ngIf="RolPropio == 'Administrador'">&nbsp;</th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -52,18 +52,18 @@
       <tbody>
         <tr *ngFor="let Empleado of listaEmpleados | arrayFilter : 
             { 
-              Documento:          searchObject.Documento,  
-              Nombres:            searchObject.Nombres,
-              Apellidos:          searchObject.Apellidos,
-              NombreCargo:        searchObject.NombreCargo,
-              Especialidadad:     searchObject.Especialidadad,
-              TarjetaProfesional: searchObject.TarjetaProfesional,
-              Celular:            searchObject.Celular,
-              CorreoElectronico:  searchObject.CorreoElectronico,
-              Direccion:          searchObject.Direccion,
-              NombreCiudad:       searchObject.NombreCiudad,
-              Titular:            searchObject.Titular,
-              Rol:                searchObject.Rol
+              Documento:          searchObjectEmpleados.Documento,  
+              Nombres:            searchObjectEmpleados.Nombres,
+              Apellidos:          searchObjectEmpleados.Apellidos,
+              NombreCargo:        searchObjectEmpleados.NombreCargo,
+              Especialidadad:     searchObjectEmpleados.Especialidadad,
+              TarjetaProfesional: searchObjectEmpleados.TarjetaProfesional,
+              Celular:            searchObjectEmpleados.Celular,
+              CorreoElectronico:  searchObjectEmpleados.CorreoElectronico,
+              Direccion:          searchObjectEmpleados.Direccion,
+              NombreCiudad:       searchObjectEmpleados.NombreCiudad,
+              Titular:            searchObjectEmpleados.Titular,
+              Rol:                searchObjectEmpleados.Rol
             };
             let indice=index"
         >

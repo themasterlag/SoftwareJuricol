@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Empleado } from '../../../controladores/empleado';
 import { Usuario } from '../../../controladores/usuario';
 import { AutenticadorService } from '../../../servicios/autenticador.service';
+import { filter } from 'rxjs/operators';
 import swal from 'sweetalert2';
 import { AmbienteService } from 'src/app/servicios/ambiente.service';
 
@@ -31,7 +32,7 @@ export class ListaEmpleadosComponent implements OnInit {
 
   controladorEmpleado: Empleado;
  
-  searchObject:any={
+  searchObjectEmpleados: any ={
     Documento:"",
     Nombres:"",
     Apellidos:"",

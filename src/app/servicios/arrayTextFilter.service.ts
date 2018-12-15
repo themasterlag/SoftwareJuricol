@@ -23,7 +23,7 @@ export class ArrayTextFilter implements PipeTransform {
     return (this.filtersCount > 0);
   }
 
-  transform(items: any[], filtros: Object): any[] {
+  transform(items: any[], filtros: any): any[] {
  
     if(!items) return [];
     if(!filtros) return items;
@@ -40,6 +40,7 @@ export class ArrayTextFilter implements PipeTransform {
 
         if(filtroEvaluable){
           if(filtros[nombreAtr] != ""){
+            filtros[nombreAtr] = filtros[nombreAtr]+"";
             if(it[nombreAtr].toLocaleLowerCase().includes(filtros[nombreAtr].toLocaleLowerCase())){
               filtrosCorrectos++;
             }
