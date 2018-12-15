@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AutenticadorService } from "../servicios/autenticador.service"
-import { filter } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-menu',
