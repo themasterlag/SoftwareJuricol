@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'; //Importacion de la libreria HttpClient y HttpHeaders 
 import { AmbienteService } from '../servicios/ambiente.service';
+
+
 export class PDF {
 
    private ruta:string = null;
