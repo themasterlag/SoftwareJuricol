@@ -23,7 +23,7 @@ export class Empleado {
     private tipoDocumento: number;
     private tarjeta : number ;
     private rol : number ;
-    
+
     listaEmpleados:Array<Object>=[];
 
     private ruta:string = null;
@@ -55,12 +55,11 @@ export class Empleado {
              }
             
             },err=>{
-
                console.log(err.error['mensaje']);
-                
             }
         );
     }
+    
     SetId(id : number ){
         this.id= id
 

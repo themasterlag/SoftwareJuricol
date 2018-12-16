@@ -38,7 +38,7 @@
     <br>
     <br>
     <br>
-      
+
     <div class="botonNuevo">
       <button class="btn btn-primary" (click)="nuevaDemanda()" *ngIf="rolPropio != 'Abogado'">Nueva demanda</button>
     </div>
@@ -49,29 +49,27 @@
       <!-- titulos de columnas -->
       <thead>
           <tr>
-                                                                             
-              <th>&nbsp;</th>
-              <th>&nbsp;</th>
-              <th scope="col"><input class="form-control" placeholder="Radicado"  [(ngModel)]="searchObject.NumDemanda" ></th>
-              <th scope="col"><input class="form-control" placeholder="Juzgado"   [(ngModel)]="searchObject.NombreJuzgado" ></th>
-              <th scope="col"><input class="form-control" placeholder="T.Demanda"[(ngModel)]="searchObject.NombreTipoDemanda" ></th>
-              <th scope="col"><input class="form-control" placeholder="T.Proceso"[(ngModel)]="searchObject.NombreTipoProceso" ></th>
-              <th scope="col"><input class="form-control" placeholder="N.Titular"[(ngModel)]="searchObject.NombreTitular" ></th>
-              <th scope="col"><input class="form-control" placeholder="N.Cliente"[(ngModel)]="searchObject.NombreCliente" ></th>
-              <th scope="col"><input class="form-control" placeholder="Estado"[(ngModel)]="searchObject.UltimoMovimiento" ></th>
-              <th scope="col"><input class="form-control" placeholder="FehcaM"[(ngModel)]="searchObject.FechaMovimiento"></th>
-              <th scope="col"><input class="form-control" placeholder="FechaF"[(ngModel)]="searchObject.FechaLimite"></th>
-              <th scope="col">
-                <select class="form-control" [(ngModel)]="searchObject.Finalizacion">
-                  <option value="">Todas</option>
-                  <option value="no">Activas</option>
-                  <option value="si">Finalizadas</option>
-                </select>
-              </th>
-              <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th scope="col"><input class="form-control" placeholder="Radicado"  [(ngModel)]="searchObject.NumDemanda" ></th>
+            <th scope="col"><input class="form-control" placeholder="Juzgado"   [(ngModel)]="searchObject.NombreJuzgado" ></th>
+            <th scope="col"><input class="form-control" placeholder="T.Demanda"[(ngModel)]="searchObject.NombreTipoDemanda" ></th>
+            <th scope="col"><input class="form-control" placeholder="T.Proceso"[(ngModel)]="searchObject.NombreTipoProceso" ></th>
+            <th scope="col"><input class="form-control" placeholder="N.Titular"[(ngModel)]="searchObject.NombreTitular" ></th>
+            <th scope="col"><input class="form-control" placeholder="N.Cliente"[(ngModel)]="searchObject.NombreCliente" ></th>
+            <th scope="col"><input class="form-control" placeholder="Estado"[(ngModel)]="searchObject.UltimoMovimiento" ></th>
+            <th scope="col"><input class="form-control" placeholder="FehcaM"[(ngModel)]="searchObject.FechaMovimiento"></th>
+            <th scope="col"><input class="form-control" placeholder="FechaF"[(ngModel)]="searchObject.FechaLimite"></th>
+            <th scope="col">
+              <select class="form-control" [(ngModel)]="searchObject.Finalizacion">
+                <option value="">Todas</option>
+                <option value="no">Activas</option>
+                <option value="si">Finalizadas</option>
+              </select>
+            </th>
+            <th>&nbsp;</th>
           </tr>
         <tr>
-            
           <td><img src="../../../../assets/iconos/semaforo/2x/twotone_traffic_black_18dp.png" class="imgSemaforo"></td>
           <th scope="col">#</th>
           <th scope="col">Radicado</th>
@@ -90,7 +88,6 @@
 
       <!-- informacion de la tabla o lista de edemandas -->
       <tbody>
-        
         <tr *ngFor="let Demanda of listaDemandas | arrayFilter : 
           { 
             NumDemanda:   searchObject.NumDemanda,  
