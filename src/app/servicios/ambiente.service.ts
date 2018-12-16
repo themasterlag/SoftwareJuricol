@@ -15,11 +15,10 @@ export class AmbienteService {
   }
 
   constructor(private cookieService: CookieService) {
-    this.IdentificarTipoAmbiente();
   }
 
-  public SetTipoAmbiente(tipo){
-    this.cookieService.set("ambiente",tipo);
+  public SetTipoAmbiente(Tipo:string){
+    this.cookieService.set("ambiente",Tipo);
   }
 
   public IdentificarTipoAmbiente(){
