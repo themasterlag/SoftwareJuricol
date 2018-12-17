@@ -140,6 +140,12 @@ span.psw {
     to {transform: scale(1)}
 }
 
+@media screen and (max-width: 800px) {
+    .modal-content {
+        width: 70%; /* Could be more or less, depending on screen size */
+    }
+}
+
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
     span.psw {

@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Demanda } from '../../../controladores/demanda';
 import { AutenticadorService } from '../../../servicios/autenticador.service';
 import { AmbienteService } from 'src/app/servicios/ambiente.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ver-demanda',
@@ -43,9 +44,12 @@ export class VerDemandaComponent implements OnInit {
   listaMovimientos:Object;
   listaTerminos:Object;
 
+  rolPropio:string;
+
   constructor(private router: Router, private http: HttpClient, private autenticadorService: AutenticadorService, private rute: ActivatedRoute, private ambienteService: AmbienteService) {
     this.controladorDemanda = new Demanda(this.http, this.ambienteService);
     autenticadorService.ProcesarToken();
+    this.rolPropio = autenticadorService.GetRol();
   }
 
   ngOnInit() {
@@ -94,12 +98,39 @@ export class VerDemandaComponent implements OnInit {
 
     this.controladorDemanda.CrearMovimiento().subscribe(
       response =>{
+        swal({
+          type: 'success',
+          title: "Movimiento creado correctamente",
+          timer: 5000
+        });
           this.cerrarModal();
           this.ngOnInit();
       },
       error =>{
         this.error = error.error["mensaje"];
       } 
+    );
+  }
+
+  eliminarMovimiento(Id){
+    this.controladorDemanda.EliminarMovimientoDemanda(Id).subscribe(
+      response =>{
+        if(response["mensaje"]==1){
+          swal({
+            type: 'success',
+            title: "Movimiento eliminado correctamente",
+            timer: 5000
+          });
+          this.ngOnInit();
+        }
+        else{
+          swal({
+            type: 'error',
+            title: "Error al eliminar el movimiento",
+            timer: 5000
+          });
+        }
+      }
     );
   }
 

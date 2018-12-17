@@ -241,6 +241,11 @@ export class Demanda {
         );
     }
 
+    public EliminarMovimientoDemanda(Id){
+        this.controladorTermino.SetId(Id);
+        return this.controladorTermino.EliminarMovimiento();
+    }
+
     public BuscarTipoDemandas(){
         return this.http.get(this.ruta+"validar.php?accion=consultarTiposDemandas").subscribe(
             response =>{
@@ -313,7 +318,7 @@ export class Demanda {
     }
 
 
-    ProcesarDemandas(){
+   public ProcesarDemandas(){
         for(var i = 0; i < this.listaDemandas.length; i++){
     
             let demanda =this.listaDemandas[i];
@@ -325,7 +330,8 @@ export class Demanda {
             this.listaDemandas[i].DiasRestantes = diasRestantes1;
         }
     
-      }
+    }
+
 
     public GetCliente(){
         return this.cliente;

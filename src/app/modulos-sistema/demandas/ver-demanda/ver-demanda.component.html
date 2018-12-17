@@ -121,6 +121,7 @@
           <td>{{movimiento.FechaMovimiento}}</td>
           <td>{{movimiento.FechaLimite}}</td>
           <td>{{movimiento.Descripcion}}</td>
+          <td *ngIf="rolPropio != 'Abogado'"><button class="btn btn-danger" (click)="eliminarMovimiento(movimiento.Id)">Eliminar</button></td>
         </tr>
       </tbody>
 

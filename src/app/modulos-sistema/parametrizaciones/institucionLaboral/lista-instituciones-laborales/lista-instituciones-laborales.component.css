@@ -118,6 +118,12 @@ span.psw {
     to {transform: scale(1)}
 }
 
+@media screen and (max-width: 800px) {
+    .modal-content {
+        width: 70%; /* Could be more or less, depending on screen size */
+    }
+}
+
 @media (max-width:680px){
     .btn-danger{
         margin-right: 0px;

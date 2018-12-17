@@ -27,6 +27,10 @@ export class Termino {
         this.ruta = this.ambienteService.GetRutaAmbiente();
     }
 
+    public SetId(Id){
+        this.id = Id;
+    }
+
     public SetIdDemanda(IdDemanda){
         this.idDemanda = IdDemanda;
     }
@@ -85,6 +89,7 @@ export class Termino {
         });
     }
 
-    // realiza la peticion al recurso, el cual devuelve los cliente, una vez recibido los guarda en el atributo listaClientes
-
+    public EliminarMovimiento(){
+        return this.http.delete(this.ruta+"validar.php?accion=eliminarMovimiento&IdMovimiento="+this.id);
+    }
 }
