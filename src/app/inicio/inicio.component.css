@@ -70,6 +70,6 @@ body{
 
 @media (max-width:575px) {
     .contenido{
-        margin-left: 0%;
+        margin-left: 10%;
     }
 }
