@@ -58,11 +58,18 @@ export class ListaTipoDocumentoComponent implements OnInit {
       this.error = "Ingrese un nombre valido";
     }
     else{
+      swal('Please wait');
+      swal.showLoading();
       if(this.tipoAccion == false){
         this.controladorParametrizacion.SetId(null);
         this.controladorParametrizacion.SetNombre(this.nombre);
         this.controladorParametrizacion.GuardarParametrizacion().subscribe(
           response =>{
+            swal({
+              type: 'success',
+              title: "Registro realizado de forma correcta",
+              timer: 5000
+            })
             this.cerrarModal();
             this.ngOnInit();
           }
@@ -73,6 +80,11 @@ export class ListaTipoDocumentoComponent implements OnInit {
         this.controladorParametrizacion.SetNombre(this.nombre);
         this.controladorParametrizacion.GuardarParametrizacion().subscribe(
           response =>{
+            swal({
+              type: 'success',
+              title: "Registro realizado de forma correcta",
+              timer: 5000
+            })
             this.cerrarModal();
             this.ngOnInit();
           }
@@ -98,6 +110,8 @@ export class ListaTipoDocumentoComponent implements OnInit {
   }
 
   eliminar(Id){
+    swal('Cargando');
+    swal.showLoading();
     this.id = Id;
     this.controladorParametrizacion.SetId(this.id);
     this.controladorParametrizacion.EliminarParametrizacion().add(
