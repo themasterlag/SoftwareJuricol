@@ -21,8 +21,10 @@ export class LoginComponent implements OnInit {
   codigoIngresado:number= null;
   empleado:number = null;
 
-  respuesta:any;
+  respuesta:any = null;
   error:any = null;
+
+  estado:number = null;
 
   constructor(private router:Router, private http:HttpClient, private autenticadorService: AutenticadorService, private ambienteService: AmbienteService) {
     this.controladorVerificacion= new Verificacion(this.http, this.autenticadorService, this.ambienteService);
@@ -51,7 +53,8 @@ export class LoginComponent implements OnInit {
       else{
         this.controladorVerificacion.setUsuario(this.usuario);
         this.controladorVerificacion.setClave(this.clave);
-        
+
+        this.estado = 1;
 
         this.controladorVerificacion.IniciarSesion().subscribe(
         (data)=> this.respuesta = {...data },

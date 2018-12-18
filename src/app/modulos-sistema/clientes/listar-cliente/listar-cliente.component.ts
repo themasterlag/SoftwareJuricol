@@ -18,7 +18,7 @@ const moment = extendMoment(momento);
 })
 export class ListarClienteComponent implements OnInit {
   Cliente: Cliente;
-  ClientesJSON: Array<Object> = [] ;
+  ClientesJSON: Array<Object> = null;
   Cedulas: Array<Object> = [];
   filtro: string;
   rol: string;

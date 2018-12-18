@@ -107,6 +107,8 @@ export class RegistrarDemandaComponent implements OnInit {
         this.error = "Por favor ingrese la informacion del estado"
       }
       else{
+        swal('Cargando');
+        swal.showLoading();
         this.controladorDemanda.SetIdDemanda(this.id);
         this.controladorDemanda.SetCategoria(this.categoria);
         this.controladorDemanda.SetNumeroRadicado(this.numRadicado);

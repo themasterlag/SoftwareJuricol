@@ -58,7 +58,7 @@ export class ListaTipoDocumentoComponent implements OnInit {
       this.error = "Ingrese un nombre valido";
     }
     else{
-      swal('Please wait');
+      swal('Cargando');
       swal.showLoading();
       if(this.tipoAccion == false){
         this.controladorParametrizacion.SetId(null);

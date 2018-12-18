@@ -69,7 +69,9 @@ export class EditarClaveComponent implements OnInit {
       return false
      }
 
-   
+    swal('Cargando');
+    swal.showLoading();
+
     this.ControladorUsuario.SetClave(this.clave);
     this.ControladorUsuario.SetUsuario(this.usuario);
     this.ControladorUsuario.SetIdUsuario(this.idUsuario);
