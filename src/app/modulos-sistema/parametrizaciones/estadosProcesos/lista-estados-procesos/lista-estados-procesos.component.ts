@@ -75,6 +75,14 @@ export class ListaEstadosProcesosComponent implements OnInit {
             });
             this.cerrarModal();
             this.ngOnInit();
+          }, error =>{
+            swal({
+              type: 'error',
+              title: "Ocurrio un error al realizar el registro",
+              timer: 5000
+            })
+            this.cerrarModal();
+            this.ngOnInit();
           }
         );
       }
@@ -88,6 +96,14 @@ export class ListaEstadosProcesosComponent implements OnInit {
               title: "Registro realizado correctamente",
               timer: 5000
             });
+            this.cerrarModal();
+            this.ngOnInit();
+          }, error =>{
+            swal({
+              type: 'error',
+              title: "Ocurrio un error al realizar el registro",
+              timer: 5000
+            })
             this.cerrarModal();
             this.ngOnInit();
           }
