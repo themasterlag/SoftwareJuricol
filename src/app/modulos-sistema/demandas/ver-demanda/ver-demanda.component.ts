@@ -150,5 +150,8 @@ export class VerDemandaComponent implements OnInit {
     this.fechaVencimiento = null;
     document.getElementById('id01').style.display='none';
   }
+  Atras(){
+    this.router.navigateByUrl('/'+this.autenticadorService.GetUsuario()+"/demandas");
+  }
 
 }

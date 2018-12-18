@@ -2,8 +2,49 @@
 <html lang="en">
 
 <body>
-
+  <div id="id01" class="modal">
+    <div class="modal-content animate">
+      <div class="imgcontainer">
+        <span class="close" title="Close Modal" (click)="cerrarModal()">&times;</span>
+      </div>
+      <!-- contenedor del formulario -->
+      <div class="container">
+        <label>
+          <h4 ><strong>Generar Reportes</strong></h4>
+        </label>
+        <div *ngIf="error!=null" class="alert alert-danger" role="alert">
+          {{error}}
+        </div>
+        <br>
+        <br>
+        <select [(ngModel)]="Url" class="form-control" (change)="validarReporte(Url)">
+          <option value="0" disabled>---Seleccione Reporte---</option>
+          <option value="1">Demandas por juzgado</option>
+          <option value="2">Demandas por tipo de proceso</option>
+          <option value="3">Demandas por empleado</option>
+          <option value="4" >Demandas entre fechas</option>
+        </select>
+        <div *ngIf="ValidarR">
+          <div>
+              <label >Fecha Inicial</label>
+              <input type="date"  class="form-control"  [(ngModel)]="FechaInicial" >
+          </div>
+            <div>
+                <label >Fecha Final</label>
+                <input type="date"  class="form-control" [(ngModel)]="FechaFinal">
+            </div>
+         </div>
+          
+      <!-- contenedor de acciones o botones -->
+      <div class="container" style="background-color:#e2e2e2ee">
+        <button (click)="generarReporte()">Generar</button>
+        <button class="cancelbtn" (click)="cerrarModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
   <div>
+   
     <h1 align='center'><strong>Demandas</strong></h1>
     <br>
     <div align='center'>
@@ -38,10 +79,13 @@
     <br>
     <br>
     <br>
-
     <div class="botonNuevo">
       <button class="btn btn-primary" (click)="nuevaDemanda()" *ngIf="rolPropio != 'Abogado'">Nueva demanda</button>
     </div>
+    <div align ="left" class="botonNuevo">
+        <button class="btn btn-primary" (click)="activarModal()" *ngIf="rolPropio != 'Abogado'">Generar Reportes</button>
+    </div>
+   
 
     <br>
     <!-- tabla de listado de demandas -->
@@ -71,7 +115,7 @@
           </tr>
         <tr>
           <td><img src="../../../../assets/iconos/semaforo/2x/twotone_traffic_black_18dp.png" class="imgSemaforo"></td>
-          <!-- <th scope="col">#</th> -->
+          <th scope="col">#</th>
           <th scope="col">Radicado</th>
           <th scope="col">Juzgado</th>
           <th scope="col" >Tipo de demanda</th>
@@ -103,7 +147,7 @@
           }">
           <td> <div [ngClass]="{'negro':Demanda.DiasRestantes<0, 'gris':Demanda.DiasRestantes>31, 'rojo':Demanda.DiasRestantes==0, 'amarillo':Demanda.DiasRestantes>0 && Demanda.DiasRestantes<8, 'verde':Demanda.DiasRestantes>8 && Demanda.DiasRestantes<32}" >  </div> </td>
           <!-- <td>{{Demanda.DiasRestantes}}</td> -->
-          <!-- <th scope="row">{{Demanda.IdDemanda}}</th>  -->
+          <th scope="row">{{Demanda.IdDemanda}}</th> 
           <td>{{Demanda.NumDemanda}}</td>
           <td>{{Demanda.NombreJuzgado}}</td>
           <td>{{Demanda.NombreTipoDemanda}}</td>
