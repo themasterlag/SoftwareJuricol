@@ -12,9 +12,6 @@
         <label>
           <h4 ><strong>Generar Reportes</strong></h4>
         </label>
-        <div *ngIf="error!=null" class="alert alert-danger" role="alert">
-          {{error}}
-        </div>
         <br>
         <br>
         <select [(ngModel)]="Url" class="form-control" (change)="validarReporte(Url)">
@@ -24,6 +21,7 @@
           <option value="3">Demandas por empleado</option>
           <option value="4" >Demandas entre fechas</option>
         </select>
+
         <div *ngIf="ValidarR">
           <div>
               <label >Fecha Inicial</label>
