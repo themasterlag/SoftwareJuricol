@@ -42,7 +42,8 @@
         <thead> 
         <tr>
           
-            <th>&nbsp;</th>
+    
+            <th scope="col">&nbsp;</th>
             <th scope="col">&nbsp;</th>
             <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Documento" ></th>
             <th scope="col"><input class="form-control" [(ngModel)]="searchObject.Nombres" ></th>
@@ -67,7 +68,7 @@
         <tr>
      
           <th><img src="../../../../assets/iconos/semaforo/2x/twotone_traffic_black_18dp.png" class="imgSemaforo"></th>
-          <!-- <th scope="col">#</th> -->
+          <th scope="col">#</th>
           <th scope="col">Numero de cedula</th>
           <th scope="col">Nombres</th>
           <th scope="col">Apellidos</th>
@@ -101,7 +102,7 @@
         >
          
           <td scope="col"><div [ngClass]="{'rojo':Cliente.color === 1,'amarillo': Cliente.color === 0,'verde': Cliente.color === 2,'gris': Cliente.color === 3}"></div></td>
-          <!-- <td scope="col">{{Cliente.IdCliente}}</td> -->
+          <td scope="col">{{Cliente.IdCliente}}</td>
           <td scope="col">{{Cliente.Documento}}</td>
           <td scope="col">{{Cliente.Nombres}}</td>
           <td scope="col"> {{Cliente.Apellidos}}</td>
