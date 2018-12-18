@@ -204,7 +204,8 @@ export class RegistrarEmpleadoComponent implements OnInit {
     }
       
      
-   
+    swal('Cargando');
+    swal.showLoading();
     this.Empleado.SetPrimerNombre(this.primerNombre);
     this.Empleado.SetSegundoNombre(this.segundoNombre);
     this.Empleado.SetPrimerApellido(this.primerApellido);

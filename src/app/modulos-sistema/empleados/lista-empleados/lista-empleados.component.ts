@@ -27,7 +27,7 @@ export class ListaEmpleadosComponent implements OnInit {
 // ---------------------------Lista empleados------------------------------
   
   Roles:Array<Object>=[];
-  listaEmpleados:Array<Object>=[];
+  listaEmpleados:Array<Object>=null;
   RolPropio:string;
 
   controladorEmpleado: Empleado;

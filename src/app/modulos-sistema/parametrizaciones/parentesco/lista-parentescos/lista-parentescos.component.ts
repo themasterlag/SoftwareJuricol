@@ -57,6 +57,8 @@ export class ListaParentescosComponent implements OnInit {
       this.error = "Ingrese un nombre valido";
     }
     else{
+      swal('Cargando');
+      swal.showLoading();
       if(this.tipoAccion == false){
         this.controladorParametrizacion.SetId(null);
         this.controladorParametrizacion.SetNombre(this.nombre);
@@ -96,6 +98,8 @@ export class ListaParentescosComponent implements OnInit {
   }
 
   eliminar(Id){
+    swal('Cargando');
+    swal.showLoading();
     this.id = Id;
     this.controladorParametrizacion.SetId(this.id);
     this.controladorParametrizacion.EliminarParametrizacion().add(

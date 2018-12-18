@@ -241,7 +241,8 @@ export class RegistrarClienteComponent  {
       
       return false
     }
-    
+    swal('Cargando');
+    swal.showLoading();
     this.Cliente.SetPrimerNombre(this.primerNombre);
     this.Cliente.SetSegundoNombre(this.segundoNombre);
     this.Cliente.SetPrimerApellido(this.primerApellido);

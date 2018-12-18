@@ -23,28 +23,28 @@ export class VerDemandaComponent implements OnInit {
   error:any = null;
 
   id:number = null;
-  nombreCategoria:string;
-  numRadicado:number;
-  nombreTipoDemanda:string;
-  nombrecliente:string;
-  nombreAbogadoTitular:string;
-  nombreAbogadoSuplente:string;
-  nombreJuzgado:string;
-  nombreContraparte:string;
-  nombreTipoProceso:string;
-  nombreEstadoProceso:string;
-  descripcion:string;
-  descripcionMovimiento:string;
+  nombreCategoria:string = null;
+  numRadicado:number = null;
+  nombreTipoDemanda:string = null;
+  nombrecliente:string = null;
+  nombreAbogadoTitular:string = null;
+  nombreAbogadoSuplente:string = null;
+  nombreJuzgado:string = null;
+  nombreContraparte:string = null;
+  nombreTipoProceso:string = null;
+  nombreEstadoProceso:string = null;
+  descripcion:string = null;
+  descripcionMovimiento:string = null;
 
   termino:number = 0;
-  Ndescripcion:string;
-  fechaInicioEstado:Date;
-  fechaVencimiento:Date;
+  Ndescripcion:string = null;
+  fechaInicioEstado:Date = null;
+  fechaVencimiento:Date = null;
 
-  listaMovimientos:Object;
-  listaTerminos:Object;
+  listaMovimientos:Object = null;
+  listaTerminos:Object = null;
 
-  rolPropio:string;
+  rolPropio:string = null;
 
   constructor(private router: Router, private http: HttpClient, private autenticadorService: AutenticadorService, private rute: ActivatedRoute, private ambienteService: AmbienteService) {
     this.controladorDemanda = new Demanda(this.http, this.ambienteService);
@@ -90,6 +90,8 @@ export class VerDemandaComponent implements OnInit {
   }
 
   guardarMovimiento(){
+    swal('Cargando');
+    swal.showLoading();
     this.controladorDemanda.SetIdDemanda(this.id);
     this.controladorDemanda.SetDescripcionTermino(this.descripcionMovimiento);
     this.controladorDemanda.SetTermino(this.termino);
@@ -113,6 +115,8 @@ export class VerDemandaComponent implements OnInit {
   }
 
   eliminarMovimiento(Id){
+    swal('Cargando');
+    swal.showLoading();
     this.controladorDemanda.EliminarMovimientoDemanda(Id).subscribe(
       response =>{
         if(response["mensaje"]==1){
