@@ -16,6 +16,7 @@ import { AmbienteService } from 'src/app/servicios/ambiente.service';
   styleUrls: ['./convertidor-pdf.component.css']
 })
 export class ConvertidorPdfComponent implements OnInit {
+
   public uploader: FileUploader;
   public hasBaseDropZoneOver: boolean = false;
   config;
@@ -61,8 +62,8 @@ export class ConvertidorPdfComponent implements OnInit {
       }
     )
   }
-  
- 
+
+
   ngOnInit() {
     this.controladorParametrizacion.SetTipo("estadosDemanda");
     this.uploader.onBeforeUploadItem = (item: FileItem) => {
@@ -86,10 +87,7 @@ export class ConvertidorPdfComponent implements OnInit {
         
         });
        let i = 0;
-   
-       
-   
-       
+
       if (isArray(respuesta['mensaje']) == false){
               swal({
                type: 'success',
@@ -218,6 +216,8 @@ let i
       this.error = "Ingrese un nombre valido";
     }
     else{
+      swal('Cargando');
+      swal.showLoading();
       if(this.tipoAccion == false){
         this.controladorParametrizacion.SetNombre(this.nombre);
         this.controladorParametrizacion.SetTipoDato(this.tipo);
