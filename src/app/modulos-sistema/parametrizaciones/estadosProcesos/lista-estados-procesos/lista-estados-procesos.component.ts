@@ -68,6 +68,11 @@ export class ListaEstadosProcesosComponent implements OnInit {
         this.controladorParametrizacion.SetNombre(this.nombre);
         this.controladorParametrizacion.GuardarParametrizacion().subscribe(
           response =>{
+            swal({
+              type: 'success',
+              title: "Registro realizado correctamente",
+              timer: 5000
+            });
             this.cerrarModal();
             this.ngOnInit();
           }
@@ -78,6 +83,11 @@ export class ListaEstadosProcesosComponent implements OnInit {
         this.controladorParametrizacion.SetNombre(this.nombre);
         this.controladorParametrizacion.GuardarParametrizacion().subscribe(
           response =>{
+            swal({
+              type: 'success',
+              title: "Registro realizado correctamente",
+              timer: 5000
+            });
             this.cerrarModal();
             this.ngOnInit();
           }

@@ -83,6 +83,11 @@ export class ListaInstitucionesLaboralesComponent implements OnInit {
         this.controladorParametrizacion.SetIdRelacion(this.ciudad);
         this.controladorParametrizacion.GuardarParametrizacion().subscribe(
           response =>{
+            swal({
+              type: 'success',
+              title: "Registro realizado correctamente",
+              timer: 5000
+            });
             this.cerrarModal();
             this.ngOnInit();
           }
@@ -94,6 +99,11 @@ export class ListaInstitucionesLaboralesComponent implements OnInit {
         this.controladorParametrizacion.SetIdRelacion(this.ciudad);
         this.controladorParametrizacion.GuardarParametrizacion().subscribe(
           response =>{
+            swal({
+              type: 'success',
+              title: "Registro realizado correctamente",
+              timer: 5000
+            });
             this.cerrarModal();
             this.ngOnInit();
           }

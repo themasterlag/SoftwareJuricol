@@ -70,6 +70,11 @@ export class ListaEstadosDemandaComponent implements OnInit {
         this.controladorParametrizacion.SetDiasLimites(this.diasLimite);
         this.controladorParametrizacion.GuardarParametrizacion().subscribe(
           response =>{
+            swal({
+              type: 'success',
+              title: "Registro realizado correctamente",
+              timer: 5000
+            });
             this.cerrarModal();
             this.ngOnInit();
           }
@@ -82,6 +87,11 @@ export class ListaEstadosDemandaComponent implements OnInit {
         this.controladorParametrizacion.SetDiasLimites(this.diasLimite);
         this.controladorParametrizacion.GuardarParametrizacion().subscribe(
           response =>{
+            swal({
+              type: 'success',
+              title: "Registro realizado correctamente",
+              timer: 5000
+            });
             this.cerrarModal();
             this.ngOnInit();
           }
