@@ -169,7 +169,7 @@ export class RegistrarEmpleadoComponent implements OnInit {
     if(this.especialidad == null || this.especialidad == 0){
       swal({
         type: 'error',
-        title: 'Campo Tipo Documento del Empleado vacio',
+        title: 'Campo Especialidad  del Empleado vacio',
         timer: 5000
       });
       
@@ -178,7 +178,7 @@ export class RegistrarEmpleadoComponent implements OnInit {
     if(this.titular == null || this.titular == -1){
       swal({
         type: 'error',
-        title: 'Campo Tipo Documento del Empleado vacio',
+        title: 'Campo Titular del Empleado vacio',
         timer: 5000
       });
       
@@ -187,7 +187,7 @@ export class RegistrarEmpleadoComponent implements OnInit {
     if(this.cargo == null || this.cargo == 0){
       swal({
         type: 'error',
-        title: 'Campo Tipo Documento del Empleado vacio',
+        title: 'Campo Cargo del Empleado vacio',
         timer: 5000
       });
       
