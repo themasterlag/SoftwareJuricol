@@ -44,16 +44,56 @@ export class RestablecerClaveComponent implements OnInit {
     this.controlador.setUsuario(this.usuario)
     this.usuario = this.autenticadorService.GetUsuario();
     if(this.Clave1 == '' || this.Clave2 == '' || this.Clave1 == null || this.Clave2 == null){
-      alert('Por favor ingrese la nueva contraseña');
+      swal({
+        type: 'error',
+        title: "Por favor ingrese la nueva contraseña",
+        timer: 5000
+      });
     }
     else{
       if(this.Clave1 != this.Clave2){
-        alert('Las contraseñas no coinciden');
+        swal({
+          type: 'error',
+          title: "Las contraseñas no coinciden",
+          timer: 5000
+        });
       }
       else{
-        alert('restablecer');
+        swal({
+          type: 'warning',
+          title: "Restableciendo contraseña",
+          timer: 5000
+        });
         this.controlador.setClave(this.Clave1);
-        this.controlador.restablecerClave();
+        this.controlador.restablecerClave().subscribe(
+          response=>{
+            if(response['codigo']!=200){
+              swal({
+                type: 'warning',
+                title: "Error al restableser contraseña",
+                timer: 5000
+              });
+             
+            }
+            else{
+              if(response['codigo']==200){
+                swal({
+                  type: 'success',
+                  title: "Cambio de contraseña correrto",
+                  timer: 5000
+                });
+                
+                
+              }
+            }
+          },erro=>{
+            swal({
+              type: 'error',
+              title: "Error al cambiar contraseña",
+              timer: 5000
+            });
+          }
+        );
         this.router.navigateByUrl('/login');
       }
     }

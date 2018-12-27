@@ -277,31 +277,36 @@ export class RegistrarEmpleadoComponent implements OnInit {
   });
   }
   CargarPaises(){
-    
+    swal('Cargando');
+    swal.showLoading();
     this.Empleado.ObtenerPaises().subscribe  
     (       //Asignacion de la respuesta del metodo al atributo cargos
             response => {
           this.paises = response['mensaje']; 
-            
+            swal.close();
   
   });
   }
   CargarDepartamentos(){
+    swal('Cargando');
+    swal.showLoading();
     this.cuidad = 0;
     this.Empleado.ObtenerDepartamentos(this.pais).subscribe  
     (       //Asignacion de la respuesta del metodo al atributo cargos
             response => {
           this.departamentos = response['mensaje']; 
-          
+          swal.close();
   
   });
   }
   CargarCuidades(){
+    swal('Cargando');
+    swal.showLoading();
     this.Empleado.ObtenerCiudades(this.departamento).subscribe  
     (       //Asignacion de la respuesta del metodo al atributo cargos
             response => {
           this.ciudades = response['mensaje']; 
-        
+        swal.close();
             
   
   });

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-
+import swal from 'sweetalert2';
 import { Demanda } from '../../../controladores/demanda';
 import { AutenticadorService } from '../../../servicios/autenticador.service';
 import { AmbienteService } from 'src/app/servicios/ambiente.service';
@@ -22,7 +22,7 @@ export class EditarDemandaComponent implements OnInit {
   pantalla:number = 0;
 
   id:number = null;
-  numRadicado:number;
+  numRadicado:string;
   tipoDemanda:number = 0;
   listaTiposDemandas:Object;
   cliente:number = 0;
@@ -112,6 +112,17 @@ export class EditarDemandaComponent implements OnInit {
   }
 
   guardarDemanda(){
+    if(!/^([0-9])*$/.test(this.numRadicado)){
+      swal({
+        type: 'error',
+        title: "El valor " + this.numRadicado + " no es un número",
+        timer: 5000
+      });
+    
+    }
+    else{
+
+    
     this.controladorDemanda.SetIdDemanda(this.id);
     this.controladorDemanda.SetCategoria(this.categoria)
     this.controladorDemanda.SetNumeroRadicado(this.numRadicado);
@@ -128,14 +139,26 @@ export class EditarDemandaComponent implements OnInit {
     this.controladorDemanda.GuardarDemanda().subscribe(
       response =>{
         if(response["codigo"]==200){
-          alert("Demanda registrada correctamente");
+          swal({
+            type: 'success',
+            title: 'Se realizo el cambio correctamente',
+            timer: 5000
+            
+          });
           this.router.navigateByUrl("/"+this.usuario+"/demandas");
         }
         else{
           this.error = response["mensaje"];
+          swal({
+            type: 'error',
+            title: this.error,
+            timer: 5000
+            
+          });
         }
       }
     );
+    }
   }
 
   cancelar(){

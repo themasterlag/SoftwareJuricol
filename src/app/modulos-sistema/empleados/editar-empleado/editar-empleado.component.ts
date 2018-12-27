@@ -58,10 +58,12 @@ export class EditarEmpleadoComponent implements OnInit {
     this.RolPropio = autenticadorService.GetRol();
     this.route.params.subscribe(
       parametro=>{
+        
         this.id= parametro.id
         this.Empleado.BuscarEmpleado(parametro.id).subscribe(
+          
           response => {
-
+           
           this.DatosJSON = response["mensaje"] ;
           this.correoElectronico = this.DatosJSON[0].CorreoElectronico;
           this.celular = this.DatosJSON[0].Celular;
@@ -78,10 +80,13 @@ export class EditarEmpleadoComponent implements OnInit {
           this.tarjeta = this.DatosJSON[0].TarjetaProfesional;
           this.titular = this.DatosJSON[0].Titular;
           this.cargo = this.DatosJSON[0].IdCargo;
-          this.rol = this.DatosJSON[0].IdRol
+          this.rol = this.DatosJSON[0].IdRol;
+          this.telefono = this.DatosJSON[0].Telefono;
           if(this.rol == null || this.rol == undefined){
             this.rol = 0;
             this.BloqueoRol = true;
+
+           
           }
           this.LlenarSelects();
           }
@@ -92,6 +97,7 @@ export class EditarEmpleadoComponent implements OnInit {
         this.CargarPaises();
         this.CargarCargos();
         this.CargarEspecialidades();
+        swal.close();
     }
   }
 
@@ -326,31 +332,36 @@ export class EditarEmpleadoComponent implements OnInit {
   });
   }
   CargarPaises(){
-    
+    swal('Cargando');
+    swal.showLoading();
     this.Empleado.ObtenerPaises().subscribe  
     (       //Asignacion de la respuesta del metodo al atributo cargos
             response => {
           this.paises = response['mensaje']; 
-            
+            swal.close();
   
   });
   }
   CargarDepartamentos(){
+    swal('Cargando');
+    swal.showLoading();
     this.cuidad = 0;
     this.Empleado.ObtenerDepartamentos(this.pais).subscribe  
     (       //Asignacion de la respuesta del metodo al atributo cargos
             response => {
           this.departamentos = response['mensaje']; 
-          
+          swal.close();
   
   });
   }
   CargarCuidades(){
+    swal('Cargando');
+    swal.showLoading();
     this.Empleado.ObtenerCiudades(this.departamento).subscribe  
     (       //Asignacion de la respuesta del metodo al atributo cargos
             response => {
           this.ciudades = response['mensaje']; 
-        
+        swal.close();
             
   
   });

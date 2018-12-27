@@ -24,7 +24,7 @@ export class VerDemandaComponent implements OnInit {
 
   id:number = null;
   nombreCategoria:string = null;
-  numRadicado:number = null;
+  numRadicado:string = null;
   nombreTipoDemanda:string = null;
   nombrecliente:string = null;
   nombreAbogadoTitular:string = null;
@@ -90,6 +90,7 @@ export class VerDemandaComponent implements OnInit {
   }
 
   guardarMovimiento(){
+    this.error = null;
     swal('Cargando');
     swal.showLoading();
     this.controladorDemanda.SetIdDemanda(this.id);
@@ -100,6 +101,7 @@ export class VerDemandaComponent implements OnInit {
 
     this.controladorDemanda.CrearMovimiento().subscribe(
       response =>{
+        swal.close();
         swal({
           type: 'success',
           title: "Movimiento creado correctamente",
@@ -107,18 +109,31 @@ export class VerDemandaComponent implements OnInit {
         });
           this.cerrarModal();
           this.ngOnInit();
+          this.error = null;
       },
       error =>{
+        this.cerrarModal();
+          this.ngOnInit();
+        swal.close();
         this.error = error.error["mensaje"];
+        swal({
+          type: 'error',
+          title: this.error,
+          timer: 5000
+        });
+        this.error = null;
+        
       } 
     );
   }
 
   eliminarMovimiento(Id){
+    this.error = null;
     swal('Cargando');
     swal.showLoading();
     this.controladorDemanda.EliminarMovimientoDemanda(Id).subscribe(
       response =>{
+        swal.close();
         if(response["mensaje"]==1){
           swal({
             type: 'success',
@@ -128,12 +143,22 @@ export class VerDemandaComponent implements OnInit {
           this.ngOnInit();
         }
         else{
+          swal.close();
           swal({
             type: 'error',
             title: "Error al eliminar el movimiento",
             timer: 5000
           });
+          this.ngOnInit();
         }
+      },error=>{
+        swal.close();
+        swal({
+          type: 'error',
+          title: "Error al eliminar el movimiento",
+          timer: 5000
+        });
+        this.ngOnInit();
       }
     );
   }

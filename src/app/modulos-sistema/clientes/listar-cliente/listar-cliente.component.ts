@@ -77,14 +77,27 @@ export class ListarClienteComponent implements OnInit {
                 });
                 this.Recargar();
             }
+           
+              if(response["codigo"]==404){
+                swal({
+                  type: 'success',
+                  title: response['mensaje'],
+                  timer: 5000
+                  
+                });
+                this.Recargar();
+              }
+                           
       
           },err => {
-            if(err.error["codigo"] == 400){
+            if(err.error["codigo"]!=200){
               swal({
                 type: 'error',
-                title: 'Hubo un error ha eliminar',
+                title: err.error['mensaje'],
                 timer: 5000
+                
               });
+              this.Recargar();
             }
           }
         );

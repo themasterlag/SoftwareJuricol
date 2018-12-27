@@ -177,7 +177,7 @@ export class Parametrizacion {
             return this.http.get(this.ruta+"validar.php?accion=consultarEstadosProcesos").subscribe(
                 response =>{
                     this.listaDatos = response['mensaje'];
-                    console.log(this.listaDatos);
+                     
                 },error =>{
                     this.error = "Error al consultar estados de procesos";
                     return this.error;                    
@@ -189,7 +189,7 @@ export class Parametrizacion {
             return this.http.get(this.ruta+"validar.php?accion=consultarInstitucionesLaborales").subscribe(
                 response =>{
                     this.listaDatos = response['mensaje'];
-                    console.log(this.listaDatos);
+                     
                 },error =>{
                     this.error = "Error al consultar instituciones laborales";
                     return this.error;                    
@@ -201,7 +201,7 @@ export class Parametrizacion {
             return this.http.get(this.ruta+"validar.php?accion=consultarJuzgados").subscribe(
                 response =>{
                     this.listaDatos = response['mensaje'];
-                    console.log(this.listaDatos);
+                     
                 },error =>{
                     this.error = "Error al consultar juzgados";
                     return this.error;                    
@@ -213,7 +213,7 @@ export class Parametrizacion {
             return this.http.get(this.ruta+"validar.php?accion=consultarParentescos").subscribe(
                 response =>{
                     this.listaDatos = response['mensaje'];
-                    console.log(this.listaDatos);
+                     
                 },error =>{
                     this.error = "Error al consultar parentescos";
                     return this.error;                    
@@ -225,7 +225,7 @@ export class Parametrizacion {
             return this.http.get(this.ruta+"validar.php?accion=consultarTiposProcesos").subscribe(
                 response =>{
                     this.listaDatos = response['mensaje'];
-                    console.log(this.listaDatos);
+                    
                 },error =>{
                     this.error = "Error al consultar tipos de procesos";
                     return this.error;                    
@@ -237,7 +237,7 @@ export class Parametrizacion {
             return this.http.get(this.ruta+"validar.php?accion=consultarTiposDemandas").subscribe(
                 response =>{
                     this.listaDatos = response['mensaje'];
-                    console.log(this.listaDatos);
+                    
                 },error =>{
                     this.error = "Error al consultar tipos de demandas";
                     return this.error;                    
@@ -481,7 +481,7 @@ export class Parametrizacion {
                     }
                 },error =>{
                     this.error = "Error al eliminar el tipo de documento";
-                    console.log(this.error)
+                   
                     return this.error;                    
                 }
             );
@@ -497,7 +497,7 @@ export class Parametrizacion {
                     }
                 },error =>{
                     this.error = "Error al eliminar el pais";
-                    console.log(this.error)
+                    
                     return this.error;                    
                 }
             );
@@ -514,7 +514,7 @@ export class Parametrizacion {
                         }
                     },error =>{
                         this.error = "Error al eliminar el departamentos";
-                        console.log(this.error)
+                        
                         return this.error;                    
                     }
                 );
@@ -532,7 +532,7 @@ export class Parametrizacion {
                         }
                     },error =>{
                         this.error = "Error al eliminar la ciudad";
-                        console.log(this.error)
+                        
                         return this.error;                    
                     }
                 );
@@ -548,7 +548,7 @@ export class Parametrizacion {
                     }
                 },error =>{
                     this.error = "Error al eliminar el cargos";
-                    console.log(this.error)
+                    
                     return this.error;                    
                 }
             );
@@ -563,7 +563,7 @@ export class Parametrizacion {
                     }
                 },error =>{
                     this.error = "Error al eliminar la especialidades";
-                    console.log(this.error)
+                  
                     return this.error;                    
                 }
             );
@@ -578,7 +578,7 @@ export class Parametrizacion {
                     }
                 },error =>{
                     this.error = "Error al eliminar el estado de demanda";
-                    console.log(this.error)
+                    
                     return this.error;                    
                 }
             );
@@ -593,7 +593,7 @@ export class Parametrizacion {
                     }
                 },error =>{
                     this.error = "Error al eliminar el estados de proceso";
-                    console.log(this.error)
+                    
                     return this.error;                    
                 }
             );
@@ -608,7 +608,7 @@ export class Parametrizacion {
                     }
                 },error =>{
                     this.error = "Error al eliminar la institucion laboral";
-                    console.log(this.error)
+                    
                     return this.error;                    
                 }
             );
@@ -623,7 +623,7 @@ export class Parametrizacion {
                     }
                 },error =>{
                     this.error = "Error al eliminar el juzgado";
-                    console.log(this.error)
+                    
                     return this.error;                    
                 }
             );
@@ -638,7 +638,7 @@ export class Parametrizacion {
                     }
                 },error =>{
                     this.error = "Error al eliminar el parentesco";
-                    console.log(this.error)
+                    
                     return this.error;                    
                 }
             );
@@ -653,7 +653,7 @@ export class Parametrizacion {
                     }
                 },error =>{
                     this.error = "Error al eliminar el tipo de proceso";
-                    console.log(this.error)
+                    
                     return this.error;                    
                 }
             );
@@ -668,7 +668,7 @@ export class Parametrizacion {
                     }
                 },error =>{
                     this.error = "Error al eliminar el tipo de demanda";
-                    console.log(this.error)
+                    
                     return this.error;                    
                 }
             );

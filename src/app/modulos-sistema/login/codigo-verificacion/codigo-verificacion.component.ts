@@ -48,11 +48,14 @@ export class CodigoVerificacionComponent implements OnInit {
     this.controlador.setCodigoIngresado(this.codigoIngresado);
     this.controlador.ValidarCodigo().subscribe(
       response =>{
-        if(response["mensaje"] != "El codigo es correcto"){
+        if(response["codigo"] != 200){
           this.error = response["mensaje"];
         }
         else{
-          this.router.navigateByUrl("/restablecerClave");
+          if(response['codigo']== 200){
+            this.router.navigateByUrl("/restablecerClave");
+          }
+          
         }
       },error =>{
         this.error = "Error al validar el codigo";

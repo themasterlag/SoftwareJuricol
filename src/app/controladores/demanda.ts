@@ -8,7 +8,7 @@ import { AmbienteService } from '../servicios/ambiente.service';
 class ObjetoDemanda {
     DiasRestantes:number;
     IdDemanda:number;
-    NumeroRadicado:number;
+    NumeroRadicado:string;
     Demandante:string;
     Demandado:string;
     FechaDemanda:string;
@@ -36,7 +36,7 @@ export class Demanda {
     private nombreTipoDemanda:string;//
     private listaTiposDemandas:Object;
 
-    private numRadicado:number;
+    private numRadicado:string;
     private cliente:number = 0;
     private nombrecliente:string;//
     private listaClientes:Object;

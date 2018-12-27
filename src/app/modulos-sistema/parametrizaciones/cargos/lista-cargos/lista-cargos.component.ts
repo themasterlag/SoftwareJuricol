@@ -129,21 +129,31 @@ export class ListaCargosComponent implements OnInit {
     this.controladorParametrizacion.EliminarParametrizacion().add(
       response =>{
         let respuesta = this.controladorParametrizacion.GetRespuesta();
-        if(respuesta == null){
+        if(respuesta != 1){
           this.error = this.controladorParametrizacion.GetError();
           swal({
             type: 'error',
-            title: this.error,
+            title: "Ocurrio un error en la eliminacion",
             timer: 5000
           });
         }
         else{
-          swal({
-            type: 'success',
-            title: "Eliminacion realizada satisfactoriamente",
-            timer: 5000
-          });
-          this.ngOnInit();
+          if(respuesta == 1){
+            swal({
+              type: 'success',
+              title: "Eliminacion realizada satisfactoriamente",
+              timer: 5000
+            });
+            this.ngOnInit();
+          }
+          else{
+            swal({
+              type: 'error',
+              title: "Ocurrio un error en la eliminacion",
+              timer: 5000
+            });
+            this.ngOnInit();
+          }
         }
       }
     );
