@@ -22,7 +22,7 @@ export class RegistrarDemandaComponent implements OnInit {
   pantalla:number = 0;
 
   id:number = null;
-  numRadicado:number = null;
+  numRadicado:string = null;
   tipoDemanda:number = null;
   listaTiposDemandas:Object = null;
   cliente:number = null;
@@ -99,9 +99,18 @@ export class RegistrarDemandaComponent implements OnInit {
 
   guardarDemanda(){
 
-    if(this.categoria == null || this.tipoDemanda == null || this.tipoDemanda == null || this.cliente == null || this.titular == null || this.suplente == null || this.contraparte == null || this.tipoProceso == null || this.estadoProceso == null || this.descripcion == null || this.estadoProceso == null){
+    if(!/^([0-9])*$/.test(this.numRadicado)){
+        swal({
+          type: 'error',
+          title: "El valor " + this.numRadicado + " no es un número",
+          timer: 5000
+        });
+      
+      }
+      else{ 
+      if(this.categoria == null || this.tipoDemanda == null || this.tipoDemanda == null || this.cliente == null || this.titular == null || this.suplente == null || this.contraparte == null || this.tipoProceso == null || this.estadoProceso == null || this.descripcion == null || this.estadoProceso == null){
       this.error = "Por favor llene todos los campos";
-    }
+      }
     else{
       if ( this.termino == 0 || this.descripcionTermino == null){
         this.error = "Por favor ingrese la informacion del estado"
@@ -156,6 +165,7 @@ export class RegistrarDemandaComponent implements OnInit {
       }
     }
   }
+ }
 
   cancelar(){
     this.router.navigateByUrl("/"+this.usuario+"/demandas");

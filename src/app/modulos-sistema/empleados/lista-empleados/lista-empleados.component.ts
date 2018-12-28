@@ -37,7 +37,7 @@ export class ListaEmpleadosComponent implements OnInit {
     Nombres:"",
     Apellidos:"",
     NombreCargo:"",
-    EdEspecialidadad:"",
+    Especialidad:"",
     TarjetaProfesional:"",
     Celular:"",
     CorreoElectronico:"",
@@ -70,6 +70,7 @@ export class ListaEmpleadosComponent implements OnInit {
             this.listaEmpleados[i]['Rol'] = "Sin Rol";
           } 
         }
+        
       }
     );
     this.controladorUsuario.BuscarRoles().add(

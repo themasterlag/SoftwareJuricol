@@ -103,6 +103,7 @@ export class ListaDemandasComponent implements OnInit {
     this.Url = 0;
     this.FechaInicial= null;
     this.FechaFinal = null;
+    this.ValidarR = false;
   }
   generarReporte(){
     if(this.Url == 0 ){

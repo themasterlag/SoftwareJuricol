@@ -70,6 +70,7 @@ export class Verificacion {
 
     // envia la nueva clave para remplazar la antigua
     public restablecerClave(){
+        this.clave = Md5.init(this.clave);
         return this.http.post(this.ruta+"recuperacion.php",{
             Codigo: "nuevaClave",
             NomUsuario: this.usuario,

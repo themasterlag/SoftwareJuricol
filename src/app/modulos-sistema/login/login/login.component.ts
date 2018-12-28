@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AutenticadorService } from '../../../servicios/autenticador.service';
 import { Verificacion } from '../../../controladores/verificacion';
 import { AmbienteService } from 'src/app/servicios/ambiente.service';
+import { elementStart } from '@angular/core/src/render3/instructions';
 
 @Component({
   selector: 'app-login',
@@ -63,19 +64,27 @@ export class LoginComponent implements OnInit {
             this.estado = null;
             if(this.error==null){
               if(this.respuesta == null){
-                this.error = "Error al iniciar sesion"; 
+                
+                this.error = "Error al iniciar sesion";
+                
               }
               if(this.respuesta['mensaje']=='Acceso correcto'){
+                
                 this.autenticadorService.SetToken(this.respuesta['token'])
                 if(this.autenticadorService.ProcesarToken() == true){
                   this.router.navigateByUrl('/'+this.usuario+'/demandas');
+
                 }
                 else{
+                  
                   this.error = "Token no valido";
+                 
                 }
               }
               else{
+        
                 this.error = this.respuesta['mensaje'];
+               
               }
             }
           }

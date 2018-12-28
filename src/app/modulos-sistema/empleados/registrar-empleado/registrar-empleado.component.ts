@@ -169,7 +169,7 @@ export class RegistrarEmpleadoComponent implements OnInit {
     if(this.especialidad == null || this.especialidad == 0){
       swal({
         type: 'error',
-        title: 'Campo Tipo Documento del Empleado vacio',
+        title: 'Campo Especialidad  del Empleado vacio',
         timer: 5000
       });
       
@@ -178,7 +178,7 @@ export class RegistrarEmpleadoComponent implements OnInit {
     if(this.titular == null || this.titular == -1){
       swal({
         type: 'error',
-        title: 'Campo Tipo Documento del Empleado vacio',
+        title: 'Campo Titular del Empleado vacio',
         timer: 5000
       });
       
@@ -187,7 +187,7 @@ export class RegistrarEmpleadoComponent implements OnInit {
     if(this.cargo == null || this.cargo == 0){
       swal({
         type: 'error',
-        title: 'Campo Tipo Documento del Empleado vacio',
+        title: 'Campo Cargo del Empleado vacio',
         timer: 5000
       });
       
@@ -277,31 +277,36 @@ export class RegistrarEmpleadoComponent implements OnInit {
   });
   }
   CargarPaises(){
-    
+    swal('Cargando');
+    swal.showLoading();
     this.Empleado.ObtenerPaises().subscribe  
     (       //Asignacion de la respuesta del metodo al atributo cargos
             response => {
           this.paises = response['mensaje']; 
-            
+            swal.close();
   
   });
   }
   CargarDepartamentos(){
+    swal('Cargando');
+    swal.showLoading();
     this.cuidad = 0;
     this.Empleado.ObtenerDepartamentos(this.pais).subscribe  
     (       //Asignacion de la respuesta del metodo al atributo cargos
             response => {
           this.departamentos = response['mensaje']; 
-          
+          swal.close();
   
   });
   }
   CargarCuidades(){
+    swal('Cargando');
+    swal.showLoading();
     this.Empleado.ObtenerCiudades(this.departamento).subscribe  
     (       //Asignacion de la respuesta del metodo al atributo cargos
             response => {
           this.ciudades = response['mensaje']; 
-        
+        swal.close();
             
   
   });

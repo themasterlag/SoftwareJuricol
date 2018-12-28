@@ -35,13 +35,17 @@ export class RecuperarClaveComponent implements OnInit {
       this.controlador.setUsuario(this.usuario);
       this.controlador.VerificarUsuario().subscribe(
         response =>{
-          if(response != "Correo enviado"){
+          if(response['codigo'] != 200){
             this.error = response["mensaje"];
-            // console.log(response);
+            
           }
           else{
-            this.autenticadorService.SetUsuario(this.usuario);
-            this.router.navigateByUrl('/codigoVerificacion');
+            if(response['codigo'] === 200){
+              this.autenticadorService.SetUsuario(this.usuario);
+              this.router.navigateByUrl('/codigoVerificacion');
+            }
+      
+            
           }
         },error =>{
           this.error = "Error al validar usuario"

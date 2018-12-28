@@ -52,7 +52,8 @@ export class EditarClienteComponent implements OnInit {
     this.Cliente = new Cliente(this.http,this.ambienteService) ;
     this.route.params.subscribe(
       parametro=>{
-        
+        swal('Cargando');
+        swal.showLoading();
         this.Cliente.BuscarCliente(parametro.id).subscribe(
           response => {
           this.id = parametro.id;
@@ -88,9 +89,10 @@ export class EditarClienteComponent implements OnInit {
           this.CargarParentescos();
           }
         );
-        
-        });
+        swal.close();
+      });
     }
+    
   }
   
   CargarEntidad(){
@@ -112,30 +114,39 @@ export class EditarClienteComponent implements OnInit {
   });
   }
   CargarPaises(){
+    swal('Cargando');
+    swal.showLoading();
     this.Cliente.ObtenerPaises().subscribe  
     (       //Asignacion de la respuesta del metodo al atributo cargos
             response => {
           this.paises = response['mensaje']; 
-          
+          swal.close();
   
   });
   }
   CargarDepartamentos(){
+    swal('Cargando');
+    swal.showLoading();
+    
     this.Cuidad = 0;
+    this.Departamento = 0;
     this.Cliente.ObtenerDepartamentos(this.Pais).subscribe  
     (       //Asignacion de la respuesta del metodo al atributo cargos
             response => {
+              
           this.departamentos = response['mensaje']; 
-          
+          swal.close();
   
   });
   }
   CargarCuidades(){
+    swal('Cargando');
+    swal.showLoading();
     this.Cliente.ObtenerCiudades(this.Departamento).subscribe  
     (       //Asignacion de la respuesta del metodo al atributo cargos
             response => {
           this.Ciudades = response['mensaje']; 
-
+          swal.close();
   });
   }
   LlenarSelects(){

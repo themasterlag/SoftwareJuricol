@@ -337,29 +337,35 @@ export class RegistrarClienteComponent  {
   });
   }
   CargarPaises(){
+    swal('Cargando');
+    swal.showLoading();
     this.Cliente.ObtenerPaises().subscribe  
     (       //Asignacion de la respuesta del metodo al atributo cargos
             response => {
           this.paises = response['mensaje']; 
-            
+            swal.close();
   
   });
   }
   CargarDepartamentos(){
-    
+    swal('Cargando');
+    swal.showLoading();
     this.Cliente.ObtenerDepartamentos(this.Pais).subscribe  
     (       //Asignacion de la respuesta del metodo al atributo cargos
             response => {
           this.departamentos = response['mensaje']; 
-          
+          swal.close();
   
   });
   }
   CargarCuidades(){
+    swal('Cargando');
+    swal.showLoading();
     this.Cliente.ObtenerCiudades(this.Departamento).subscribe  
     (       //Asignacion de la respuesta del metodo al atributo cargos
             response => {
           this.Ciudades = response['mensaje']; 
+          swal.close();
          
             
   
