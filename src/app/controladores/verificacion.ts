@@ -70,7 +70,6 @@ export class Verificacion {
 
     // envia la nueva clave para remplazar la antigua
     public restablecerClave(){
-
         return this.http.post(this.ruta+"recuperacion.php",{
             Codigo: "nuevaClave",
             NomUsuario: this.usuario,

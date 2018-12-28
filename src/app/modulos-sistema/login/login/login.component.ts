@@ -60,9 +60,10 @@ export class LoginComponent implements OnInit {
         (data)=> this.respuesta = {...data },
         (error) => this.error = error['error']['mensaje']).add(
           response=>{
+            this.estado = null;
             if(this.error==null){
               if(this.respuesta == null){
-                this.error = "Error al iniciar sesion";
+                this.error = "Error al iniciar sesion"; 
               }
               if(this.respuesta['mensaje']=='Acceso correcto'){
                 this.autenticadorService.SetToken(this.respuesta['token'])
